@@ -5,9 +5,9 @@ autoload -U colors && colors
 #~ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 #~ PS1="%B[%{$fg[green]%}%n%{$reset_color%}@%B%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$reset_color%}]$%b "
 if [[ "$USERNAME" == 'root' ]]; then
-	PS1="%B[%{$fg[red]%}%n%{$fg[white]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$reset_color%}]$%b "
+	PS1="%B%{$fg[white]%}[%{$fg[red]%}%n%{$fg[white]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[white]%}]%{$fg[red]%}#%{$reset_color%}%b "
 else
-	PS1="%B[%{$fg[green]%}%n%{$fg[white]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$reset_color%}]$%b "
+	PS1="%B%{$fg[white]%}[%{$fg[green]%}%n%{$fg[white]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[white]%}]$%{$reset_color%}%b "
 fi
 
 # History in cache directory:

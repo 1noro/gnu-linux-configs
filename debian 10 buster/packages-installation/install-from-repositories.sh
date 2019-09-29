@@ -7,6 +7,8 @@ packagelist_install=(
     firmware-misc-nonfree
     build-essential
     linux-headers-$(uname -r)
+    zsh
+    zsh-syntax-highlighting
     nano
     net-tools
     tree
