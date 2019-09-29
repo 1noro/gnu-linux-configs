@@ -4,6 +4,7 @@
 
 packagelist_install=(
     # utilidades básicas (no gráficas)
+    firmware-misc-nonfree
     build-essential
     linux-headers-$(uname -r)
     nano
