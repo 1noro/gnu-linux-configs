@@ -18,6 +18,7 @@ packagelist_install=(
     neofetch
     git
     openjdk-11-jdk
+    papirus-icon-theme
 
     # utilidades básicas (gráficas)
     simple-scan
