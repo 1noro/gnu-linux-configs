@@ -11,6 +11,7 @@ packagelist_install=(
     zsh-syntax-highlighting
     nano
     net-tools
+    dnsutils
     tree
     tldr
     htop
