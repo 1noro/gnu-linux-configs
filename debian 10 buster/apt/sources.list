@@ -1,0 +1,16 @@
+#my sources.list 
+
+deb http://ftp.es.debian.org/debian/ buster main contrib non-free
+deb-src http://ftp.es.debian.org/debian/ buster main contrib non-free
+
+deb http://security.debian.org/debian-security buster/updates main contrib non-free
+deb-src http://security.debian.org/debian-security buster/updates main contrib non-free
+
+# buster-updates, previously known as 'volatile'
+deb http://ftp.es.debian.org/debian/ buster-updates main contrib non-free
+deb-src http://ftp.es.debian.org/debian/ buster-updates main contrib non-free
+
+#mod by boot1110001 201908301600
+deb [ arch=amd64 ] http://download.virtualbox.org/virtualbox/debian bionic contrib
+# deb-src http://download.virtualbox.org/virtualbox/debian bionic contrib
+# deb http://ftp.es.debian.org/debian/ buster-backports main contrib non-free
