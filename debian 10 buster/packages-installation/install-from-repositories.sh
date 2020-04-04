@@ -66,8 +66,10 @@ packagelist_install=(
     # editor 2D
     librecad
 
-    # games
+    # games (https://blends.debian.org/games/tasks/puzzle)
     gnome-mahjongg
+    sgt-puzzles #https://www.chiark.greenend.org.uk/~sgtatham/puzzles/
+    gplanarity
 
     # chromium
     chromium
