@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=4chan
+Exec=firefox https://www.4chan.org/
+Icon=/home/cosmo/4chan.png
+Type=Application

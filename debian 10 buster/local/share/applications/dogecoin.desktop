@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.10.0
+Name=Dogecoin Core
+Comment=...
+Path=/opt/dogecoin/bin
+Exec=/opt/dogecoin/bin/dogecoin-qt
+Icon=dogecoin
+Terminal=false
+Name[gl_ES]=Dogecoin Core

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.10.0
+Name=Bitcoin Core
+Comment=...
+Path=/opt/bitcoin/bin
+Exec=/opt/bitcoin/bin/bitcoin-qt
+Icon=bitcoin
+Terminal=false
+Name[gl_ES]=Bitcoin Core

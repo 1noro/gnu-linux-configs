@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.14.4
+Name=Minecraft
+Comment=...
+Path=/home/cosmo/Descargas/minecraft
+Exec=java -jar /home/cosmo/Descargas/minecraft/LauncherFenix-Minecraft.jar
+Icon=minecraft
+Terminal=false
+Name[gl_ES]=Minecraft
