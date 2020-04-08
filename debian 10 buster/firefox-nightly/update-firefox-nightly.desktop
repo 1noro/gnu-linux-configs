@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Update Firefox Nightly
+Comment=Update web Browser
+Exec=su -c "/opt/update-firefox-nightly.sh"
+Terminal=true
+Type=Application
+Icon=/usr/share/icons/update-firefox-nightly.png
+Categories=Network;WebBrowser;
+StartupNotify=true
