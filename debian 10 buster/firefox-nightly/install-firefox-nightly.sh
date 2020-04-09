@@ -55,7 +55,7 @@ fi
 echo ">> Downloading $DOWNLOADED_FILE"
 wget wget -q --show-progress -O "$DOWNLOADED_FILE" "$URL"
 echo ">> Extracting $DOWNLOADED_FILE"
-tar xjf "$DOWNLOADED_FILE" -C ./
+tar xjf "$DOWNLOADED_FILE" -C . --checkpoint=.200
 
 mkdir -p "$INSTALLATION_DIR"
 echo ">> Copying $EXTRACTED_DIR/* --> $INSTALLATION_DIR"
