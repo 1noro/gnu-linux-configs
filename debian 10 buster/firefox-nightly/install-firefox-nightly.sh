@@ -46,7 +46,7 @@ if [ -f "/usr/share/icons/$SHELL_NAME.png" ]; then
     rm "/usr/share/icons/$SHELL_NAME.png"
 fi
 
-# Remove INSTALLATION_DIR link if exists
+# Remove INSTALLATION_DIR if exists
 if [ -d "$INSTALLATION_DIR" ]; then
     rm -r "$INSTALLATION_DIR"
 fi
@@ -56,14 +56,15 @@ echo ">> Downloading $DOWNLOADED_FILE"
 wget wget -q --show-progress -O "$DOWNLOADED_FILE" "$URL"
 echo ">> Extracting $DOWNLOADED_FILE"
 tar xjf "$DOWNLOADED_FILE" -C . --checkpoint=.200
+echo ""
 
 mkdir -p "$INSTALLATION_DIR"
 echo ">> Copying $EXTRACTED_DIR/* --> $INSTALLATION_DIR"
 cp -r "./$EXTRACTED_DIR/"* "$INSTALLATION_DIR"
 
-echo ">> Copying icons..."
-cp "$INSTALLATION_DIR/browser/chrome/icons/default/default128.png" "/usr/share/icons/$SHELL_NAME.png"
-cp "$INSTALLATION_DIR/browser/chrome/icons/default/default128.png" "/usr/share/icons/$NAME.png"
+echo ">> Creating icons links..."
+ln -s "$INSTALLATION_DIR/browser/chrome/icons/default/default128.png" "/usr/share/icons/$SHELL_NAME.png"
+ln -s "$INSTALLATION_DIR/browser/chrome/icons/default/default128.png" "/usr/share/icons/$NAME.png"
 
 echo ">> Copying gnome shell link..."
 cp "./$DESKTOP_FILE" "/usr/share/applications/$DESKTOP_FILE"
