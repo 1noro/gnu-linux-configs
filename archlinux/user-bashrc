@@ -14,3 +14,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+
+# Chack for updates
+if [[ $(pacman -Qu) ]]; then
+    echo "Hay actualizaciones pendientes:"
+    pacman -Qu
+fi
