@@ -16,6 +16,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # Check for updates
+# inspiration: https://extensions.gnome.org/extension/1010/archlinux-updates-indicator/
 if [[ $(pacman -Qu) ]]; then
     echo "Hay actualizaciones pendientes:"
     pacman -Qu
