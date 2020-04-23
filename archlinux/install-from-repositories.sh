@@ -82,9 +82,9 @@ packagelist_install=(
     texmaker
 )
 
-packagelist_remove=(
-
-)
+# packagelist_remove=(
+#
+# )
 
 pacman -Syu
 pacman -S ${packagelist_install[@]}
