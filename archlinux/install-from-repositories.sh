@@ -4,13 +4,11 @@
 
 packagelist_install=(
     # utilidades básicas (no gráficas)
-    # firmware-misc-nonfree
-    # build-essential
-    # linux-headers-$(uname -r)
+    linux-headers
     # zsh
     # zsh-syntax-highlighting
     nano
-    # net-tools
+    # net-tools # deprecated (use: ip addr)
     dnsutils
     tree
     tldr
@@ -18,7 +16,8 @@ packagelist_install=(
     nmap
     neofetch
     git
-    openjdk-11-jdk
+    jdk11-openjdk
+    gnome-tweaks
     papirus-icon-theme
 
     # utilidades básicas (gráficas)
@@ -26,20 +25,21 @@ packagelist_install=(
     brasero
     gparted
     easytag
-    # pyrenamer
+    # pyrenamer (buscar sustituto)
     filezilla
-    wireshark
+    wireshark-qt
 
     # editores de texto
     gedit
     geany
+    geany-plugins
     libreoffice
 
     # dependencias
     ### gnome shell system monitor extension dependences
-    gir1.2-gtop-2.0
-    gir1.2-nm-1.0
-    gir1.2-clutter-1.0
+    gtop # (debian) gir1.2-gtop-2.0
+    # ¿nm-connection-editor? # (debian) gir1.2-nm-1.0
+    clutter # (debian) gir1.2-clutter-1.0
 
     # reproductores de vídeo y audio
     vlc
@@ -68,8 +68,8 @@ packagelist_install=(
 
     # games (https://blends.debian.org/games/tasks/puzzle)
     gnome-mahjongg
-    sgt-puzzles # https://www.chiark.greenend.org.uk/~sgtatham/puzzles/
-    gplanarity
+    puzzles # https://www.chiark.greenend.org.uk/~sgtatham/puzzles/
+    # gplanarity
 
     # chromium
     chromium
@@ -78,15 +78,14 @@ packagelist_install=(
     stellarium
 
     # latex
-    # texlive-full
-    # texmaker
+    texlive-most
+    texmaker
 )
 
 packagelist_remove=(
-    transmission-gtk
-    shotwell
+
 )
 
 pacman -Syu
 pacman -S ${packagelist_install[@]}
-pacman -R ${packagelist_remove[@]}
+# pacman -R ${packagelist_remove[@]}
