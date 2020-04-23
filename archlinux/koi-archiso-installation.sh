@@ -21,6 +21,17 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 # CHROOT MODE
 
+passwd
+
+pacman -S sudo base-devel
+useradd -m -s /bin/bash cosmo
+passwd cosmo
+env EDITOR=nano visudo
+# agregar la siguiente linea: cosmo ALL=(ALL) ALL
+
+pacman -S openssh
+systemctl enable sshd
+
 ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 hwclock --systohc
 nano /etc/locale.gen
@@ -36,17 +47,6 @@ nano /etc/hosts
 # 127.0.1.1	koi.home.lan	koi
 pacman -S dhcpcd
 systemctl enable dhcpcd
-
-
-
-passwd
-
-pacman -S sudo base-devel
-useradd -m -s /bin/bash cosmo
-passwd cosmo
-env EDITOR=nano visudo
-# agregar la siguiente linea: cosmo ALL=(ALL) ALL
-
 
 nano /etc/mkinitcpio.conf
 # modificar la linea MODULES=() --> MODULES=(i915)
@@ -80,7 +80,7 @@ umount -R /mnt
 
 reboot
 
-
+# continua en koi-first-boot-installations
 
 
 
