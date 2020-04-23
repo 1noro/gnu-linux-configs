@@ -37,6 +37,8 @@ nano /etc/hosts
 pacman -S dhcpcd
 systemctl enable dhcpcd
 
+
+
 passwd
 
 pacman -S sudo base-devel
@@ -44,6 +46,7 @@ useradd -m -s /bin/bash cosmo
 passwd cosmo
 env EDITOR=nano visudo
 # agregar la siguiente linea: cosmo ALL=(ALL) ALL
+
 
 nano /etc/mkinitcpio.conf
 # modificar la linea MODULES=() --> MODULES=(i915)
