@@ -19,6 +19,7 @@ packagelist_install=(
     jdk11-openjdk
     gnome-tweaks
     papirus-icon-theme
+    phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon
 
     # utilidades básicas (gráficas)
     simple-scan
