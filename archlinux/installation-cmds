@@ -1,7 +1,9 @@
+# ARCHISO
 ping archlinux.org
 timedatectl set-ntp true
 
 fdisk /dev/sda
+# particion MBR (DOS) 1) root (70G) 2) swap (512M) 3) home (resto)
 lsblk -fm
 mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/sda3
@@ -12,7 +14,7 @@ mkdir /mnt/home
 mount /dev/sda3 /mnt/home
 lsblk -fm
 
-pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano man-db man-pages texinfo net-tools
+pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano man-db man-pages texinfo
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -32,6 +34,8 @@ nano /etc/hosts
 # 127.0.0.1	localhost
 # ::1		localhost
 # 127.0.1.1	koi.home.lan	koi
+pacman -S dhcpcd
+systemctl enable dhcpcd
 
 passwd
 
@@ -61,10 +65,17 @@ makepkg -sri
 exit
 mkinitcpio -p linux
 
+pacman -S grub intel-ucode
+grub-install --target=i386-pc /dev/sdX
+grub-mkconfig -o /boot/grub/grub.cfg
 
+exit
+# BACK TO ARCHISO
 
+sync
+umount -R /mnt
 
-
+reboot
 
 
 
