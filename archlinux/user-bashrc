@@ -15,7 +15,7 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# Chack for updates
+# Check for updates
 if [[ $(pacman -Qu) ]]; then
     echo "Hay actualizaciones pendientes:"
     pacman -Qu
