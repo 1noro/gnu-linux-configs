@@ -33,7 +33,7 @@ packagelist_install=(
     gedit
     geany
     geany-plugins
-    libreoffice
+    libreoffice-fresh
 
     # dependencias
     ### gnome shell system monitor extension dependences
