@@ -87,5 +87,5 @@ packagelist_install=(
 # )
 
 pacman -Syu
-pacman -S ${packagelist_install[@]}
+pacman -S --needed ${packagelist_install[@]}
 # pacman -R ${packagelist_remove[@]}
