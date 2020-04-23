@@ -51,7 +51,7 @@ packagelist_install=(
     # pdf
     evince
     okular
-    xournal
+    xournalpp
 
     # procesamiento de imágenes
     gimp
