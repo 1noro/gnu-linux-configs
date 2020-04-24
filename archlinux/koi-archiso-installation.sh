@@ -1,53 +1,77 @@
 # ARCHISO
+
+# -- comprobación de red DHCP (por cable)
 ping archlinux.org
 timedatectl set-ntp true
 
+# -- particionado y formateo del HDD
 fdisk /dev/sda
 # particion MBR (DOS) 1) root (70G) 2) swap (512M) 3) home (resto)
+# debería probar a particionarlo con GPT (separar boot y configuracón especial
+# para GRUB, creo que hace falta una particion también)
 lsblk -fm
 mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
 swapon /dev/sda2
+
+# montamos de forma correcta las particiones sobre el sistema de archivos a configurar
 mount /dev/sda1 /mnt
 mkdir /mnt/home
 mount /dev/sda3 /mnt/home
 lsblk -fm
 
+# -- instalamos el sistema base en el disco particionado (pensar en que paquetes son necesarios aquí desde el principio)
 pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano man-db man-pages texinfo
 
+# -- generamos el fstab tal cual como lo tenemos montado en la instalación
 genfstab -U /mnt >> /mnt/etc/fstab
 
+# -- nos impersonamos como root en nuestro sistema de archivos a instalar
 arch-chroot /mnt
 # CHROOT MODE
 
+# asignamos una contrseña a root
 passwd
 
+# creamos y configuramos un nuevo usuario para podrer instalar paquetes desde AUR
 pacman -S sudo base-devel
 useradd -m -s /bin/bash cosmo
 passwd cosmo
 env EDITOR=nano visudo
 # agregar la siguiente linea: cosmo ALL=(ALL) ALL
 
+# instalamos, habilitamos y ejecutamos ssh para poder continuar con la
+# instalación desde otro pc de forma remota
 pacman -S openssh
-systemctl enable sshd
+systemctl enable --now sshd
 
+# configuramos la hora (no se porqué esto no funcinó bien la primera vez y
+# luego tuve que volver a configurarlo desde gnome)
 ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 hwclock --systohc
+
+# configuramos el idioma por defecto del equipo
 nano /etc/locale.gen
 # desomentamos en_US.UTF-8 UTF-8 y es_ES.UTF-8 UTF-8
 locale-gen
 echo "LANG=es_ES.UTF-8" > /etc/locale.conf
 
+# ponemos nombre al equipo
 echo "koi" > /etc/hostname
 nano /etc/hosts
 # agregar las siguientes lineas
 # 127.0.0.1	localhost
 # ::1		localhost
 # 127.0.1.1	koi.home.lan	koi
+
+# instalamos y habilitamos el demonio más básico de dhcp para que al reiniciar
+# no nos quedemos sin internet
 pacman -S dhcpcd
 systemctl enable dhcpcd
 
+# --- INICIO DE COMANDOS EXCLUSIVOS PARA ThinkPad X230 -------------------------
+# agregamos el módulo i915 al kernel de Linux y lo volvemos a configura
 nano /etc/mkinitcpio.conf
 # modificar la linea MODULES=() --> MODULES=(i915)
 mkinitcpio -p linux
@@ -68,44 +92,25 @@ makepkg -sri
 exit
 mkinitcpio -p linux
 
+# --- FINAL DE COMANDOS EXCLUSIVOS PARA ThinkPad X230 --------------------------
+
+# instalamos y habilitamos las actualizacionse tempranas de microcodigo
+# para procesadores intel
 pacman -S grub intel-ucode
 grub-install --target=i386-pc /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# salimos del entorno chroot, y volvemos al instalador de arch (archiso)
 exit
 # BACK TO ARCHISO
 
+# desmontamos con seguridad el entorno de instalación
 sync
 umount -R /mnt
 
+# reiniciamos
 reboot
 
-# continua en koi-first-boot-installations
+# extraemos el medio de instalación (USB o CD/DVD)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# continuar con los pasos de koi-first-boot-installations.sh

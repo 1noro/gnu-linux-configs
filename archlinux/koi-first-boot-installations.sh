@@ -1,15 +1,20 @@
+# --- pacman
+# copiar el archivo mirrorlist de esta configuración en /etc/pacman.d/mirrorlist
 nano /etc/pacman.conf
 # descomentar las siguientes lineas:
 # [multilib]
 # Include = /etc/pacman.d/mirrorlist
 pacman -Syu # actualizamos el sistema
 
+
+# --- instalando los gráficos
 lspci | grep VGA
 pacman -S xf86-video-intel
 pacman -S lib32-mesa
 pacman -S gnome
 systemctl enable gdm
 
+# instalamos NetworkManager para poder gestionar la red desde gnome
 pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring
 
 # systemctl --type=service
@@ -24,6 +29,26 @@ gpasswd -a cosmo network
 
 reboot
 
+
+# -- Teaaring Fix (intel graphics)
+nano /etc/X11/xorg.conf.d/20-intel.conf
+# agrega las siguientes lineas:
+# Section "Device"
+#   Identifier "Intel Graphics"
+#   Driver "intel"
+#
+#   Option "TearFree" "true"
+# EndSection
+reboot
+
+# -- SSD (optimizar y aumentar su vida)
+# To verify TRIM support, run:
+lsblk --discard
+# And check the values of DISC-GRAN (discard granularity) and DISC-MAX (discard
+# max bytes) columns. Non-zero values indicate TRIM support.
+systemctl enable fstrim.timer
+
+
 # --- ThinkPad X230 configs ---
 # (https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X230#Configuration)
 # (https://www.reddit.com/r/thinkpad/wiki/os/linux#wiki_which_linux_distro.3F)
@@ -33,7 +58,7 @@ reboot
 # information. It can be set with command xrandr --dpi 125.37 using .xinitrc,
 # .xsession or other autostarts.
 
-# --- TouchPad
+# --- TouchPad (mejora de experiencia pensada para el modelo X230 y sus iguales)
 nano /etc/X11/xorg.conf.d/50-synaptics.conf
 # Escribir
 # Section "InputClass"
@@ -64,7 +89,8 @@ nano /etc/X11/xorg.conf.d/50-synaptics.conf
 #         Option "HorizScrollDelta" "500"
 # EndSection
 
-# -- Batería
+
+# -- Batería (muy interesante, pero deberí comprobar su correcto funcionamiento)
 # (https://www.reddit.com/r/thinkpad/wiki/os/linux#wiki_use_of_ssd_with_linux)
 # realmente no se para que sirve el powertop mas que para hacer estadisticas,
 # lo que si parece util es el tlp
@@ -105,8 +131,8 @@ nano /etc/default/tlp
 # bateria se borran cada vez que esta se extrae
 # ejemplo: si el 100% actual es del 60% del origial, un 80% de ese 60% cortaría
 # la carga al 51% aprox
-# echo 40 > /sys/class/power_supply/BAT0/charge_start_threshold
-# echo 80 > /sys/class/power_supply/BAT0/charge_stop_threshold
+echo 40 > /sys/class/power_supply/BAT0/charge_start_threshold # (probar correcto funcionamiento)
+echo 85 > /sys/class/power_supply/BAT0/charge_stop_threshold # (probar correcto funcionamiento)
 
 systemctl enable tlp
 reboot
@@ -117,7 +143,8 @@ git clone https://aur.archlinux.org/tlpui-git.git
 cd tlpui-git
 makepkg -si
 
-# -- Ventiladores
+
+# -- Ventiladores (optimización pensda exclusivamente para el model x230)
 pacman -S lm_sensors
 git clone https://aur.archlinux.org/thinkfan.git
 cd thinkfan
@@ -140,11 +167,3 @@ modprobe thinkpad_acpi
 cat /proc/acpi/ibm/fan
 thinkfan -n # testing the configuration
 systemctl enable thinkfan
-
-# -- SSD
-# To verify TRIM support, run:
-lsblk --discard
-# And check the values of DISC-GRAN (discard granularity) and DISC-MAX (discard
-# max bytes) columns. Non-zero values indicate TRIM support.
-
-systemctl enable fstrim.timer
