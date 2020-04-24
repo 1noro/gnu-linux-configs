@@ -7,7 +7,7 @@ ser mi Default Desktop.
 
 - Edtitores de código e IDEs
     - atom
-    - viasual studio code
+    - visual studio code
     - dbeaver
     - eclipse
     - netbeans
@@ -40,7 +40,7 @@ ser mi Default Desktop.
     - zoom
 
 - Máquinas virtuales
-    - virtulabox
+    - virtualbox
 
 - Editores de diagramas
     - draw.io
@@ -56,4 +56,4 @@ ser mi Default Desktop.
     - winetricks
 
 - Conectar con Android (dispositivos móviles)
-    - kde-connect
+    - kdeconnect
