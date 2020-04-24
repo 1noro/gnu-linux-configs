@@ -33,6 +33,7 @@ reboot
 # information. It can be set with command xrandr --dpi 125.37 using .xinitrc,
 # .xsession or other autostarts.
 
+# --- TouchPad
 nano /etc/X11/xorg.conf.d/50-synaptics.conf
 # Escribir
 # Section "InputClass"
