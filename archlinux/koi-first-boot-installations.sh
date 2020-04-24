@@ -66,6 +66,8 @@ nano /etc/X11/xorg.conf.d/50-synaptics.conf
 
 # -- Batería
 # (https://www.reddit.com/r/thinkpad/wiki/os/linux#wiki_use_of_ssd_with_linux)
+# realmente no se para que sirve el powertop mas que para hacer estadisticas,
+# lo que si parece util es el tlp
 pacman -S acpi_call powertop
 
 powertop --calibrate
