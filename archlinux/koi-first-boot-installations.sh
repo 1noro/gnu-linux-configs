@@ -30,7 +30,7 @@ gpasswd -a cosmo network
 reboot
 
 
-# -- Teaaring Fix (intel graphics)
+# -- Teaaring Fix (intel graphics) (parece que no funciona hoy dia)
 nano /etc/X11/xorg.conf.d/20-intel.conf
 # agrega las siguientes lineas:
 # Section "Device"
@@ -132,6 +132,8 @@ nano /etc/default/tlp
 # ejemplo: si el 100% actual es del 60% del origial, un 80% de ese 60% cortaría
 # la carga al 51% aprox
 echo 40 > /sys/class/power_supply/BAT0/charge_start_threshold # (probar correcto funcionamiento)
+# sospecho de un bug en el comportamiento en charge_start_threshold; si lo
+# pones en 40 y el portatiel está a 41 no continua cargando
 echo 85 > /sys/class/power_supply/BAT0/charge_stop_threshold # (probar correcto funcionamiento)
 
 systemctl enable tlp
