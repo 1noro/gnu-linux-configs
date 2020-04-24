@@ -32,6 +32,7 @@ packagelist_install=(
     discord
 
     ## Máquinas virtuales
+    virtualbox-host-modules-arch # para el kernel versión linux de arch
     virtualbox
 
     ## Emular Windows (necesitas habilitar el repositorio multilib en pacman.conf)
