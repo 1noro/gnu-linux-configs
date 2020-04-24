@@ -64,27 +64,7 @@ nano /etc/X11/xorg.conf.d/50-synaptics.conf
 #         Option "HorizScrollDelta" "500"
 # EndSection
 
-# -- Batería (probar con la alternativa abajo)
-pacman -S tlp acpi_call
-
-nano /etc/mkinitcpio.conf
-# modificar la linea MODULES=(i915) --> MODULES=(i915 acpi_call)
-mkinitcpio -p linux
-
-nano /etc/default/tlp
-# agregar las lineas:
-# START_CHARGE_THRESH_BAT0=67
-# STOP_CHARGE_THRESH_BAT0=90
-
-echo 40 > /sys/class/power_supply/BAT0/charge_start_threshold
-echo 80 > /sys/class/power_supply/BAT0/charge_stop_threshold
-
-systemctl enable tlp
-reboot
-
-tlp-stat # ver la configuración actual y el estado de la batería
-
-# -- Batería ALTERNATIVA
+# -- Batería
 # (https://www.reddit.com/r/thinkpad/wiki/os/linux#wiki_use_of_ssd_with_linux)
 pacman -S acpi_call powertop
 
@@ -119,6 +99,10 @@ nano /etc/default/tlp
 # START_CHARGE_THRESH_BAT0=67
 # STOP_CHARGE_THRESH_BAT0=90
 
+# estos dos comandos definen el porcentaje al que se inicia/para de cargar la
+# bateria se borran cada vez que esta se extrae
+# ejemplo: si el 100% actual es del 60% del origial, un 80% de ese 60% cortaría
+# la carga al 51% aprox
 # echo 40 > /sys/class/power_supply/BAT0/charge_start_threshold
 # echo 80 > /sys/class/power_supply/BAT0/charge_stop_threshold
 
