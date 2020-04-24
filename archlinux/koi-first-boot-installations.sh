@@ -114,6 +114,8 @@ mkinitcpio -p linux
 
 nano /etc/default/tlp
 # agregar las lineas:
+# TLP_ENABLE=1
+# MAX_LOST_WORK_SECS_ON_BAT=15
 # START_CHARGE_THRESH_BAT0=67
 # STOP_CHARGE_THRESH_BAT0=90
 
