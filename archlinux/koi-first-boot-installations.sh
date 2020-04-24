@@ -29,6 +29,8 @@ gpasswd -a cosmo network
 
 reboot
 
+# instalamos un navegador de internet decente
+pacman -S firefox
 
 # -- Teaaring Fix (intel graphics) (parece que no funciona hoy dia)
 nano /etc/X11/xorg.conf.d/20-intel.conf

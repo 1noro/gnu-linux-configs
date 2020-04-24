@@ -23,6 +23,7 @@ packagelist_install=(
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
 
     ## utilidades básicas (gráficas)
+    firefox
     simple-scan
     brasero
     gparted
