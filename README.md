@@ -4,9 +4,9 @@ Todas mis configuraciones específicas para cada SO GNU/Linux que utilizo o hé 
 ## Sistemas Operativos
 
 - Debian
-  - Debian 10
-  - Debian 9
-- Arch Linux
+  - [Debian 10](debian-10-buster)
+  - [Debian 9](old/debian-9-stretch)
+- [Arch Linux](archlinux)
 
 ## Cosas que me gustaría agregar en el futuro
 
