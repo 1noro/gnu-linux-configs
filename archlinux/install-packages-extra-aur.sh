@@ -53,6 +53,7 @@ cd ..
 
 ## VPNs
 # mullvad
+# ejemplo de agregar clave a gnupg: gpg --recv-keys 8F0871F202119294
 git clone https://aur.archlinux.org/mullvad-vpn.git
 cd mullvad-vpn
 makepkg -sri
