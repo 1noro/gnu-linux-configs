@@ -18,7 +18,7 @@ alias fgrep='fgrep --color=auto'
 # Check for updates
 # inspiration: https://extensions.gnome.org/extension/1010/archlinux-updates-indicator/
 if [[ $(pacman -Qu) ]]; then
-    echo "There are pending updates, visit https://www.archlinux.org/"
+    # echo "There are pending updates, visit https://www.archlinux.org/"
     echo "Hay actualizaciones pendientes, visita https://www.archlinux.org/"
     # pacman -Qu
 fi
