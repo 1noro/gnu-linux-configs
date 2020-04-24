@@ -48,11 +48,12 @@ cd ..
 git clone https://aur.archlinux.org/teamviewer.git
 cd teamviewer
 makepkg -sri
+systemctl enable teamviewerd
 cd ..
 
 ## VPNs
 # mullvad
 git clone https://aur.archlinux.org/mullvad-vpn.git
-cd teamviewer
+cd mullvad-vpn
 makepkg -sri
 cd ..

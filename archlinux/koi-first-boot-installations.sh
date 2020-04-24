@@ -11,7 +11,7 @@ pacman -Syu # actualizamos el sistema
 lspci | grep VGA
 pacman -S xf86-video-intel # driver de la tarjeta grafica
 pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo)
-pacman -S gdm gnome # gdm ya está en el grupo gnome, pro lo escribo para resaltarlo
+pacman -S gdm gnome gnome-extra # gdm ya está en el grupo gnome, pro lo escribo para resaltarlo
 systemctl enable gdm
 
 # instalamos NetworkManager para poder gestionar la red desde gnome
@@ -32,7 +32,8 @@ reboot
 # instalamos un navegador de internet decente
 pacman -S firefox
 
-# -- Teaaring Fix (intel graphics) (parece que no funciona hoy dia)
+# -- Teaaring Fix (intel graphics)
+# parece que no funciona hoy dia; revisar: https://wiki.archlinux.org/index.php/GNOME/Troubleshooting#Tear-free_video_with_Intel_HD_Graphics
 nano /etc/X11/xorg.conf.d/20-intel.conf
 # agrega las siguientes lineas:
 # Section "Device"
@@ -133,10 +134,12 @@ nano /etc/default/tlp
 # bateria se borran cada vez que esta se extrae
 # ejemplo: si el 100% actual es del 60% del origial, un 80% de ese 60% cortaría
 # la carga al 51% aprox
-echo 40 > /sys/class/power_supply/BAT0/charge_start_threshold # (probar correcto funcionamiento)
+# echo 40 > /sys/class/power_supply/BAT0/charge_start_threshold # (probar correcto funcionamiento)
+echo 85 > /sys/class/power_supply/BAT0/charge_start_threshold # creo que esta es la configuración lógica
 # sospecho de un bug en el comportamiento en charge_start_threshold; si lo
 # pones en 40 y el portatiel está a 41 no continua cargando
-echo 85 > /sys/class/power_supply/BAT0/charge_stop_threshold # (probar correcto funcionamiento)
+# echo 80 > /sys/class/power_supply/BAT0/charge_stop_threshold # (probar correcto funcionamiento)
+echo 90 > /sys/class/power_supply/BAT0/charge_stop_threshold # creo que esta es la configuración lógica
 
 systemctl enable tlp
 reboot
