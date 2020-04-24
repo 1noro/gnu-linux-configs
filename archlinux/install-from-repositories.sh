@@ -20,6 +20,7 @@ packagelist_install=(
     gnome-tweaks
     papirus-icon-theme
     phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon
+    pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
 
     # utilidades básicas (gráficas)
     simple-scan
@@ -74,6 +75,7 @@ packagelist_install=(
 
     # chromium
     chromium
+    chrome-gnome-shell
 
     # astronomía
     stellarium
