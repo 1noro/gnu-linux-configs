@@ -5,6 +5,7 @@ nano /etc/pacman.conf
 # [multilib]
 # Include = /etc/pacman.d/mirrorlist
 pacman -Syu # actualizamos el sistema
+pacman -S pacman-contrib
 
 
 # --- instalando los gráficos

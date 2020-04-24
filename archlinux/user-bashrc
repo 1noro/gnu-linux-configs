@@ -17,8 +17,20 @@ alias fgrep='fgrep --color=auto'
 
 # Check for updates
 # inspiration: https://extensions.gnome.org/extension/1010/archlinux-updates-indicator/
+checkupdates > /dev/null 2>&1 # in pacman-contrib package
 if [[ $(pacman -Qu) ]]; then
     # echo "There are pending updates, visit https://www.archlinux.org/"
-    echo "Hay actualizaciones pendientes, visita https://www.archlinux.org/"
-    # pacman -Qu
+    echo "Hay actualizaciones pendientes:"
+    echo " 1. Ejecuta 'pacman -Qu' (último en el historial)."
+    echo " 2. Visita https://www.archlinux.org."
+    echo " 3. Comprueba que no hay conflictos con dichos paquetes."
+    echo " 4. Ejecuta 'sudo pacman -Syu'."
+    # history -s "pacman -Qu"
+    echo "pacman -Qu" >> ~/.bash_history
 fi
+
+# para que steam no se minimice en el 'tray' inexistente de Gnome Shell y se
+# cierre completamente al pulsar X
+# (parece que no funciona)
+#STEAM_FRAME_FORCE_CLOSE=1
+#export STEAM_FRAME_FORCE_CLOSE=1
