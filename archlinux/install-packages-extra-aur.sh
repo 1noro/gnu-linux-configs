@@ -10,6 +10,18 @@ cd openrct2
 makepkg -sri
 cd ..
 
+## Cryptomonedas
+# dogecoin core
+git clone https://aur.archlinux.org/dogecoin-qt.git
+cd dogecoin-qt
+makepkg -sri
+cd ..
+# litecoin core
+git clone https://aur.archlinux.org/litecoin-qt.git
+cd litecoin-qt
+makepkg -sri
+cd ..
+
 ## Navegadores
 # google-chrome
 git clone https://aur.archlinux.org/google-chrome.git
@@ -28,5 +40,19 @@ cd ..
 # zoom
 git clone https://aur.archlinux.org/zoom.git
 cd zoom
+makepkg -sri
+cd ..
+
+## Arreglar PCs
+# teamviewer
+git clone https://aur.archlinux.org/teamviewer.git
+cd teamviewer
+makepkg -sri
+cd ..
+
+## VPNs
+# mullvad
+git clone https://aur.archlinux.org/mullvad-vpn.git
+cd teamviewer
 makepkg -sri
 cd ..

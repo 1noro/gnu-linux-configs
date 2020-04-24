@@ -17,6 +17,10 @@ packagelist_install=(
     openttd
     openra
 
+    ## Cryptomonedas
+    # bitcoin core
+    bitcoin-qt
+
     ## Navegadores
     firefox-developer-edition
 
