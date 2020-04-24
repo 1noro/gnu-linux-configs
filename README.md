@@ -1,2 +1,2 @@
-# gnu-linux-install-configs
+# gnu-linux-configs
 ...
