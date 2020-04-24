@@ -13,16 +13,16 @@ packagelist_install=(
     ## Juegos
     steam # check diference between steam-native-runtime
     # mgba-sdl
-    0ad
-    openttd
+    # 0ad
+    # openttd
     openra
 
     ## Cryptomonedas
     # bitcoin core
-    bitcoin-qt
+    # bitcoin-qt
 
     ## Navegadores
-    firefox-developer-edition
+    # firefox-developer-edition
 
     ## Chats y voideoconferencias
     telegram-desktop
@@ -32,8 +32,8 @@ packagelist_install=(
     virtualbox
 
     ## Emular Windows (necesitas habilitar el repositorio multilib en pacman.conf)
-    wine
-    winetricks
+    # wine
+    # winetricks
 
     # Conectar con Android (dispositivos móviles)
     kdeconnect

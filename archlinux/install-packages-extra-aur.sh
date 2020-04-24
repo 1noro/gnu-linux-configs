@@ -12,15 +12,15 @@ cd ..
 
 ## Cryptomonedas
 # dogecoin core
-git clone https://aur.archlinux.org/dogecoin-qt.git
-cd dogecoin-qt
-makepkg -sri
-cd ..
+# git clone https://aur.archlinux.org/dogecoin-qt.git
+# cd dogecoin-qt
+# makepkg -sri
+# cd ..
 # litecoin core
-git clone https://aur.archlinux.org/litecoin-qt.git
-cd litecoin-qt
-makepkg -sri
-cd ..
+# git clone https://aur.archlinux.org/litecoin-qt.git
+# cd litecoin-qt
+# makepkg -sri
+# cd ..
 
 ## Navegadores
 # google-chrome
