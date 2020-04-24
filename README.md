@@ -23,7 +23,7 @@ Creado, programado y mantenido por [inoro](https://github.com/boot1110001).
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-green.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 - Proyecto bajo la licencia __[GNU General Public License version 3](https://www.gnu.org/licenses/gpl.txt)__.
-- Los iconos e imágenes subidas se encuentran bajo la licencia __[Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/)__ (CC BY 4.0).
+- Los iconos e imágenes se encuentran bajo la licencia __[Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/)__ (CC BY 4.0).
 
 ## Donaciones
 
