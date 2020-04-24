@@ -64,7 +64,7 @@ nano /etc/X11/xorg.conf.d/50-synaptics.conf
 #         Option "HorizScrollDelta" "500"
 # EndSection
 
-# -- Batería
+# -- Batería (probar con la alternativa abajo)
 pacman -S tlp acpi_call
 
 nano /etc/mkinitcpio.conf
@@ -74,7 +74,7 @@ mkinitcpio -p linux
 nano /etc/default/tlp
 # agregar las lineas:
 # START_CHARGE_THRESH_BAT0=67
-# STOP_CHARGE_THRESH_BAT0=100
+# STOP_CHARGE_THRESH_BAT0=90
 
 echo 40 > /sys/class/power_supply/BAT0/charge_start_threshold
 echo 80 > /sys/class/power_supply/BAT0/charge_stop_threshold
@@ -83,6 +83,51 @@ systemctl enable tlp
 reboot
 
 tlp-stat # ver la configuración actual y el estado de la batería
+
+# -- Batería ALTERNATIVA
+# (https://www.reddit.com/r/thinkpad/wiki/os/linux#wiki_use_of_ssd_with_linux)
+pacman -S acpi_call powertop
+
+powertop --calibrate
+
+nano /etc/systemd/system/powertop.service
+# agregar las siguientes lineas
+# [Unit]
+# Description=Powertop tunings
+#
+# [Service]
+# Type=idle
+# ExecStart=/usr/bin/powertop --auto-tune
+#
+# [Install]
+# WantedBy=multi-user.target
+
+systemctl enable powertop
+systemctl start powertop
+powertop
+
+pacman -S tlp
+
+nano /etc/mkinitcpio.conf
+# modificar la linea MODULES=(i915) --> MODULES=(i915 acpi_call)
+mkinitcpio -p linux
+
+nano /etc/default/tlp
+# agregar las lineas:
+# START_CHARGE_THRESH_BAT0=67
+# STOP_CHARGE_THRESH_BAT0=90
+
+# echo 40 > /sys/class/power_supply/BAT0/charge_start_threshold
+# echo 80 > /sys/class/power_supply/BAT0/charge_stop_threshold
+
+systemctl enable tlp
+reboot
+
+tlp-stat # ver la configuración actual y el estado de la batería
+
+git clone https://aur.archlinux.org/tlpui-git.git
+cd tlpui-git
+makepkg -si
 
 # -- Ventiladores
 pacman -S lm_sensors
