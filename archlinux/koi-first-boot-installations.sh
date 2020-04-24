@@ -9,9 +9,9 @@ pacman -Syu # actualizamos el sistema
 
 # --- instalando los gráficos
 lspci | grep VGA
-pacman -S xf86-video-intel
-pacman -S lib32-mesa
-pacman -S gnome
+pacman -S xf86-video-intel # driver de la tarjeta grafica
+pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo)
+pacman -S gdm gnome # gdm ya está en el grupo gnome, pro lo escribo para resaltarlo
 systemctl enable gdm
 
 # instalamos NetworkManager para poder gestionar la red desde gnome

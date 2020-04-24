@@ -11,6 +11,9 @@ packagelist_install=(
     eclipse-java
 
     ## Juegos
+    # hace falta instalar lib32-mesa (para procesadores intel) del repositorio
+    # multilib para steam
+    ttf-liberation # dependencia para steam
     steam # check diference between steam-native-runtime
     # mgba-sdl
     # 0ad
