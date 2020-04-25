@@ -5,6 +5,9 @@
 packagelist_install=(
     ## utilidades básicas (no gráficas)
     linux-headers
+    pulseaudio-alsa
+    lib32-libpulse
+    lib32-alsa-plugins
     # zsh
     # zsh-syntax-highlighting
     nano
