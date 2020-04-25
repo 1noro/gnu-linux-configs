@@ -78,3 +78,10 @@ cd mullvad-vpn
 makepkg -sri
 systemctl enable mullvad-daemon
 cd ..
+
+## Gnome Shell Extensions
+# system-monitor
+git clone https://aur.archlinux.org/gnome-shell-extension-system-monitor-git.git
+cd gnome-shell-extension-system-monitor-git
+makepkg -sri
+cd ..
