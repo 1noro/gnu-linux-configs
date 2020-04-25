@@ -2,8 +2,12 @@
 # copiar el archivo mirrorlist de esta configuración en /etc/pacman.d/mirrorlist
 nano /etc/pacman.conf
 # descomentar las siguientes lineas:
-# [multilib]
-# Include = /etc/pacman.d/mirrorlist
+# - en Misc options:
+#Color
+#VerbosePkgLists
+# - en los repositorios:
+#[multilib]
+#Include = /etc/pacman.d/mirrorlist
 pacman -Syu # actualizamos el sistema
 pacman -S pacman-contrib
 
@@ -15,6 +19,7 @@ pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo
 pacman -S gdm gnome gnome-extra # gdm ya está en el grupo gnome, pro lo escribo para resaltarlo
 systemctl enable gdm
 
+# --- instalando y configurando NetworkManager
 # instalamos NetworkManager para poder gestionar la red desde gnome
 pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring
 
@@ -28,6 +33,13 @@ systemctl enable NetworkManager
 # add cosmo to network group
 gpasswd -a cosmo network
 
+# --- instalando y configurando el Bluetooth (en caso de estar presente en el equipo)
+pacman -S bluez bluez-utils
+# verificamos que el modulo btusb está cargado en el kernel
+lsmod | grep btusb
+systemctl enable bluetooth
+
+# reiniciamos para que se apliquen todos estos cambios importantes
 reboot
 
 # instalamos un navegador de internet decente
