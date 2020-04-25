@@ -93,6 +93,33 @@ packagelist_install=(
     ## latex
     texlive-most
     texmaker
+
+    ## fuentes extra
+    # (https://wiki.archlinux.org/index.php/Fonts_(Espa%C3%B1ol)#Instalaci%C3%B3n)
+    noto-fonts-emoji # emoji de Google
+    otf-latin-modern # fuentes mejoradas para latex
+    otf-latinmodern-math # fuentes mejoradas para latex (matemátias)
+    # - Fuentes adobe source han - Una gran colección de fuentes con un soporte
+    # comprensible de chino simplificado, chino tradicional, japones, y
+    # coreano, con un diseño y aspecto consistente.
+    adobe-source-han-sans-otc-fonts # Sans fonts.
+    adobe-source-han-serif-otc-fonts # Serif fonts.
+    # - Si no gusta lo anterior se pueden instalar de forma separada
+    # ttf-baekmuk # fuente coreana
+    # ttf-hanazono # fuente japonesa
+    # adobe-source-han-sans-cn-fonts # Fuentes de chino simplificado OpenType/CFF Sans.
+    # adobe-source-han-sans-tw-fonts # Fuentes de chino tradicional OpenType/CFF Sans.
+    # adobe-source-han-serif-cn-fonts # Fuentes de chino simplificado OpenType/CFF Serif.
+    # adobe-source-han-serif-tw-fonts # Fuentes de chino tradicional OpenType/CFF Serif.
+    # - otros idiomas
+    ttf-arphic-uming
+    ttf-indic-otf
+    # - fuentes monospace preciosas
+    ttf-anonymous-pro # http://www.marksimonson.com/fonts/view/anonymous-pro
+    ttf-fira-mono # https://en.wikipedia.org/wiki/Fira_Sans
+    otf-fira-mono
+    ttf-fira-code # https://github.com/tonsky/FiraCode
+    otf-fira-code
 )
 
 # packagelist_remove=(

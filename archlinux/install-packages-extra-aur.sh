@@ -85,3 +85,18 @@ git clone https://aur.archlinux.org/gnome-shell-extension-system-monitor-git.git
 cd gnome-shell-extension-system-monitor-git
 makepkg -sri
 cd ..
+
+## Fuentes
+# iosevka (https://typeof.net/Iosevka/)
+# fuente monospace preciosa
+git clone https://aur.archlinux.org/ttf-iosevka.git
+cd ttf-iosevka
+makepkg -sri
+cd ..
+
+# mononoki (https://madmalik.github.io/mononoki/)
+# fuente monospace preciosa
+git clone https://aur.archlinux.org/ttf-mononoki.git
+cd ttf-mononoki
+makepkg -sri
+cd ..
