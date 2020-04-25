@@ -5,9 +5,6 @@
 packagelist_install=(
     ## utilidades básicas (no gráficas)
     linux-headers
-    pulseaudio-alsa
-    lib32-libpulse
-    lib32-alsa-plugins
     # zsh
     # zsh-syntax-highlighting
     nano
@@ -25,6 +22,14 @@ packagelist_install=(
     udisks2 # temperatura de SSD con SMART
     phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
+
+    ## funcionabilidad total de pulseaudio
+    # muchas de estas aplicaciones no vienen instaladas, pero creo que no
+    # hacen falta
+    alsa-utils
+    pulseaudio-alsa
+    lib32-libpulse
+    lib32-alsa-plugins
 
     ## utilidades básicas (gráficas)
     firefox
