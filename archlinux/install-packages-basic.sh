@@ -19,6 +19,7 @@ packagelist_install=(
     jdk11-openjdk
     gnome-tweaks
     papirus-icon-theme
+    udisks2 # temperatura de SSD con SMART
     phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
 

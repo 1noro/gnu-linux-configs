@@ -20,6 +20,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - jdk11-openjdk
     - gnome-tweaks
     - papirus-icon-theme
+    - udisks2 (temperatura de SSD con SMART)
 
 - Utilidades básicas (gráficas)
     - simple-scan

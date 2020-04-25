@@ -19,6 +19,7 @@ pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo
 pacman -S gdm gnome gnome-extra # gdm ya está en el grupo gnome, pro lo escribo para resaltarlo
 systemctl enable gdm
 
+
 # --- instalando y configurando NetworkManager
 # instalamos NetworkManager para poder gestionar la red desde gnome
 pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring
@@ -32,6 +33,7 @@ systemctl enable NetworkManager
 
 # add cosmo to network group
 gpasswd -a cosmo network
+
 
 # --- instalando y configurando el Bluetooth (en caso de estar presente en el equipo)
 pacman -S bluez bluez-utils
