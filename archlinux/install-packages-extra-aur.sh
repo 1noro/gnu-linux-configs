@@ -100,3 +100,10 @@ git clone https://aur.archlinux.org/ttf-mononoki.git
 cd ttf-mononoki
 makepkg -sri
 cd ..
+
+## Temas Gnome Shell
+# flat-remix-gtk
+git clone https://aur.archlinux.org/flat-remix-gtk.git
+cd flat-remix-gtk
+makepkg -sri
+cd ..
