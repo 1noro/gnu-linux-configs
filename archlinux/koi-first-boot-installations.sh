@@ -174,11 +174,23 @@ makepkg -si
 # run as ROOT
 echo "options thinkpad_acpi fan_control=1" > /etc/modprobe.d/thinkfan.conf
 nano /etc/thinkfan.conf
-# agrega las siguiente lineas
+# --- agrega las siguiente lineas (mi configuración):
 # tp_fan /proc/acpi/ibm/fan
 # hwmon /sys/class/thermal/thermal_zone0/temp
 #
-# (0, 0,  60)
+# (0, 0,  42)
+# (1, 40, 47)
+# (2, 45, 52)
+# (3, 50, 57)
+# (4, 55, 62)
+# (5, 60, 77)
+# (7, 73, 32767)
+
+# --- otra configuración para /etc/thinkfan.conf
+# tp_fan /proc/acpi/ibm/fan
+# hwmon /sys/class/thermal/thermal_zone0/temp
+#
+# (0, 0,  40)
 # (1, 53, 65)
 # (2, 55, 66)
 # (3, 57, 68)
