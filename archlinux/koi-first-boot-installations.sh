@@ -1,4 +1,4 @@
-# --- pacman
+# --- configuración de pacman
 # copiar el archivo mirrorlist de esta configuración en /etc/pacman.d/mirrorlist
 nano /etc/pacman.conf
 # descomentar las siguientes lineas:
@@ -11,6 +11,22 @@ nano /etc/pacman.conf
 pacman -Syu # actualizamos el sistema
 pacman -S pacman-contrib
 
+# agregamos el hook (trigger) para limpiar la cache de pacman
+# https://wiki.archlinux.org/index.php/Pacman_(Espa%C3%B1ol)#Limpiar_la_memoria_cach%C3%A9_de_los_paquetes
+mkdir -p /etc/pacman.d/hooks/
+nano /etc/pacman.d/hooks/remove_old_cache.hook
+# - Escribe lo siguiente:
+# [Trigger]
+# Operation = Upgrade
+# Operation = Install
+# Operation = Remove
+# Type = Package
+# Target = *
+#
+# [Action]
+# Description = Cleaning pacman cache...
+# When = PostTransaction
+# Exec = /usr/bin/paccache -r
 
 # --- instalando los gráficos
 lspci | grep VGA
