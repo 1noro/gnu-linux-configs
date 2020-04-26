@@ -33,7 +33,7 @@ mount /dev/sda3 /mnt/home
 lsblk -fm
 
 # -- instalamos el sistema base en el disco particionado (pensar en que paquetes son necesarios aquí desde el principio)
-pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano man-db man-pages texinfo sudo base-devel
+pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano vim man-db man-pages texinfo sudo base-devel
 
 # -- generamos el fstab tal cual como lo tenemos montado en la instalación
 genfstab -U /mnt >> /mnt/etc/fstab

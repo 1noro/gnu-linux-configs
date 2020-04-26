@@ -9,6 +9,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - zsh
     - zsh-syntax-highlighting
     - nano
+    - vim
     - net-tools (deprecated; intentar usar: `ip addr` en ved de `ifconfig`)
     - dnsutils
     - tree
