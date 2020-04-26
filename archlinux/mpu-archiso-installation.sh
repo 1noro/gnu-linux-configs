@@ -103,7 +103,17 @@ mkinitcpio -p linux
 # instalamos y habilitamos las actualizacionse tempranas de microcodigo
 # para procesadores intel
 pacman -S grub intel-ucode
-grub-install --target=i386-pc /dev/sda
+grub-install --target=i386-pc /dev/sda # instalación para particiones MBR (MSDOS)
+# editamos los boot parameters del kernel al iniciarlo, explicaciones:
+# https://wiki.archlinux.org/index.php/Kernel_parameters_(Espa%C3%B1ol)
+# https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
+# https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs
+# https://wiki.archlinux.org/index.php/Intel_graphics#Enable_early_KMS
+nano /etc/default/grub
+# editando la linea GRUB_CMDLINE_LINUX_DEFAULT para dejarla así:
+# GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog i915.enable_guc=2"
+# de paso, también reducimos el tiempo de espera en la pantalla de grub
+# GRUB_TIMEOUT=2
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # salimos del entorno chroot, y volvemos al instalador de arch (archiso)
