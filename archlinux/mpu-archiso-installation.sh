@@ -87,6 +87,14 @@ nano /etc/hosts
 pacman -S dhcpcd
 systemctl enable dhcpcd
 
+# --- módulos de kernel necesarios
+# agregamos el módulo i915 al kernel de Linux y lo volvemos a configura
+# esto es para cargar KMS lo antes posible al inicio del boot
+# https://wiki.archlinux.org/index.php/Kernel_mode_setting_(Espa%C3%B1ol)
+nano /etc/mkinitcpio.conf
+# modificar la linea MODULES=() --> MODULES=(i915)
+mkinitcpio -p linux
+
 # --- INICIO DE COMANDOS EXCLUSIVOS PARA MPU -----------------------------------
 # modulos de kernel a cargar, etc...
 
