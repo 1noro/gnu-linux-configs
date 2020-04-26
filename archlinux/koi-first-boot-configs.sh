@@ -220,3 +220,7 @@ modprobe thinkpad_acpi
 cat /proc/acpi/ibm/fan
 thinkfan -n # testing the configuration
 systemctl enable thinkfan
+
+reboot
+
+# ejecutar los scripts de instalación de programas incluidos en esta carpeta

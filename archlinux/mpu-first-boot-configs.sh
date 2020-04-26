@@ -88,3 +88,7 @@ systemctl enable fstrim.timer
 
 # --- mpu specific configs ---
 # ninguna por el momento
+
+reboot
+
+# ejecutar los scripts de instalación de programas incluidos en esta carpeta
