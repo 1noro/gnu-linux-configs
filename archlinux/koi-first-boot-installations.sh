@@ -1,3 +1,5 @@
+# koi FIRSTBOOT
+
 # --- configuración de pacman
 # copiar el archivo mirrorlist de esta configuración en /etc/pacman.d/mirrorlist
 nano /etc/pacman.conf
@@ -64,7 +66,8 @@ reboot
 pacman -S firefox
 
 # -- Teaaring Fix (intel graphics)
-# parece que no funciona hoy dia; revisar: https://wiki.archlinux.org/index.php/GNOME/Troubleshooting#Tear-free_video_with_Intel_HD_Graphics
+# parece que no funciona hoy dia; revisar:
+# https://wiki.archlinux.org/index.php/GNOME/Troubleshooting#Tear-free_video_with_Intel_HD_Graphics
 nano /etc/X11/xorg.conf.d/20-intel.conf
 # agrega las siguientes lineas:
 # Section "Device"
@@ -83,7 +86,7 @@ lsblk --discard
 systemctl enable fstrim.timer
 
 
-# --- ThinkPad X230 configs ---
+# --- ThinkPad X230 specific configs ---
 # (https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X230#Configuration)
 # (https://www.reddit.com/r/thinkpad/wiki/os/linux#wiki_which_linux_distro.3F)
 

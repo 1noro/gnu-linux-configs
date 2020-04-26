@@ -1,17 +1,19 @@
-# koi ARCHISO
+# mpu ARCHISO
 
 # -- comprobación de red DHCP (por cable)
 ping archlinux.org
 timedatectl set-ntp true
 
-# -- particionado y formateo del HDD
-
+# -- particionado y formateo de los HDDs
 # tabla de particiones MBR (MSDOS)
 # NAME        SIZE  TYPE    MOUNTPOINT
-# sda       223,6G  disk
-#   sda1     70,0G  part    /
-#   sda2    512,0M  part    [SWAP]
-#   sda3    153,1G  part    /home
+# sda       111,8G  disk
+#   sda1    108,0G  part    /
+#   sda2      3,8G  part    [SWAP]
+# sdb         3,7T  disk
+#   sdb1      3,7T  part    /home/cosmo/Descargas
+# sdc       500,0G  disk
+#   sdc1    500,0G  part    /home
 
 # debería probar a particionarlo con GPT (separar boot y configuracón especial
 # para GRUB, creo que hace falta una particion también)
@@ -19,17 +21,20 @@ timedatectl set-ntp true
 # ¿?
 
 fdisk /dev/sda
+fdisk /dev/sdc
 
 lsblk -fm
 mkfs.ext4 /dev/sda1
-mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sdc1
 mkswap /dev/sda2
 swapon /dev/sda2
 
 # montamos de forma correcta las particiones sobre el sistema de archivos a configurar
 mount /dev/sda1 /mnt
 mkdir /mnt/home
-mount /dev/sda3 /mnt/home
+mount /dev/sdc1 /mnt/home
+mkdir -p /mnt/home/cosmo/Descargas
+mount /dev/sdb1 /mnt/home/cosmo/Descargas
 lsblk -fm
 
 # -- instalamos el sistema base en el disco particionado (pensar en que paquetes son necesarios aquí desde el principio)
@@ -46,7 +51,7 @@ arch-chroot /mnt
 passwd
 
 # creamos y configuramos un nuevo usuario para podrer instalar paquetes desde AUR
-useradd -m -s /bin/bash cosmo
+useradd -m -s /bin/bash cosmo # considerar quitar la opción -m (create_home)
 passwd cosmo
 env EDITOR=nano visudo
 # agregar la siguiente linea: cosmo ALL=(ALL) ALL
@@ -70,41 +75,22 @@ locale-gen
 echo "LANG=es_ES.UTF-8" > /etc/locale.conf
 
 # ponemos nombre al equipo
-echo "koi" > /etc/hostname
+echo "mpu" > /etc/hostname
 nano /etc/hosts
 # agregar las siguientes lineas
 # 127.0.0.1	localhost
 # ::1		localhost
-# 127.0.1.1	koi.home.lan	koi
+# 127.0.1.1	mpu.home.lan	mpu
 
 # instalamos y habilitamos el demonio más básico de dhcp para que al reiniciar
 # no nos quedemos sin internet
 pacman -S dhcpcd
 systemctl enable dhcpcd
 
-# --- INICIO DE COMANDOS EXCLUSIVOS PARA ThinkPad X230 -------------------------
-# agregamos el módulo i915 al kernel de Linux y lo volvemos a configura
-nano /etc/mkinitcpio.conf
-# modificar la linea MODULES=() --> MODULES=(i915)
-mkinitcpio -p linux
+# --- INICIO DE COMANDOS EXCLUSIVOS PARA MPU -----------------------------------
+# modulos de kernel a cargar, etc...
 
-# (https://gist.github.com/imrvelj/c65cd5ca7f5505a65e59204f5a3f7a6d)
-# solución para el error:
-# Possibly missing firmware for module: aic94xx
-# Possibly missing firmware for module: wd719x
-su cosmo
-cd
-pacman -S git
-git clone https://aur.archlinux.org/aic94xx-firmware.git
-cd aic94xx-firmware
-makepkg -sri
-git clone https://aur.archlinux.org/wd719x-firmware.git
-cd wd719x-firmware
-makepkg -sri
-exit
-mkinitcpio -p linux
-
-# --- FINAL DE COMANDOS EXCLUSIVOS PARA ThinkPad X230 --------------------------
+# --- FINAL DE COMANDOS EXCLUSIVOS PARA MPU ------------------------------------
 
 # instalamos y habilitamos las actualizacionse tempranas de microcodigo
 # para procesadores intel
