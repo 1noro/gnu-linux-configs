@@ -8,17 +8,24 @@ timedatectl set-ntp true
 # tabla de particiones MBR (MSDOS)
 # NAME        SIZE  TYPE    MOUNTPOINT
 # sda       111,8G  disk
-#   sda1    108,0G  part    /
-#   sda2      3,8G  part    [SWAP]
+#   sda1    111,3G  part    /
+#   sda2    512,0M  part    [SWAP]
 # sdb         3,7T  disk
 #   sdb1      3,7T  part    /home/cosmo/Descargas
 # sdc       500,0G  disk
 #   sdc1    500,0G  part    /home
 
-# debería probar a particionarlo con GPT (separar boot y configuracón especial
-# para GRUB, creo que hace falta una particion también)
 # tabla de particiones GPT
-# ¿?
+# https://wiki.archlinux.org/index.php/EFI_system_partition#GPT_partitioned_disks
+# NAME        SIZE  TYPE    MOUNTPOINT
+# sda       111,8G  disk
+#   sda1    512,0M  part    /boot
+#   sda2    110,8G  part    /
+#   sda3    512,0M  part    [SWAP]
+# sdb         3,7T  disk
+#   sdb1      3,7T  part    /home/cosmo/Descargas
+# sdc       500,0G  disk
+#   sdc1    500,0G  part    /home
 
 fdisk /dev/sda
 fdisk /dev/sdc
