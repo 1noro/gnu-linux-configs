@@ -2,9 +2,17 @@
 
 # -- comprobación de red DHCP (por cable)
 ping archlinux.org
+
+# -- activamos el servidor SSH y configuramos una contraseña para root
+# por si queremos realizar la instalación de forma remota
+systemctl start sshd
+passwd
+
+# -- activamos el servidor ntp para la hora
 timedatectl set-ntp true
 
 # -- inicio del particionado y formateo de los HDDs ----------------------------
+lsblk
 # - tabla de particiones MBR (MSDOS) (para discos de hasta 2TB)
 # NAME        SIZE  TYPE    MOUNTPOINT
 # sda       111,8G  disk
@@ -67,8 +75,13 @@ lsblk -fm
 
 # -- final del particionado y formateo de los HDDs -----------------------------
 
-# -- instalamos el sistema base en el disco particionado (pensar en que paquetes son necesarios aquí desde el principio)
-pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano vim man-db man-pages texinfo sudo base-devel
+# -- instalamos el sistema base en el disco particionado (pensar en que
+# paquetes son necesarios aquí desde el principio)
+nano /etc/pacman.d/mirrorlist
+# agregar al principio de todo la linea:
+# Server = http://ftp.rediris.es/mirror/archlinux/$repo/os/$arch
+pacman -Sy # refrescamos los repositorios al cambiar el mirrorlist
+pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano vim man-db man-pages texinfo sudo base-devel git
 
 # -- generamos el fstab tal cual como lo tenemos montado en la instalación
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -84,12 +97,13 @@ passwd
 useradd -m -s /bin/bash cosmo # considerar quitar la opción -m (create_home)
 passwd cosmo
 env EDITOR=nano visudo
-# agregar la siguiente linea: cosmo ALL=(ALL) ALL
+# agregar la siguiente linea:
+# cosmo ALL=(ALL) ALL
 
 # instalamos, habilitamos y ejecutamos ssh para poder continuar con la
 # instalación desde otro pc de forma remota
 pacman -S openssh
-systemctl enable --now sshd
+systemctl enable sshd
 
 # configuramos la hora (no se porqué esto no funcinó bien la primera vez y
 # luego tuve que volver a configurarlo desde gnome)
