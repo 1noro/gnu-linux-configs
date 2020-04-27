@@ -5,9 +5,9 @@
 # --- instalar desde AUR
 ## Juegos
 # openrct2
-git clone https://aur.archlinux.org/openrct2.git
-cd openrct2
-makepkg -sri
+git clone https://aur.archlinux.org/openrct2.git; \
+cd openrct2; \
+makepkg -sri; \
 cd ..
 
 ## Cryptomonedas
@@ -24,31 +24,31 @@ cd ..
 
 ## Navegadores
 # google-chrome
-git clone https://aur.archlinux.org/google-chrome.git
-cd google-chrome
-makepkg -sri
+git clone https://aur.archlinux.org/google-chrome.git; \
+cd google-chrome; \
+makepkg -sri; \
 cd ..
 
 ## Descargas
 # jdownloader
-git clone https://aur.archlinux.org/jdownloader2.git
-cd jdownloader2
-makepkg -sri
+git clone https://aur.archlinux.org/jdownloader2.git; \
+cd jdownloader2; \
+makepkg -sri; \
 cd ..
 
 ## Chats y voideoconferencias
 # zoom
-git clone https://aur.archlinux.org/zoom.git
-cd zoom
-makepkg -sri
+git clone https://aur.archlinux.org/zoom.git; \
+cd zoom; \
+makepkg -sri; \
 cd ..
 
 ## Arreglar PCs
 # teamviewer
-git clone https://aur.archlinux.org/teamviewer.git
-cd teamviewer
-makepkg -sri
-systemctl enable teamviewerd
+git clone https://aur.archlinux.org/teamviewer.git; \
+cd teamviewer; \
+makepkg -sri; \
+sudo systemctl enable teamviewerd; \
 cd ..
 
 ## VPNs
@@ -73,37 +73,37 @@ gpg2 --edit-key 8339C7D2942EB854E3F27CE5AEE9DECFD582E984
 # > 5
 # > s
 # ya hora puedo instalar el paquete
-git clone https://aur.archlinux.org/mullvad-vpn.git
-cd mullvad-vpn
-makepkg -sri
-systemctl enable mullvad-daemon
+git clone https://aur.archlinux.org/mullvad-vpn.git; \
+cd mullvad-vpn; \
+makepkg -sri; \
+sudo systemctl enable mullvad-daemon; \
 cd ..
 
 ## Gnome Shell Extensions
 # system-monitor
-git clone https://aur.archlinux.org/gnome-shell-extension-system-monitor-git.git
-cd gnome-shell-extension-system-monitor-git
-makepkg -sri
+git clone https://aur.archlinux.org/gnome-shell-extension-system-monitor-git.git; \
+cd gnome-shell-extension-system-monitor-git; \
+makepkg -sri; \
 cd ..
 
 ## Fuentes
 # iosevka (https://typeof.net/Iosevka/)
 # fuente monospace preciosa
-git clone https://aur.archlinux.org/ttf-iosevka.git
-cd ttf-iosevka
-makepkg -sri
+git clone https://aur.archlinux.org/ttf-iosevka.git; \
+cd ttf-iosevka; \
+makepkg -sri; \
 cd ..
 
 # mononoki (https://madmalik.github.io/mononoki/)
 # fuente monospace preciosa
-git clone https://aur.archlinux.org/ttf-mononoki.git
-cd ttf-mononoki
-makepkg -sri
+git clone https://aur.archlinux.org/ttf-mononoki.git; \
+cd ttf-mononoki; \
+makepkg -sri; \
 cd ..
 
 ## Temas Gnome Shell
 # flat-remix-gtk
-git clone https://aur.archlinux.org/flat-remix-gtk.git
-cd flat-remix-gtk
-makepkg -sri
+git clone https://aur.archlinux.org/flat-remix-gtk.git; \
+cd flat-remix-gtk; \
+makepkg -sri; \
 cd ..
