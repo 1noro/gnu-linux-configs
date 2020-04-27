@@ -68,10 +68,12 @@ gpg2 --edit-key EA0A77BF9E115615FC3BD8BC7653B940E494FE87
 # > trust
 # > 5
 # > s
+# > q
 gpg2 --edit-key 8339C7D2942EB854E3F27CE5AEE9DECFD582E984
 # > trust
 # > 5
 # > s
+# > q
 # ya hora puedo instalar el paquete
 git clone https://aur.archlinux.org/mullvad-vpn.git; \
 cd mullvad-vpn; \
