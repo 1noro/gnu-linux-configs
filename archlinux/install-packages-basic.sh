@@ -35,6 +35,7 @@ packagelist_install=(
 
     ## utilidades básicas (gráficas)
     firefox
+    xorg-xkill
     simple-scan
     brasero
     gparted

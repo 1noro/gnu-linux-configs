@@ -25,6 +25,8 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - udisks2 (temperatura de SSD con SMART)
 
 - Utilidades básicas (gráficas)
+    - firefox
+    - xorg-xkill
     - simple-scan
     - brasero
     - gparted
