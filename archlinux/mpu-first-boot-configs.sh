@@ -34,13 +34,18 @@ nano /etc/pacman.d/hooks/remove_old_cache.hook
 lspci | grep VGA
 pacman -S xf86-video-intel # driver de la tarjeta grafica
 pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo)
-pacman -S gdm gnome gnome-extra # gdm ya está en el grupo gnome, pro lo escribo para resaltarlo
+pacman -S jack2 lib32-jack2 xdg-desktop-portal-gtk gnu-free-fonts gdm gnome gnome-extra
+# gdm ya está en el grupo gnome, pero lo escribo para resaltarlo
+# especifico xdg-desktop-portal-gtk para no tener que leer la wiki siempre
+# revisra las diferencias entre xdg-desktop-portal-gtk y xdg-desktop-portal-kde
+# especifico jack2 para no tener que leer la wiki siempre
+# https://github.com/jackaudio/jackaudio.github.com/wiki/Q_difference_jack1_jack2
 systemctl enable gdm
 
 
 # --- instalando y configurando NetworkManager
 # instalamos NetworkManager para poder gestionar la red desde gnome
-pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring
+pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring  --needed
 
 # systemctl --type=service
 systemctl stop dhcpcd
@@ -54,7 +59,7 @@ gpasswd -a cosmo network
 
 
 # --- instalando y configurando el Bluetooth (en caso de estar presente en el equipo)
-pacman -S bluez bluez-utils
+pacman -S bluez bluez-utils --needed
 # verificamos que el modulo btusb está cargado en el kernel
 lsmod | grep btusb
 systemctl enable bluetooth
@@ -62,8 +67,10 @@ systemctl enable bluetooth
 # reiniciamos para que se apliquen todos estos cambios importantes
 reboot
 
+
 # instalamos un navegador de internet decente
 pacman -S firefox
+
 
 # -- Teaaring Fix (intel graphics)
 # parece que no funciona hoy dia; revisar:
@@ -77,6 +84,7 @@ nano /etc/X11/xorg.conf.d/20-intel.conf
 #   Option "TearFree" "true"
 # EndSection
 reboot
+
 
 # -- SSD (optimizar y aumentar su vida)
 # To verify TRIM support, run:

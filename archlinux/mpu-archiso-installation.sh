@@ -46,25 +46,45 @@ lsblk -fm
 # NAME        SIZE  TYPE                    MOUNTPOINT
 # sda       111,8G  disk
 #   sda1    512,0M  part EFI System (ESP)   /boot
-#   sda2    110,8G  part                    /
-#   sda3    512,0M  part                    [SWAP]
+#   sda2      1,0M  part BIOS boot
+#   sda3    110,8G  part                    /
+#   sda4    512,0M  part                    [SWAP]
 # sdb         3,7T  disk
 #   sdb1      3,7T  part                    /home/cosmo/Descargas
 # sdc       500,0G  disk
 #   sdc1    500,0G  part                    /home
 
 fdisk /dev/sda
+# comandos de fdisk:
+# m (listamos la ayuda)
+# g (generamos una tabla GPT)
+# n (creamos sda1)
+# t (se selecciona automaticamente la única particion creada)
+# 1 (cambiamos el tipo a EFI System)
+# n (creamos sda2)
+# t (seleccionar partición 2)
+# 4 (cambiamos el tipo a BIOS boot)
+# n (creamos sda3)
+# n (creamos sda4)
+# p (mostramos cómo va a quedar el resultado)
+# w (escribimos los cambios y salimos)
 fdisk /dev/sdc
+# comandos de fdisk:
+# m (listamos la ayuda)
+# g (generamos una tabla GPT)
+# n (creamos sdc1)
+# p (mostramos cómo va a quedar el resultado)
+# w (escribimos los cambios y salimos)
 
 lsblk -fm
 mkfs.fat -F32 /dev/sda1
-mkfs.ext4 /dev/sda2
+mkfs.ext4 /dev/sda3
 mkfs.ext4 /dev/sdc1
-mkswap /dev/sda2
-swapon /dev/sda2
+mkswap /dev/sda4
+swapon /dev/sda4
 
 # montamos de forma correcta las particiones sobre el sistema de archivos a configurar
-mount /dev/sda2 /mnt
+mount /dev/sda3 /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 mkdir /mnt/home
@@ -138,6 +158,7 @@ systemctl enable dhcpcd
 nano /etc/mkinitcpio.conf
 # modificar la linea MODULES=() --> MODULES=(i915)
 mkinitcpio -p linux
+# comprobar aquí si falta algún módulo por cargar para este hardware específico
 
 # --- INICIO DE COMANDOS EXCLUSIVOS PARA MPU -----------------------------------
 # modulos de kernel a cargar, etc...
