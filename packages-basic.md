@@ -6,6 +6,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
 
 - Utilidades básicas (no gráficas)
     - linux-headers
+    - lm_sensors
     - zsh
     - zsh-syntax-highlighting
     - nano

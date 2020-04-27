@@ -34,17 +34,23 @@ nano /etc/pacman.d/hooks/remove_old_cache.hook
 lspci | grep VGA
 pacman -S xf86-video-intel # driver de la tarjeta grafica
 pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo)
-pacman -S gdm gnome gnome-extra # gdm ya está en el grupo gnome, pro lo escribo para resaltarlo
+pacman -S jack2 lib32-jack2 xdg-desktop-portal-gtk gnu-free-fonts gdm gnome gnome-extra
+# gdm ya está en el grupo gnome, pero lo escribo para resaltarlo
+# especifico xdg-desktop-portal-gtk para no tener que leer la wiki siempre
+# revisra las diferencias entre xdg-desktop-portal-gtk y xdg-desktop-portal-kde
+# especifico jack2 para no tener que leer la wiki siempre
+# https://github.com/jackaudio/jackaudio.github.com/wiki/Q_difference_jack1_jack2
 systemctl enable gdm
 
 
 # --- instalando y configurando NetworkManager
 # instalamos NetworkManager para poder gestionar la red desde gnome
-pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring
+pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring --needed
 
 # systemctl --type=service
 systemctl stop dhcpcd
 systemctl disable dhcpcd
+# ¿se puede eliminar ahora el paquete dhcpcd?
 
 systemctl enable wpa_supplicant
 systemctl enable NetworkManager
@@ -54,7 +60,7 @@ gpasswd -a cosmo network
 
 
 # --- instalando y configurando el Bluetooth (en caso de estar presente en el equipo)
-pacman -S bluez bluez-utils
+pacman -S bluez bluez-utils --needed
 # verificamos que el modulo btusb está cargado en el kernel
 lsmod | grep btusb
 systemctl enable bluetooth
@@ -62,8 +68,10 @@ systemctl enable bluetooth
 # reiniciamos para que se apliquen todos estos cambios importantes
 reboot
 
+
 # instalamos un navegador de internet decente
 pacman -S firefox
+
 
 # -- Teaaring Fix (intel graphics)
 # parece que no funciona hoy dia; revisar:
@@ -73,10 +81,10 @@ nano /etc/X11/xorg.conf.d/20-intel.conf
 # Section "Device"
 #   Identifier "Intel Graphics"
 #   Driver "intel"
-#
 #   Option "TearFree" "true"
 # EndSection
 reboot
+
 
 # -- SSD (optimizar y aumentar su vida)
 # To verify TRIM support, run:
@@ -86,7 +94,7 @@ lsblk --discard
 systemctl enable fstrim.timer
 
 
-# --- ThinkPad X230 specific configs ---
+# --- start ThinkPad X230 specific configs -------------------------------------
 # (https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X230#Configuration)
 # (https://www.reddit.com/r/thinkpad/wiki/os/linux#wiki_which_linux_distro.3F)
 
@@ -174,7 +182,6 @@ echo 85 > /sys/class/power_supply/BAT0/charge_start_threshold # creo que esta es
 # pones en 40 y el portatiel está a 41 no continua cargando
 # echo 80 > /sys/class/power_supply/BAT0/charge_stop_threshold # (probar correcto funcionamiento)
 echo 90 > /sys/class/power_supply/BAT0/charge_stop_threshold # creo que esta es la configuración lógica
-
 systemctl enable tlp
 reboot
 
@@ -182,14 +189,16 @@ tlp-stat # ver la configuración actual y el estado de la batería
 
 git clone https://aur.archlinux.org/tlpui-git.git
 cd tlpui-git
-makepkg -si
+makepkg -sri
+cd ..
 
 
 # -- Ventiladores (optimización pensda exclusivamente para el model x230)
 pacman -S lm_sensors
 git clone https://aur.archlinux.org/thinkfan.git
 cd thinkfan
-makepkg -si
+makepkg -sri
+cd ..
 # run as ROOT
 echo "options thinkpad_acpi fan_control=1" > /etc/modprobe.d/thinkfan.conf
 nano /etc/thinkfan.conf
@@ -217,9 +226,13 @@ nano /etc/thinkfan.conf
 # (5, 64, 71)
 # (7, 68, 32767)
 modprobe thinkpad_acpi
+reboot
+
 cat /proc/acpi/ibm/fan
 thinkfan -n # testing the configuration
 systemctl enable thinkfan
+
+# --- finish ThinkPad X230 specific configs ------------------------------------
 
 reboot
 

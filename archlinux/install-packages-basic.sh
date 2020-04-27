@@ -5,6 +5,7 @@
 packagelist_install=(
     ## utilidades básicas (no gráficas)
     linux-headers
+    lm_sensors
     # zsh
     # zsh-syntax-highlighting
     nano

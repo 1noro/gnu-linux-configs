@@ -5,6 +5,7 @@
 packagelist_install=(
     # utilidades básicas (no gráficas)
     firmware-misc-nonfree
+    lm-sensors
     build-essential
     linux-headers-$(uname -r)
     zsh
