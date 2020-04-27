@@ -32,6 +32,61 @@ mkdir /mnt/home
 mount /dev/sda3 /mnt/home
 lsblk -fm
 
+# -- inicio del particionado y formateo de los HDDs ----------------------------
+# - tabla de particiones MBR (MSDOS)
+# NAME        SIZE  TYPE    MOUNTPOINT
+# sda       223,6G  disk
+#   sda1     70,0G  part    /
+#   sda2    512,0M  part    [SWAP]
+#   sda3    153,1G  part    /home
+
+fdisk /dev/sda
+fdisk /dev/sdc
+
+lsblk -fm
+mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/sdc1
+mkswap /dev/sda2
+swapon /dev/sda2
+
+# montamos de forma correcta las particiones sobre el sistema de archivos a configurar
+mount /dev/sda1 /mnt
+mkdir /mnt/home
+mount /dev/sdc1 /mnt/home
+mkdir -p /mnt/home/cosmo/Descargas
+mount /dev/sdb1 /mnt/home/cosmo/Descargas
+lsblk -fm
+
+# - tabla de particiones GPT
+# https://wiki.archlinux.org/index.php/EFI_system_partition#GPT_partitioned_disks
+# https://wiki.archlinux.org/index.php/GRUB#GUID_Partition_Table_(GPT)_specific_instructions
+# NAME        SIZE  TYPE                    MOUNTPOINT
+# sda       223,6G  disk
+#   sda1    512,0M  part EFI System (ESP)   /boot
+#   sda2     70,0G  part                    /
+#   sda3    512,0M  part                    [SWAP]
+#   sda4    153,0G  part                    /home
+
+fdisk /dev/sda
+fdisk /dev/sdc
+
+lsblk -fm
+mkfs.fat -F32 /dev/sda1
+mkfs.ext4 /dev/sda2
+mkfs.ext4 /dev/sda4
+mkswap /dev/sda3
+swapon /dev/sda3
+
+# montamos de forma correcta las particiones sobre el sistema de archivos a configurar
+mount /dev/sda2 /mnt
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+mkdir /mnt/home
+mount /dev/sda4 /mnt/home
+lsblk -fm
+
+# -- final del particionado y formateo de los HDDs -----------------------------
+
 # -- instalamos el sistema base en el disco particionado (pensar en que paquetes son necesarios aquí desde el principio)
 pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano vim man-db man-pages texinfo sudo base-devel
 
