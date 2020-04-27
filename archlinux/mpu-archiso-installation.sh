@@ -5,7 +5,7 @@ ping archlinux.org
 timedatectl set-ntp true
 
 # -- inicio del particionado y formateo de los HDDs ----------------------------
-# - tabla de particiones MBR (MSDOS)
+# - tabla de particiones MBR (MSDOS) (para discos de hasta 2TB)
 # NAME        SIZE  TYPE    MOUNTPOINT
 # sda       111,8G  disk
 #   sda1    111,3G  part    /

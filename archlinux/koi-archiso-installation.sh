@@ -4,19 +4,13 @@
 ping archlinux.org
 timedatectl set-ntp true
 
-# -- particionado y formateo del HDD
-
-# tabla de particiones MBR (MSDOS)
+# -- inicio del particionado y formateo de los HDDs ----------------------------
+# - tabla de particiones MBR (MSDOS) (para discos de hasta 2TB)
 # NAME        SIZE  TYPE    MOUNTPOINT
 # sda       223,6G  disk
 #   sda1     70,0G  part    /
 #   sda2    512,0M  part    [SWAP]
 #   sda3    153,1G  part    /home
-
-# debería probar a particionarlo con GPT (separar boot y configuracón especial
-# para GRUB, creo que hace falta una particion también)
-# tabla de particiones GPT
-# ¿?
 
 fdisk /dev/sda
 
@@ -30,31 +24,6 @@ swapon /dev/sda2
 mount /dev/sda1 /mnt
 mkdir /mnt/home
 mount /dev/sda3 /mnt/home
-lsblk -fm
-
-# -- inicio del particionado y formateo de los HDDs ----------------------------
-# - tabla de particiones MBR (MSDOS)
-# NAME        SIZE  TYPE    MOUNTPOINT
-# sda       223,6G  disk
-#   sda1     70,0G  part    /
-#   sda2    512,0M  part    [SWAP]
-#   sda3    153,1G  part    /home
-
-fdisk /dev/sda
-fdisk /dev/sdc
-
-lsblk -fm
-mkfs.ext4 /dev/sda1
-mkfs.ext4 /dev/sdc1
-mkswap /dev/sda2
-swapon /dev/sda2
-
-# montamos de forma correcta las particiones sobre el sistema de archivos a configurar
-mount /dev/sda1 /mnt
-mkdir /mnt/home
-mount /dev/sdc1 /mnt/home
-mkdir -p /mnt/home/cosmo/Descargas
-mount /dev/sdb1 /mnt/home/cosmo/Descargas
 lsblk -fm
 
 # - tabla de particiones GPT
