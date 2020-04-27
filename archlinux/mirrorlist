@@ -2,6 +2,11 @@
 ## Arch Linux repository mirrorlist
 ## Generated on 2020-04-24
 ##
+## Revisar: https://www.archlinux.org/mirrors/status/
+
+## Germany
+Server = http://mirror.chaoticum.net/arch/$repo/os/$arch
+Server = https://mirror.chaoticum.net/arch/$repo/os/$arch
 
 ## Spain
 Server = http://ftp.rediris.es/mirror/archlinux/$repo/os/$arch
