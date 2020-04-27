@@ -12,14 +12,14 @@ cd ..
 
 ## Cryptomonedas
 # dogecoin core
-# git clone https://aur.archlinux.org/dogecoin-qt.git
-# cd dogecoin-qt
-# makepkg -sri
+# git clone https://aur.archlinux.org/dogecoin-qt.git; \
+# cd dogecoin-qt; \
+# makepkg -sri; \
 # cd ..
 # litecoin core
-# git clone https://aur.archlinux.org/litecoin-qt.git
-# cd litecoin-qt
-# makepkg -sri
+# git clone https://aur.archlinux.org/litecoin-qt.git; \
+# cd litecoin-qt; \
+# makepkg -sri; \
 # cd ..
 
 ## Navegadores
@@ -88,7 +88,7 @@ cd ..
 
 ## Fuentes
 # iosevka (https://typeof.net/Iosevka/)
-# fuente monospace preciosa
+# fuente monospace preciosa; \
 git clone https://aur.archlinux.org/ttf-iosevka.git; \
 cd ttf-iosevka; \
 makepkg -sri; \
