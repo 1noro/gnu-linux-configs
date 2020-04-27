@@ -3,6 +3,7 @@
 ## Generated on 2020-04-24
 ##
 ## Revisar: https://www.archlinux.org/mirrors/status/
+##
 
 ## Germany
 Server = http://mirror.chaoticum.net/arch/$repo/os/$arch
