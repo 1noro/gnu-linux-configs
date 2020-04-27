@@ -6,6 +6,7 @@
 packagelist_install=(
     ## Edtitores de código e IDEs
     atom
+    hunspell-es_es # necesario para el paquete spell-check (https://atom.io/packages/spell-check)
     # code # visual studio code (no instalar hasta comprobar si es bueno)
     dbeaver
     eclipse-java
