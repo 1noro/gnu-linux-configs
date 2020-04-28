@@ -98,8 +98,15 @@ cd ..
 
 # mononoki (https://madmalik.github.io/mononoki/)
 # fuente monospace preciosa
-git clone https://aur.archlinux.org/ttf-mononoki.git; \
-cd ttf-mononoki; \
+git clone https://aur.archlinux.org/ttf-mononoki-git.git; \
+cd ttf-mononoki-git; \
+makepkg -sri; \
+cd ..
+
+# ttf-ms-fonts (https://madmalik.github.io/mononoki/)
+# Core TTF Fonts from Microsoft, puede que necesaria para alguna apliación
+git clone https://aur.archlinux.org/ttf-ms-fonts.git; \
+cd ttf-ms-fonts; \
 makepkg -sri; \
 cd ..
 
