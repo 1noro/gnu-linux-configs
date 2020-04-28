@@ -18,12 +18,12 @@ packagelist_install=(
     nmap
     neofetch
     git
+    rmlint # Limpia home de archivos vacios y enlaces rotos (https://github.com/sahib/rmlint)
     jdk11-openjdk
-    gnome-tweaks
-    papirus-icon-theme
     udisks2 # temperatura de SSD con SMART
     phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
+
 
     ## utilidades básicas (gráficas)
     firefox
@@ -36,6 +36,8 @@ packagelist_install=(
     filezilla
     wireshark-qt
     bleachbit # limpiador de basura
+    gnome-tweaks
+    papirus-icon-theme
 
     ## funcionabilidad total de pulseaudio
     # muchas de estas aplicaciones no vienen instaladas, pero creo que no

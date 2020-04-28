@@ -19,6 +19,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - nmap
     - neofetch
     - git
+    - rmlint Limpia home de archivos vacios y enlaces rotos (https://github.com/sahib/rmlint)
     - jdk11-openjdk
     - gnome-tweaks
     - papirus-icon-theme
