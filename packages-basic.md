@@ -34,7 +34,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - pyrenamer (buscar sustituto)
     - filezilla
     - wireshark-qt
-    - firefox
+    - bleachbit (limpiador de basura)
 
 - Editores de texto
     - gedit

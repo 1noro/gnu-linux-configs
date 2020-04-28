@@ -35,6 +35,7 @@ packagelist_install=(
     # pyrenamer (buscar sustituto)
     filezilla
     wireshark-qt
+    bleachbit # limpiador de basura
 
     ## funcionabilidad total de pulseaudio
     # muchas de estas aplicaciones no vienen instaladas, pero creo que no
