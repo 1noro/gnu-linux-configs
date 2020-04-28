@@ -6,9 +6,9 @@
 ##
 
 ## Germany
-## Comprobar si son lo suficientemente rápidos
-Server = http://mirror.chaoticum.net/arch/$repo/os/$arch
-Server = https://mirror.chaoticum.net/arch/$repo/os/$arch
+## Comprobar si son lo suficientemente rápidos (no lo son)
+# Server = http://mirror.chaoticum.net/arch/$repo/os/$arch
+# Server = https://mirror.chaoticum.net/arch/$repo/os/$arch
 
 ## Spain
 Server = http://ftp.rediris.es/mirror/archlinux/$repo/os/$arch
