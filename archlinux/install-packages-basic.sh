@@ -25,14 +25,6 @@ packagelist_install=(
     phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
 
-    ## funcionabilidad total de pulseaudio
-    # muchas de estas aplicaciones no vienen instaladas, pero creo que no
-    # hacen falta
-    alsa-utils
-    pulseaudio-alsa
-    lib32-libpulse
-    lib32-alsa-plugins
-
     ## utilidades básicas (gráficas)
     firefox
     xorg-xkill
@@ -43,6 +35,16 @@ packagelist_install=(
     # pyrenamer (buscar sustituto)
     filezilla
     wireshark-qt
+
+    ## funcionabilidad total de pulseaudio
+    # muchas de estas aplicaciones no vienen instaladas, pero creo que no
+    # hacen falta
+    alsa-utils
+    pulseaudio-alsa
+    lib32-libpulse
+    lib32-alsa-plugins
+    pavucontrol # permite diferenciar mejor que gnome el audio interno del externo
+    # puede que haga falta trastear en el ALSAMIXER para que funcione el micro externo
 
     ## editores de texto
     gedit
