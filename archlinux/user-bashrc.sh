@@ -27,6 +27,7 @@ if [ ! -f $FLAG ]; then
     echo -e " 3. Comprueba que no hay conflictos con dichos paquetes."
     echo -e " 4. Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
     echo -e " 5. Instala las actualizaciones."
+    echo -e " 6. Comprueba los paquetes AUR y actualízalos si es necesario."
     touch $FLAG
 fi
 
