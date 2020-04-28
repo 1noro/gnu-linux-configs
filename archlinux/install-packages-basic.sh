@@ -9,6 +9,7 @@ packagelist_install=(
     # zsh
     # zsh-syntax-highlighting
     nano
+    wget
     vim
     # net-tools # deprecated (use: ip addr)
     dnsutils

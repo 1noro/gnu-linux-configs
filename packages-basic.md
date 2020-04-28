@@ -10,6 +10,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - zsh
     - zsh-syntax-highlighting
     - nano
+    - wget
     - vim
     - net-tools (deprecated; intentar usar: `ip addr` en ved de `ifconfig`)
     - dnsutils
