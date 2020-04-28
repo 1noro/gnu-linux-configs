@@ -2,6 +2,8 @@
 
 # --- configuración de pacman
 # copiar el archivo mirrorlist de esta configuración en /etc/pacman.d/mirrorlist
+# o generar uno por velocidad como se describe en la wiki: 
+# https://wiki.archlinux.org/index.php/Mirrors_(Espa%C3%B1ol)#Lista_por_velocidad
 nano /etc/pacman.conf
 # descomentar las siguientes lineas:
 # - en Misc options:
