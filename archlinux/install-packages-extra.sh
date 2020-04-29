@@ -46,4 +46,4 @@ packagelist_install=(
 
 pacman -Syu
 pacman -S --needed ${packagelist_install[@]}
-usermod -a -G vboxusers cosmo
+usermod -a -G vboxusers $USER
