@@ -114,13 +114,15 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 
 # --- inicio mpu specific configs ---------------------------------------------
-# para prevenir de este error en el journalctl:
+# - para prevenir de este error en el journalctl:
 # systemd-udevd[315]: could not read from '/sys/module/pcc_cpufreq/initstate': No such device
 modprobe pcc_cpufreq
 
+# - referente al bluetooth (mejor desconectado)
+# comprar un bluetooth mas compatible con linux en amazon
 # para prevenir de este error en el journalctl:
 # bluetoothd[548]: Failed to set mode: Blocked through rfkill (0x12)
-rfkill unblock all
+# rfkill unblock all
 
 # --- final mpu specific configs ----------------------------------------------
 
