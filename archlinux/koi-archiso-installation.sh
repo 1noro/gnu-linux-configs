@@ -178,7 +178,7 @@ nano /etc/default/grub
 # de paso, también reducimos el tiempo de espera en la pantalla de grub
 # GRUB_TIMEOUT=2
 # agregamos un fondo para que el gurb quede to chulo:
-cp /home/cosmo/Work/github/gnu-linux-configs/archlinux/grubbg.png /boot/grub/grub-bg.png
+cp /home/cosmo/Work/github/gnu-linux-configs/archlinux/grub-bg.png /boot/grub/grub-bg.png
 # descomentamos y editamos la linea:
 # GRUB_BACKGROUND="/boot/grub/grub-bg.png"
 grub-mkconfig -o /boot/grub/grub.cfg
