@@ -103,7 +103,7 @@ lsblk -fm
 # paquetes son necesarios aquí desde el principio)
 nano /etc/pacman.d/mirrorlist
 # agregar al principio de todo la linea:
-# Server = http://ftp.rediris.es/mirror/archlinux/$repo/os/$arch
+# Server = http://mirror.librelabucm.org/archlinux/$repo/os/$arch
 pacman -Sy # refrescamos los repositorios al cambiar el mirrorlist
 pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano vim man-db man-pages texinfo sudo base-devel git
 
@@ -118,11 +118,13 @@ arch-chroot /mnt
 passwd
 
 # creamos y configuramos un nuevo usuario para podrer instalar paquetes desde AUR
-useradd -m -s /bin/bash cosmo # considerar quitar la opción -m (create_home)
+useradd -s /bin/bash cosmo # considerar quitar la opción -m (create_home)
 passwd cosmo
 env EDITOR=nano visudo
 # agregar la siguiente linea:
 # cosmo ALL=(ALL) ALL
+# Si recreamos /home/cosmo manualmente hay que ejecutar:
+# chown cosmo:cosmo /home/cosmo # considerar poner -R
 
 # instalamos, habilitamos y ejecutamos ssh para poder continuar con la
 # instalación desde otro pc de forma remota
@@ -165,7 +167,24 @@ mkinitcpio -p linux
 # comprobar aquí si falta algún módulo por cargar para este hardware específico
 
 # --- INICIO DE COMANDOS EXCLUSIVOS PARA MPU -----------------------------------
-# modulos de kernel a cargar, etc...
+# (https://gist.github.com/imrvelj/c65cd5ca7f5505a65e59204f5a3f7a6d)
+# solución para el error:
+# Possibly missing firmware for module: aic94xx
+# Possibly missing firmware for module: wd719x
+su cosmo
+cd
+mkdir -p Work/aur
+cd Work/aur
+git clone https://aur.archlinux.org/aic94xx-firmware.git; \
+cd aic94xx-firmware; \
+makepkg -sri; \
+cd ..
+git clone https://aur.archlinux.org/wd719x-firmware.git; \
+cd wd719x-firmware; \
+makepkg -sri; \
+cd ..
+exit
+mkinitcpio -p linux
 
 # --- FINAL DE COMANDOS EXCLUSIVOS PARA MPU ------------------------------------
 
