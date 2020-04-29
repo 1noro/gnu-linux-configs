@@ -78,13 +78,21 @@ pacman -S firefox
 # -- Teaaring Fix (intel graphics)
 # parece que no funciona hoy dia; revisar:
 # https://wiki.archlinux.org/index.php/GNOME/Troubleshooting#Tear-free_video_with_Intel_HD_Graphics
+# https://wiki.archlinux.org/index.php/Intel_graphics_(Espa%C3%B1ol)#Desactivar_Vertical_Synchronization_(VSYNC)
 nano /etc/X11/xorg.conf.d/20-intel.conf
 # agrega las siguientes lineas:
 # Section "Device"
-#   Identifier "Intel Graphics"
-#   Driver "intel"
-#   Option "TearFree" "true"
+#    Identifier  "Intel Graphics"
+#    Driver      "intel"
+#    Option      "TearFree"    "true"
 # EndSection
+nano /home/cosmo/.drirc
+# escribir lo siguiente:
+# <device screen="0" driver="dri2">
+#         <application name="Default">
+#                 <option name="vblank_mode" value="0"/>
+#         </application>
+# </device>
 reboot
 
 
