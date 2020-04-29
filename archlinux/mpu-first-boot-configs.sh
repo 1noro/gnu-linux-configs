@@ -100,6 +100,11 @@ lsblk --discard
 systemctl enable fstrim.timer
 
 
+# -- default MIME types
+# para que funcione la opción ver en carpeta de los programas como firefox, etc
+xdg-mime default org.gnome.Nautilus.desktop inode/directory
+
+
 # --- mpu specific configs ---
 # ninguna por el momento
 

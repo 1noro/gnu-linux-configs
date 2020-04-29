@@ -21,10 +21,10 @@ packagelist_install=(
     git
     rmlint # Limpia home de archivos vacios y enlaces rotos (https://github.com/sahib/rmlint)
     jdk11-openjdk
+    perl-file-mimeinfo # Determine file type, includes mimeopen and mimetype
     udisks2 # temperatura de SSD con SMART
     phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
-
 
     ## utilidades básicas (gráficas)
     firefox

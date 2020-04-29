@@ -22,8 +22,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - git
     - rmlint Limpia home de archivos vacios y enlaces rotos (https://github.com/sahib/rmlint)
     - jdk11-openjdk
-    - gnome-tweaks
-    - papirus-icon-theme
+    - perl-file-mimeinfo (Determine file type, includes mimeopen and mimetype)
     - udisks2 (temperatura de SSD con SMART)
 
 - Utilidades básicas (gráficas)
@@ -37,6 +36,8 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - filezilla
     - wireshark-qt
     - bleachbit (limpiador de basura)
+    - gnome-tweaks
+    - papirus-icon-theme
 
 - Editores de texto
     - gedit

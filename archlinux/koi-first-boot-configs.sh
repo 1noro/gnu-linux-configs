@@ -2,7 +2,7 @@
 
 # --- configuración de pacman
 # copiar el archivo mirrorlist de esta configuración en /etc/pacman.d/mirrorlist
-# o generar uno por velocidad como se describe en la wiki: 
+# o generar uno por velocidad como se describe en la wiki:
 # https://wiki.archlinux.org/index.php/Mirrors_(Espa%C3%B1ol)#Lista_por_velocidad
 nano /etc/pacman.conf
 # descomentar las siguientes lineas:
@@ -94,6 +94,11 @@ lsblk --discard
 # And check the values of DISC-GRAN (discard granularity) and DISC-MAX (discard
 # max bytes) columns. Non-zero values indicate TRIM support.
 systemctl enable fstrim.timer
+
+
+# -- default MIME types
+# para que funcione la opción ver en carpeta de los programas como firefox, etc
+xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 
 # --- start ThinkPad X230 specific configs -------------------------------------
