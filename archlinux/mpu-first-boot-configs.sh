@@ -114,7 +114,9 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 
 # --- mpu specific configs ---
-# ninguna por el momento
+# para prevenir de este error en el journalctl:
+# systemd-udevd[315]: could not read from '/sys/module/pcc_cpufreq/initstate': No such device
+modprobe pcc_cpufreq
 
 reboot
 

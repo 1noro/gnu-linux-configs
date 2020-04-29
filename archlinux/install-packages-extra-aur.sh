@@ -116,3 +116,10 @@ git clone https://aur.archlinux.org/flat-remix-gtk.git; \
 cd flat-remix-gtk; \
 makepkg -sri; \
 cd ..
+
+## Temas Geany
+# geany-themes
+git clone https://aur.archlinux.org/geany-themes.git; \
+cd geany-themes; \
+makepkg -sri; \
+cd ..
