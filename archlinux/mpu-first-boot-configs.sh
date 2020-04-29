@@ -1,5 +1,10 @@
 # mpu FIRSTBOOT
 
+# si no tenemos .bashrc
+# cp /etc/skel/.bash_profile ~
+# cp /etc/skel/.bash_logout ~
+# y el .bashrc está en esta configuración
+
 # --- configuración de pacman
 # copiar el archivo mirrorlist de esta configuración en /etc/pacman.d/mirrorlist
 # o generar uno por velocidad como se describe en la wiki:
