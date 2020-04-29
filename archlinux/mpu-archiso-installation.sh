@@ -118,11 +118,13 @@ arch-chroot /mnt
 passwd
 
 # creamos y configuramos un nuevo usuario para podrer instalar paquetes desde AUR
-useradd -m -s /bin/bash cosmo # considerar quitar la opción -m (create_home)
+useradd -s /bin/bash cosmo # considerar quitar la opción -m (create_home)
 passwd cosmo
 env EDITOR=nano visudo
 # agregar la siguiente linea:
 # cosmo ALL=(ALL) ALL
+# Si recreamos /home/cosmo manualmente hay que ejecutar:
+# chown cosmo:cosmo /home/cosmo # considerar poner -R
 
 # instalamos, habilitamos y ejecutamos ssh para poder continuar con la
 # instalación desde otro pc de forma remota
@@ -165,7 +167,24 @@ mkinitcpio -p linux
 # comprobar aquí si falta algún módulo por cargar para este hardware específico
 
 # --- INICIO DE COMANDOS EXCLUSIVOS PARA MPU -----------------------------------
-# modulos de kernel a cargar, etc...
+# (https://gist.github.com/imrvelj/c65cd5ca7f5505a65e59204f5a3f7a6d)
+# solución para el error:
+# Possibly missing firmware for module: aic94xx
+# Possibly missing firmware for module: wd719x
+su cosmo
+cd
+mkdir -p Work/aur
+cd Work/aur
+git clone https://aur.archlinux.org/aic94xx-firmware.git; \
+cd aic94xx-firmware; \
+makepkg -sri; \
+cd ..
+git clone https://aur.archlinux.org/wd719x-firmware.git; \
+cd wd719x-firmware; \
+makepkg -sri; \
+cd ..
+exit
+mkinitcpio -p linux
 
 # --- FINAL DE COMANDOS EXCLUSIVOS PARA MPU ------------------------------------
 
@@ -183,10 +202,6 @@ nano /etc/default/grub
 # GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog i915.enable_guc=2"
 # de paso, también reducimos el tiempo de espera en la pantalla de grub
 # GRUB_TIMEOUT=2
-# agregamos un fondo para que el gurb quede to chulo:
-cp /home/cosmo/Work/github/gnu-linux-configs/archlinux/grub-bg.png /boot/grub/grub-bg.png
-# descomentamos y editamos la linea:
-# GRUB_BACKGROUND="/boot/grub/grub-bg.png"
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # salimos del entorno chroot, y volvemos al instalador de arch (archiso)

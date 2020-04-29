@@ -108,6 +108,12 @@ systemctl enable fstrim.timer
 # para que funcione la opción ver en carpeta de los programas como firefox, etc
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
+# -- agregamos un fondo para que el gurb quede to chulo:
+cp /home/cosmo/Work/github/gnu-linux-configs/archlinux/grub-bg.png /boot/grub/grub-bg.png
+nano /etc/default/grub
+# descomentamos y editamos la linea:
+# GRUB_BACKGROUND="/boot/grub/grub-bg.png"
+grub-mkconfig -o /boot/grub/grub.cfg
 
 # --- start ThinkPad X230 specific configs -------------------------------------
 # (https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X230#Configuration)

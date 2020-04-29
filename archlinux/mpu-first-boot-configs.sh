@@ -113,6 +113,14 @@ systemctl enable fstrim.timer
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 
+# -- agregamos un fondo para que el gurb quede to chulo:
+cp /home/cosmo/Work/github/gnu-linux-configs/archlinux/grub-bg.png /boot/grub/grub-bg.png
+nano /etc/default/grub
+# descomentamos y editamos la linea:
+# GRUB_BACKGROUND="/boot/grub/grub-bg.png"
+grub-mkconfig -o /boot/grub/grub.cfg
+
+
 # --- inicio mpu specific configs ---------------------------------------------
 # - para prevenir de este error en el journalctl:
 # systemd-udevd[315]: could not read from '/sys/module/pcc_cpufreq/initstate': No such device
