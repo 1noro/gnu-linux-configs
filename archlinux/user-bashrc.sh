@@ -29,6 +29,10 @@ if [ ! -f $FLAG ]; then
     echo -e " 5. Instala las actualizaciones."
     echo -e " 6. Comprueba los paquetes AUR y actualízalos si es necesario."
     touch $FLAG
+else
+    if [[ $(pacman -Qu) ]]; then
+        echo -e "\e[92m\e[1m¡Hay actualizaciones pendientes!\e[0m"
+    fi
 fi
 
 # para que steam no se minimice en el 'tray' inexistente de Gnome Shell y se
