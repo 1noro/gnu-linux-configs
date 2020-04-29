@@ -177,6 +177,10 @@ nano /etc/default/grub
 # GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog i915.enable_guc=2"
 # de paso, también reducimos el tiempo de espera en la pantalla de grub
 # GRUB_TIMEOUT=2
+# agregamos un fondo para que el gurb quede to chulo:
+cp /home/cosmo/Work/github/gnu-linux-configs/archlinux/grubbg.png /boot/grub/grub-bg.png
+# descomentamos y editamos la linea:
+# GRUB_BACKGROUND="/boot/grub/grub-bg.png"
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # salimos del entorno chroot, y volvemos al instalador de arch (archiso)
