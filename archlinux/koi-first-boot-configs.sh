@@ -62,7 +62,7 @@ gpasswd -a cosmo network
 
 
 # --- instalando y configurando el Bluetooth (en caso de estar presente en el equipo)
-pacman -S bluez bluez-utils --needed
+pacman -S bluez bluez-utils bluez-tools --needed
 # verificamos que el modulo btusb está cargado en el kernel
 lsmod | grep btusb
 systemctl enable bluetooth

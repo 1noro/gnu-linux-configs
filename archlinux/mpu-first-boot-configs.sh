@@ -66,7 +66,7 @@ gpasswd -a cosmo network
 
 
 # --- instalando y configurando el Bluetooth (en caso de estar presente en el equipo)
-pacman -S bluez bluez-utils --needed
+pacman -S bluez bluez-utils bluez-tools --needed
 # verificamos que el modulo btusb está cargado en el kernel
 lsmod | grep btusb
 systemctl enable bluetooth
@@ -113,10 +113,17 @@ systemctl enable fstrim.timer
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 
-# --- mpu specific configs ---
+# --- inicio mpu specific configs ---------------------------------------------
 # para prevenir de este error en el journalctl:
 # systemd-udevd[315]: could not read from '/sys/module/pcc_cpufreq/initstate': No such device
 modprobe pcc_cpufreq
+
+# para prevenir de este error en el journalctl:
+# bluetoothd[548]: Failed to set mode: Blocked through rfkill (0x12)
+rfkill unblock all
+
+# --- final mpu specific configs ----------------------------------------------
+
 
 reboot
 
