@@ -10,6 +10,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - zsh
     - zsh-syntax-highlighting
     - nano
+    - wget
     - vim
     - net-tools (deprecated; intentar usar: `ip addr` en ved de `ifconfig`)
     - dnsutils
@@ -19,6 +20,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - nmap
     - neofetch
     - git
+    - rmlint Limpia home de archivos vacios y enlaces rotos (https://github.com/sahib/rmlint)
     - jdk11-openjdk
     - gnome-tweaks
     - papirus-icon-theme
@@ -34,7 +36,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - pyrenamer (buscar sustituto)
     - filezilla
     - wireshark-qt
-    - firefox
+    - bleachbit (limpiador de basura)
 
 - Editores de texto
     - gedit

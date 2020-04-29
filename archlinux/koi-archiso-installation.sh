@@ -82,7 +82,7 @@ lsblk -fm
 # paquetes son necesarios aquí desde el principio)
 nano /etc/pacman.d/mirrorlist
 # agregar al principio de todo la linea:
-# Server = http://ftp.rediris.es/mirror/archlinux/$repo/os/$arch
+# Server = http://mirror.librelabucm.org/archlinux/$repo/os/$arch
 pacman -Sy # refrescamos los repositorios al cambiar el mirrorlist
 pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano vim man-db man-pages texinfo sudo base-devel git
 
