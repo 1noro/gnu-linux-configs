@@ -110,6 +110,12 @@ cd ttf-ms-fonts; \
 makepkg -sri; \
 cd ..
 
+# open-dyslexic-fonts (https://opendyslexic.org/)
+git clone https://aur.archlinux.org/open-dyslexic-fonts.git; \
+cd open-dyslexic-fonts; \
+makepkg -sri; \
+cd ..
+
 ## GNOME Shell
 # flat-remix-gtk (tema)
 git clone https://aur.archlinux.org/flat-remix-gtk.git; \
