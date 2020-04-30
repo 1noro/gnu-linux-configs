@@ -7,3 +7,4 @@ for D in */; do
         echo -e "Package $D no needs to be updated."
     fi
 done
+echo -e "Make sure \e[91m\e[1myou have the system updated\e[0m before re-compiling the packages."
