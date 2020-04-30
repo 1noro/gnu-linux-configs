@@ -32,7 +32,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - brasero
     - gparted
     - easytag
-    - pyrenamer (buscar sustituto)
+    - gprename (sustituto de pyrenamer)
     - filezilla
     - wireshark-qt
     - bleachbit (limpiador de basura)

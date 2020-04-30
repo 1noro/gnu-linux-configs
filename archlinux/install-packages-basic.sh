@@ -33,7 +33,7 @@ packagelist_install=(
     brasero
     gparted
     easytag
-    # pyrenamer (buscar sustituto)
+    gprename # (sustituto de pyrenamer)
     filezilla
     wireshark-qt
     bleachbit # limpiador de basura
