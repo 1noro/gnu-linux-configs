@@ -47,6 +47,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
 
 - Reproductores de vídeo y audio
     - vlc
+    - mpv
     - rhythmbox
 
 - Clientes bittorrent

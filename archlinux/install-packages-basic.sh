@@ -64,6 +64,7 @@ packagelist_install=(
 
     ## reproductores de vídeo y audio
     vlc
+    mpv
     rhythmbox
 
     ## cliente bittorrent

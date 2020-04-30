@@ -110,10 +110,16 @@ cd ttf-ms-fonts; \
 makepkg -sri; \
 cd ..
 
-## Temas Gnome Shell
-# flat-remix-gtk
+## GNOME Shell
+# flat-remix-gtk (tema)
 git clone https://aur.archlinux.org/flat-remix-gtk.git; \
 cd flat-remix-gtk; \
+makepkg -sri; \
+cd ..
+
+# gnome-appfolders-manager (Manage GNOME Shell applications folders.)
+git clone https://aur.archlinux.org/gnome-appfolders-manager.git; \
+cd gnome-appfolders-manager; \
 makepkg -sri; \
 cd ..
 
