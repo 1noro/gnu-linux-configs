@@ -32,6 +32,7 @@ if [ ! -f $FLAG ]; then
 else
     if [[ $(pacman -Qu) ]]; then
         echo -e "\e[92m\e[1m¡Hay actualizaciones pendientes!\e[0m"
+        echo -e "Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
     fi
 fi
 
