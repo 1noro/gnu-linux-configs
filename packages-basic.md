@@ -49,6 +49,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - vlc
     - mpv
     - rhythmbox
+    - cmus (rhythmbox en la terminal)
 
 - Clientes bittorrent
     - qbittorrent

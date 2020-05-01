@@ -8,7 +8,8 @@ packagelist_install=(
     totem # reproductor de videos de Gnome, no le veo la utilidad
 )
 
-pacman -Rs ${packagelist_install[@]}
+pacman -Rns ${packagelist_install[@]}
+# n: borra archivos de configuración
 
 # equivalente a apt autoremove:
 # pacman -Rs $(pacman -Qtdq)

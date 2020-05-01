@@ -66,6 +66,7 @@ packagelist_install=(
     vlc
     mpv
     rhythmbox
+    cmus # rhythmbox en la terminal
 
     ## cliente bittorrent
     qbittorrent
