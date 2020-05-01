@@ -5,7 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;33m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;201m\]\W\[$(tput sgr0)\]]\\$ \[$(tput sgr0)\]"
+# export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;33m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;201m\]\W\[$(tput sgr0)\]]\\$ \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;196m\][\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0)\]\[\033[38;5;142m\]@\[$(tput sgr0)\]\[\033[38;5;67m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;135m\]\W\[$(tput sgr0)\]\[\033[38;5;196m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
+# color es predeterminados:
+# texto: #A3998A
+# fondo: #272931
 
 #complete -c man which
 complete -cf sudo
