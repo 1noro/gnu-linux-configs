@@ -88,6 +88,16 @@ cd gnome-shell-extension-system-monitor-git; \
 makepkg -sri; \
 cd ..
 
+# bubblemail
+# git clone https://aur.archlinux.org/bubblemail.git; \
+# cd bubblemail; \
+# makepkg -sri; \
+# cd ..; \
+# git clone https://aur.archlinux.org/bubblemail-gnome-shell.git; \
+# cd bubblemail-gnome-shell; \
+# makepkg -sri; \
+# cd ..
+
 ## Fuentes
 # iosevka (https://typeof.net/Iosevka/)
 # fuente monospace preciosa; \
