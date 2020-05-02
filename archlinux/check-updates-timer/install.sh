@@ -7,5 +7,7 @@
 TIMER_TYPE="rt"
 cp my-check-updates.service /etc/systemd/system/my-check-updates.service
 cp my-check-updates-rt.timer "/etc/systemd/system/my-check-updates-$TIMER_TYPE.timer"
+cp my-check-updates.sh /opt/my-check-updates.sh
+chmod +x /opt/my-check-updates.sh
 systemctl enable "my-check-updates-$TIMER_TYPE.timer"
 echo "# INFO: Necesitas riniciar el sistema para aplicar los cambios."

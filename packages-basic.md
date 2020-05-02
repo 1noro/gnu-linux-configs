@@ -38,6 +38,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - bleachbit (limpiador de basura)
     - gnome-tweaks
     - papirus-icon-theme
+    - seahorse (gestor de claves GPG de GNOME)
 
 - Editores de texto
     - gedit

@@ -33,12 +33,13 @@ packagelist_install=(
     brasero
     gparted
     easytag
-    gprename # (sustituto de pyrenamer)
+    gprename # sustituto de pyrenamer
     filezilla
     wireshark-qt
     bleachbit # limpiador de basura
     gnome-tweaks
     papirus-icon-theme
+    seahorse # gestor de claves GPG de GNOME
 
     ## funcionabilidad total de pulseaudio
     # muchas de estas aplicaciones no vienen instaladas, pero creo que no

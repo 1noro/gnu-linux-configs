@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/pacman -Sy; date +%F\ %T >> /tmp/my-check-updates.log
+ExecStart=/opt/my-check-updates.sh
 TimeoutStopSec=180
 KillMode=process
 KillSignal=SIGINT
