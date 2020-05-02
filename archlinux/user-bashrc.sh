@@ -8,7 +8,7 @@
 # export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;33m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;201m\]\W\[$(tput sgr0)\]]\\$ \[$(tput sgr0)\]"
 export PS1="\[\033[38;5;196m\][\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0)\]\[\033[38;5;142m\]@\[$(tput sgr0)\]\[\033[38;5;67m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;135m\]\W\[$(tput sgr0)\]\[\033[38;5;196m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
 # color es predeterminados:
-# texto: #EBDDC9, #A3998A 
+# texto: #EBDDC9, #A3998A
 # fondo: #272931
 
 #complete -c man which
@@ -21,20 +21,20 @@ alias fgrep='fgrep --color=auto'
 
 # --- Check for updates
 FLAG="/tmp/check_updates.flag"
-if [ ! -f $FLAG ]; then
-    echo "sudo pacman -Sy; pacman -Qu" >> ~/.bash_history
-    # echo "sudo pacman -Syu" >> ~/.bash_history
-    echo -e "\e[92m\e[1m¿Hay actualizaciones pendientes?\e[0m"
-    echo -e " 1. Ejecuta '\e[1msudo pacman -Sy; pacman -Qu\e[0m' (en el historial)."
-    # echo -e " 1. Ejecuta 'sudo pacman -Syu' (en el historial)."
-    echo -e " 2. Visita \e[96mwww.archlinux.org\e[0m y \e[96mhttps://bbs.archlinux.org\e[0m."
-    echo -e " 3. Comprueba que no hay conflictos con dichos paquetes."
-    echo -e " 4. Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
-    echo -e " 5. Instala las actualizaciones."
-    echo -e " 6. Comprueba los paquetes AUR y actualízalos si es necesario."
-    touch $FLAG
-else
-    if [[ $(pacman -Qu) ]]; then
+if [[ $(pacman -Qu) ]]; then
+    if [ ! -f $FLAG ]; then
+        echo "sudo pacman -Sy; pacman -Qu" >> ~/.bash_history
+        # echo "sudo pacman -Syu" >> ~/.bash_history
+        echo -e "\e[92m\e[1m¿Hay actualizaciones pendientes?\e[0m"
+        echo -e " 1. Ejecuta '\e[1msudo pacman -Sy; pacman -Qu\e[0m' (en el historial)."
+        # echo -e " 1. Ejecuta 'sudo pacman -Syu' (en el historial)."
+        echo -e " 2. Visita \e[96mwww.archlinux.org\e[0m y \e[96mhttps://bbs.archlinux.org\e[0m."
+        echo -e " 3. Comprueba que no hay conflictos con dichos paquetes."
+        echo -e " 4. Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
+        echo -e " 5. Instala las actualizaciones."
+        echo -e " 6. Comprueba los paquetes AUR y actualízalos si es necesario."
+        touch $FLAG
+    else
         echo -e "\e[92m\e[1m¡Hay actualizaciones pendientes!\e[0m"
         echo -e "Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
     fi
