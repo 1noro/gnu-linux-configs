@@ -2,7 +2,7 @@
 Description=Autoupdate when booted up after 5 minutes then check the system for updates every 60 minutes (monolitic)
 
 [Timer]
-OnBootSec=5min
+OnBootSec=3min
 OnUnitActiveSec=60min
 Unit=my-check-updates.service
 
