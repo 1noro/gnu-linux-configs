@@ -12,4 +12,4 @@ pacman -Rns ${packagelist_install[@]}
 # n: borra archivos de configuración
 
 # equivalente a apt autoremove:
-# pacman -Rs $(pacman -Qtdq)
+# pacman -Rns $(pacman -Qtdq)
