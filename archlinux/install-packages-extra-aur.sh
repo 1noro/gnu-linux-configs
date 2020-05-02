@@ -148,7 +148,7 @@ cd ..
 
 ## Correo electrónico
 # protonmail-bridge (se necesita una cuenta de pago)
-git clone https://aur.archlinux.org/protonmail-bridge.git; \
-cd protonmail-bridge; \
-makepkg -sri; \
-cd ..
+# git clone https://aur.archlinux.org/protonmail-bridge.git; \
+# cd protonmail-bridge; \
+# makepkg -sri; \
+# cd ..
