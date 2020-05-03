@@ -72,6 +72,9 @@ packagelist_install=(
     ## cliente bittorrent
     qbittorrent
 
+    ## cliente ed2k
+    amule
+
     ## pdf
     evince
     okular

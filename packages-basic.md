@@ -55,6 +55,9 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
 - Clientes bittorrent
     - qbittorrent
 
+- Clientes ed2k
+    - amule
+
 - PDF
     - evince
     - okular
