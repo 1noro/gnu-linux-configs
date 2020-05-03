@@ -24,6 +24,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - jdk11-openjdk
     - perl-file-mimeinfo (Determine file type, includes mimeopen and mimetype)
     - udisks2 (temperatura de SSD con SMART)
+    - unrar
 
 - Utilidades básicas (gráficas)
     - firefox
