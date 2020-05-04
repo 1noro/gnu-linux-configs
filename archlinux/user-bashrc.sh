@@ -40,6 +40,12 @@ if [[ $(pacman -Qu) ]]; then
     fi
 fi
 
+# --- Check for Evolution
+FLAG="/tmp/check_updates.flag"
+if [[ ! $(pgrep evolution -x) ]]; then
+    echo -e "\e[91m\e[1mEvolution no está abierto.\e[0m"
+fi
+
 # para que steam no se minimice en el 'tray' inexistente de Gnome Shell y se
 # cierre completamente al pulsar X
 # (parece que no funciona)
