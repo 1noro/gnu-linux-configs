@@ -25,17 +25,17 @@ if [[ $(pacman -Qu) ]]; then
     if [ ! -f $FLAG ]; then
         echo "sudo pacman -Sy; pacman -Qu" >> ~/.bash_history
         # echo "sudo pacman -Syu" >> ~/.bash_history
-        echo -e "\e[92m\e[1m¿Hay actualizaciones pendientes?\e[0m"
-        echo -e " 1. Ejecuta '\e[1msudo pacman -Sy; pacman -Qu\e[0m' (en el historial)."
-        # echo -e " 1. Ejecuta 'sudo pacman -Syu' (en el historial)."
-        echo -e " 2. Visita \e[96mwww.archlinux.org\e[0m y \e[96mhttps://bbs.archlinux.org\e[0m."
-        echo -e " 3. Comprueba que no hay conflictos con dichos paquetes."
-        echo -e " 4. Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
-        echo -e " 5. Instala las actualizaciones."
-        echo -e " 6. Comprueba los paquetes AUR y actualízalos si es necesario."
+        echo -e "[ info ]: \e[92m\e[1m¿Hay actualizaciones pendientes?\e[0m"
+        echo -e "1. Ejecuta '\e[1msudo pacman -Sy; pacman -Qu\e[0m' (en el historial)."
+        # echo -e "1. Ejecuta 'sudo pacman -Syu' (en el historial)."
+        echo -e "2. Visita \e[96mwww.archlinux.org\e[0m y \e[96mhttps://bbs.archlinux.org\e[0m."
+        echo -e "3. Comprueba que no hay conflictos con dichos paquetes."
+        echo -e "4. Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
+        echo -e "5. Instala las actualizaciones."
+        echo -e "6. Comprueba los paquetes AUR y actualízalos si es necesario."
         touch $FLAG
     else
-        echo -e "\e[92m\e[1m¡Hay actualizaciones pendientes!\e[0m"
+        echo -e "[ info ]: \e[92m\e[1m¡Hay actualizaciones pendientes!\e[0m"
         echo -e "Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
     fi
 fi
@@ -43,7 +43,7 @@ fi
 # --- Check for Evolution
 FLAG="/tmp/check_updates.flag"
 if [[ ! $(pgrep evolution -x) ]]; then
-    echo -e "\e[91m\e[1mEvolution no está abierto.\e[0m"
+    echo -e "[ info ]: \e[91m\e[1mEvolution no está abierto.\e[0m"
 fi
 
 # para que steam no se minimice en el 'tray' inexistente de Gnome Shell y se
