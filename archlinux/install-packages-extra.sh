@@ -42,6 +42,11 @@ packagelist_install=(
 
     # Conectar con Android (dispositivos móviles)
     kdeconnect
+
+    # Entornos de programación extra
+    # - Haskell
+    ghc
+    ghc-static
 )
 
 pacman -Syu

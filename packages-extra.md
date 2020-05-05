@@ -57,3 +57,8 @@ ser mi Default Desktop.
 
 - Conectar con Android (dispositivos móviles)
     - kdeconnect
+
+- Entornos de programación extra
+    - Haskell
+        - ghc
+        - ghc-static
