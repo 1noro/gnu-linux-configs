@@ -61,4 +61,8 @@ ser mi Default Desktop.
 - Entornos de programación extra
     - Haskell
         - ghc
-        - ghc-static
+        - cabal-install
+        - happy
+        - alex
+        - haskell-haddock-library
+        - stack
