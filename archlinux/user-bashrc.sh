@@ -25,7 +25,7 @@ if [[ $(pacman -Qu) ]]; then
     if [ ! -f $FLAG ]; then
         echo "sudo pacman -Sy; pacman -Qu" >> ~/.bash_history
         # echo "sudo pacman -Syu" >> ~/.bash_history
-        echo -e "[ info ]: \e[92m\e[1m¿Hay actualizaciones pendientes?\e[0m"
+        echo -e "[ info ]: \e[92m\e[1mHay actualizaciones pendientes!\e[0m"
         echo -e " 1. Ejecuta '\e[1msudo pacman -Sy; pacman -Qu\e[0m' (en el historial)."
         # echo -e " 1. Ejecuta 'sudo pacman -Syu' (en el historial)."
         echo -e " 2. Visita \e[96mwww.archlinux.org\e[0m y \e[96mhttps://bbs.archlinux.org\e[0m."
@@ -35,7 +35,7 @@ if [[ $(pacman -Qu) ]]; then
         echo -e " 6. Comprueba los paquetes AUR y actualízalos si es necesario."
         touch $FLAG
     else
-        echo -e "[ info ]: \e[92m\e[1m¡Hay actualizaciones pendientes!\e[0m"
+        echo -e "[ info ]: \e[92m\e[1mHay actualizaciones pendientes!\e[0m"
         echo -e "Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
     fi
 fi
