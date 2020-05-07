@@ -25,6 +25,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - perl-file-mimeinfo (Determine file type, includes mimeopen and mimetype)
     - udisks2 (temperatura de SSD con SMART)
     - unrar
+    - inetutils (telnet y mas...)
 
 - Utilidades básicas (gráficas)
     - firefox
@@ -40,6 +41,7 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - gnome-tweaks
     - papirus-icon-theme
     - seahorse (gestor de claves GPG de GNOME)
+    - putty (no necesario en principio)
 
 - Editores de texto
     - gedit

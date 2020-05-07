@@ -24,6 +24,7 @@ packagelist_install=(
     perl-file-mimeinfo # Determine file type, includes mimeopen and mimetype
     udisks2 # temperatura de SSD con SMART
     unrar
+    inetutils # telnet y mas...
     phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
 
@@ -41,6 +42,7 @@ packagelist_install=(
     gnome-tweaks
     papirus-icon-theme
     seahorse # gestor de claves GPG de GNOME
+    # putty
 
     ## funcionabilidad total de pulseaudio
     # muchas de estas aplicaciones no vienen instaladas, pero creo que no
