@@ -45,12 +45,15 @@ packagelist_install=(
 
     # Entornos de programación extra
     # - Haskell
-    ghc
-    cabal-install
-    happy
-    alex
-    haskell-haddock-library
+    # ghc
+    # cabal-install
+    # happy
+    # alex
+    # haskell-haddock-library
     # stack
+
+    # - GO
+    #  ...
 )
 
 pacman -Syu

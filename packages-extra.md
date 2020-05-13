@@ -66,3 +66,5 @@ ser mi Default Desktop.
         - alex
         - haskell-haddock-library
         - stack
+    - GO
+        - 
