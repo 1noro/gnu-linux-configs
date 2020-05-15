@@ -53,7 +53,10 @@ packagelist_install=(
     # stack
 
     # - GO
-    #  ...
+    go
+
+    # Extras de Arch Linux
+    pacgraph # visualización gráfica de los paquetes y dependencias de pacman
 )
 
 pacman -Syu

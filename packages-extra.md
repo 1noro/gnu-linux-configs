@@ -67,4 +67,7 @@ ser mi Default Desktop.
         - haskell-haddock-library
         - stack
     - GO
-        - 
+        - go
+
+- Extras de Arch Linux
+    - pacgraph (visualización gráfica de los paquetes y dependencias de pacman)
