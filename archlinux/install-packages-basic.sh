@@ -110,7 +110,7 @@ packagelist_install=(
 
     ## latex
     texlive-most
-    texmaker
+    # texmaker # substituido por atom
 
     ## fuentes extra
     # (https://wiki.archlinux.org/index.php/Fonts_(Espa%C3%B1ol)#Instalaci%C3%B3n)

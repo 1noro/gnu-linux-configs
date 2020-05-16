@@ -21,6 +21,9 @@ ser mi Default Desktop.
     - openrct2
     - minecraft launcher
 
+- Astronomía
+    - stellarium
+
 - Cryptomonedas
     - bitcoin core
     - dogecoin core

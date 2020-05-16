@@ -21,6 +21,9 @@ packagelist_install=(
     # openttd
     openra
 
+    ## astronomía
+    stellarium
+
     ## Cryptomonedas
     # bitcoin core
     # bitcoin-qt

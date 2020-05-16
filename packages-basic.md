@@ -87,9 +87,6 @@ GNU/Linux sin los cuales una distribución no puede ser apropiada para mi.
     - chromium
     - chrome-gnome-shell
 
-- Astronomía
-    - stellarium
-
 - LaTex
     - texlive (full || most)
-    - texmaker
+    - texmaker (substituido por atom)
