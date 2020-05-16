@@ -105,9 +105,6 @@ packagelist_install=(
     chromium
     chrome-gnome-shell
 
-    ## astronomía
-    stellarium
-
     ## latex
     texlive-most
     # texmaker # substituido por atom
