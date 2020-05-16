@@ -24,10 +24,10 @@ cd ..
 
 ## Navegadores
 # google-chrome
-git clone https://aur.archlinux.org/google-chrome.git; \
-cd google-chrome; \
-makepkg -sri; \
-cd ..
+# git clone https://aur.archlinux.org/google-chrome.git; \
+# cd google-chrome; \
+# makepkg -sri; \
+# cd ..
 
 ## Descargas
 # jdownloader
