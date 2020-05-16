@@ -17,7 +17,7 @@ Todas mis configuraciones específicas para cada SO GNU/Linux que utilizo o hé 
 
 Creado, programado y mantenido por [inoro](https://github.com/boot1110001).
 
-## Licenciass
+## Licencias
 
 [![GPL3](https://img.shields.io/badge/license-GPL3-green.svg)](https://www.gnu.org/licenses/gpl.txt)
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-green.svg)](https://creativecommons.org/licenses/by/4.0/)
