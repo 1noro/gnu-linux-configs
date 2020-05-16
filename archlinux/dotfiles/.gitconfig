@@ -1,0 +1,6 @@
+[user]
+	email = ppuubblliicc@protonmail.com
+	name = 1noro
+	signingkey = 224E59DC1CF60B98
+[commit]
+	gpgsign = true
