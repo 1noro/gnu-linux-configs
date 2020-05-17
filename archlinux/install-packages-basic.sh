@@ -135,6 +135,16 @@ packagelist_install=(
     otf-fira-mono
     ttf-fira-code # https://github.com/tonsky/FiraCode (en pruebas para usarla en mi terminal por defecto)
     otf-fira-code
+
+    # impresoras
+    cups
+    foomatic-db-engine
+    foomatic-db
+    foomatic-db-ppds
+    foomatic-db-nonfree
+    foomatic-db-nonfree-ppds
+    gutenprint
+    foomatic-db-gutenprint-ppds
 )
 
 # packagelist_remove=(
@@ -144,3 +154,5 @@ packagelist_install=(
 pacman -Syu
 pacman -S --needed ${packagelist_install[@]}
 # pacman -R ${packagelist_remove[@]}
+
+systemctl enable org.cups.cupsd.service
