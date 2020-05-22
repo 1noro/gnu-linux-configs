@@ -145,6 +145,9 @@ packagelist_install=(
     foomatic-db-nonfree-ppds
     gutenprint
     foomatic-db-gutenprint-ppds
+
+    # necesidades para juegos
+    lib32-openssl-1.0 # Civilization VI
 )
 
 # packagelist_remove=(
