@@ -152,3 +152,10 @@ cd ..
 # cd protonmail-bridge; \
 # makepkg -sri; \
 # cd ..
+
+## Minecraft rcon clinet
+# mcrcon
+# git clone https://aur.archlinux.org/mcrcon.git; \
+# cd mcrcon; \
+# makepkg -sri; \
+# cd ..
