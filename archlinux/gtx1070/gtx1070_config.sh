@@ -33,7 +33,8 @@ pacman -Rns xf86-video-intel mesa lib32-mesa
 pacman -S nvidia-utils --needed # paquete de utilidades extra (no se si ya viene con el básico)
 pacman -S nvidia --needed # paquete básico
 pacman -S lib32-nvidia-utils --needed # librerias de 32 bits por si hacen falta
-pacman -S nvidia-smi --needed # paquete para leer la temperatura sin usar X (no se si ya viene con el básico)
+pacman -S nvidia-settings --needed # utilidad grafica de configuración
+# pacman -S nvidia-smi --needed # paquete para leer la temperatura sin usar X (no se si ya viene con el básico)
 
 ## Configuración mínima manual
 # echo 'Section "Device"' > /etc/X11/xorg.conf.d/20-nvidia.conf
@@ -55,5 +56,5 @@ nvidia-xconfig
 # Load        "dri"
 
 ## Configuraciones de optimización
-# echo 'nvidia-settings --load-config-only' >> ~/.xinitrc # si no cambio nada en nvidia-settings no debería hacer falta
+echo 'nvidia-settings --load-config-only' >> ~/.xinitrc # si no cambio nada en nvidia-settings no debería hacer falta
 echo 'nvidia-settings -a InitialPixmapPlacement=2' >> ~/.xinitrc
