@@ -159,3 +159,10 @@ cd ..
 # cd mcrcon; \
 # makepkg -sri; \
 # cd ..
+
+## Autofirma
+# autofirma
+# git clone https://aur.archlinux.org/autofirma.git; \
+# cd autofirma; \
+# makepkg -sri; \
+# cd ..
