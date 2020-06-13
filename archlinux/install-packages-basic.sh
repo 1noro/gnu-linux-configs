@@ -17,6 +17,7 @@ packagelist_install=(
     tldr
     htop
     nmap
+    iperf3
     neofetch
     git
     rmlint # Limpia home de archivos vacios y enlaces rotos (https://github.com/sahib/rmlint)
