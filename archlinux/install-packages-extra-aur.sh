@@ -169,7 +169,7 @@ cd ..
 
 ## Packet Tracer
 # packettracer
-# git clone https://aur.archlinux.org/packettracer.git; \
-# cd packettracer; \
-# makepkg -sri; \
-# cd ..
+git clone https://aur.archlinux.org/packettracer.git; \
+cd packettracer; \
+makepkg -sri; \
+cd ..
