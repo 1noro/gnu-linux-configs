@@ -169,7 +169,9 @@ cd ..
 
 ## Packet Tracer
 # packettracer
-git clone https://aur.archlinux.org/packettracer.git; \
-cd packettracer; \
-makepkg -sri; \
-cd ..
+# necesitas el deb de la versión mas actualizada del packet tracer
+# descargado desde: https://www.netacad.com/portal/resources/packet-tracer
+# git clone https://aur.archlinux.org/packettracer.git; \
+# cd packettracer; \
+# makepkg -sri; \
+# cd ..
