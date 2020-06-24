@@ -175,3 +175,10 @@ cd ..
 # cd packettracer; \
 # makepkg -sri; \
 # cd ..
+
+## Speedtest by Ookla
+# speedtest
+git clone https://aur.archlinux.org/ookla-speedtest-bin.git; \
+cd ookla-speedtest-bin; \
+makepkg -sri; \
+cd ..
