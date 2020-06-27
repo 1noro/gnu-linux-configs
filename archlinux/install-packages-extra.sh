@@ -61,11 +61,19 @@ packagelist_install=(
     # Extras de Arch Linux
     pacgraph # visualización gráfica de los paquetes y dependencias de pacman
 
-    # Drivers Impresoras
+    # Servidor de impresión
     cups
+    ghostscript
+    gsfonts
+    avahi
+
+    # Drivers de impresión
     hplip # HP LaserJet Pro M148fdw
 )
 
 pacman -Syu
 pacman -S --needed ${packagelist_install[@]}
+
 usermod -a -G vboxusers $USER
+systemctl enable org.cups.cupsd.service
+systemctl enable avahi-daemon.service
