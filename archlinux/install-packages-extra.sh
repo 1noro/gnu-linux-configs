@@ -60,6 +60,9 @@ packagelist_install=(
 
     # Extras de Arch Linux
     pacgraph # visualización gráfica de los paquetes y dependencias de pacman
+
+    # Drivers Impresoras
+    hplip # HP LaserJet Pro M148fdw
 )
 
 pacman -Syu
