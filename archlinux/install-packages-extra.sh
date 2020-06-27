@@ -62,6 +62,7 @@ packagelist_install=(
     pacgraph # visualización gráfica de los paquetes y dependencias de pacman
 
     # Drivers Impresoras
+    cups
     hplip # HP LaserJet Pro M148fdw
 )
 
