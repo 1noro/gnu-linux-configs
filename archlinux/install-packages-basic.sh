@@ -12,6 +12,7 @@ packagelist_install=(
     wget
     vim
     # net-tools # deprecated (use: ip addr)
+    ethtool
     dnsutils
     tree
     tldr

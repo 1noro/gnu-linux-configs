@@ -12,6 +12,7 @@ packagelist_install=(
     zsh-syntax-highlighting
     nano
     net-tools
+    ethtool
     dnsutils
     tree
     tldr
