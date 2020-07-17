@@ -182,3 +182,10 @@ git clone https://aur.archlinux.org/ookla-speedtest-bin.git; \
 cd ookla-speedtest-bin; \
 makepkg -sri; \
 cd ..
+
+## NewsFlash, The spiritual successor to FeedReader
+# newsflash
+# git clone https://aur.archlinux.org/newsflash.git; \
+# cd newsflash; \
+# makepkg -sri; \
+# cd ..
