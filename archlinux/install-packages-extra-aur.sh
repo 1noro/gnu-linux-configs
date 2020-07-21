@@ -184,8 +184,8 @@ makepkg -sri; \
 cd ..
 
 ## NewsFlash, The spiritual successor to FeedReader
-# newsflash
-# git clone https://aur.archlinux.org/newsflash.git; \
-# cd newsflash; \
+# newsflash-git
+# git clone https://aur.archlinux.org/newsflash-git.git; \
+# cd newsflash-git; \
 # makepkg -sri; \
 # cd ..
