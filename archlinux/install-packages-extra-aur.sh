@@ -126,6 +126,12 @@ cd open-dyslexic-fonts; \
 makepkg -sri; \
 cd ..
 
+# adobe-base-14-fonts (Courier, Helvetica, Times, Symbol, ZapfDingbats with Type1)
+git clone https://aur.archlinux.org/adobe-base-14-fonts.git; \
+cd adobe-base-14-fonts; \
+makepkg -sri; \
+cd ..
+
 ## GNOME Shell
 # flat-remix-gtk (tema)
 git clone https://aur.archlinux.org/flat-remix-gtk.git; \
