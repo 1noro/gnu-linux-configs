@@ -195,3 +195,10 @@ cd ..
 # cd newsflash-git; \
 # makepkg -sri; \
 # cd ..
+
+## Android Studio: The official Android IDE (Stable branch)
+# android-studio
+# git clone https://aur.archlinux.org/android-studio.git; \
+# cd android-studio; \
+# makepkg -sri; \
+# cd ..
