@@ -45,6 +45,8 @@ packagelist_install=(
     papirus-icon-theme
     seahorse # gestor de claves GPG de GNOME
     # putty
+    keepassxc # gestor de contraseñas
+    sshfs # montar carpetas a traves de ssh
 
     ## funcionabilidad total de pulseaudio
     # muchas de estas aplicaciones no vienen instaladas, pero creo que no
