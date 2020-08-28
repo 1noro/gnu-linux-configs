@@ -77,6 +77,8 @@ reboot
 
 # instalamos un navegador de internet decente
 pacman -S firefox
+# configuramos firefox para evitar el tearing forzando la aceleración por hardware
+# https://www.muylinux.com/2020/08/26/firefox-80/
 
 
 # -- Teaaring Fix (intel graphics)
