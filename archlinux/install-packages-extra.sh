@@ -69,6 +69,9 @@ packagelist_install=(
 
     # Drivers de impresión
     hplip # HP LaserJet Pro M148fdw
+
+    # Browser
+    # torbrowser-launcher
 )
 
 pacman -Syu
