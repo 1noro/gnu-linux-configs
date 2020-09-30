@@ -2,7 +2,7 @@
 	email = ppuubblliicc@protonmail.com
 	name = 1noro
 #	email = arodriguezg@fpcoruna.afundacion.org
-#	name = alfredo.rodriguez
+#	name = Alfredo
 	signingkey = 224E59DC1CF60B98
 [commit]
 	gpgsign = true
