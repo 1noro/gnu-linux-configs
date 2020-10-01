@@ -202,3 +202,10 @@ cd ..
 # cd android-studio; \
 # makepkg -sri; \
 # cd ..
+
+## Godot
+# godot
+# git clone https://aur.archlinux.org/godot.git; \
+# cd godot; \
+# makepkg -sri; \
+# cd ..
