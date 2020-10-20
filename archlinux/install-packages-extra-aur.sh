@@ -4,9 +4,9 @@
 
 # --- instalar desde AUR
 ## Juegos
-# openrct2
-git clone https://aur.archlinux.org/openrct2.git; \
-cd openrct2; \
+# openrct2-git
+git clone https://aur.archlinux.org/packages/openrct2-git; \
+cd openrct2-git; \
 makepkg -sri; \
 cd ..
 
