@@ -209,3 +209,10 @@ cd ..
 # cd godot; \
 # makepkg -sri; \
 # cd ..
+
+## beeBEEP
+# beebeep
+# git clone https://aur.archlinux.org/beebeep.git; \
+# cd beebeep; \
+# makepkg -sri; \
+# cd ..
