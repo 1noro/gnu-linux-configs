@@ -216,3 +216,10 @@ cd ..
 # cd beebeep; \
 # makepkg -sri; \
 # cd ..
+
+## mahjong (https://mahjong.julianbradfield.org/)
+# mahjong
+# git clone https://aur.archlinux.org/mahjong.git; \
+# cd mahjong; \
+# makepkg -sri; \
+# cd ..
