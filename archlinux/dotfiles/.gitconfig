@@ -9,3 +9,5 @@
 	gpgsign = true
 [pull]
 	rebase = false
+[core]
+	editor = nano
