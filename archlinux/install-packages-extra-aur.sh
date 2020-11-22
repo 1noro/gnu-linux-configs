@@ -139,12 +139,6 @@ cd flat-remix-gtk; \
 makepkg -sri; \
 cd ..
 
-# gnome-appfolders-manager (Manage GNOME Shell applications folders.)
-git clone https://aur.archlinux.org/gnome-appfolders-manager.git; \
-cd gnome-appfolders-manager; \
-makepkg -sri; \
-cd ..
-
 ## Temas Geany
 # geany-themes
 git clone https://aur.archlinux.org/geany-themes.git; \
