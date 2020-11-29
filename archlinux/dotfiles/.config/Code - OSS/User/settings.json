@@ -12,6 +12,5 @@
     "editor.mouseWheelZoom": true,
     "[go]": {
         "editor.formatOnSave": false
-    },
-    "editor.detectIndentation": false
+    }
 }
