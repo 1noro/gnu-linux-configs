@@ -4,7 +4,7 @@
 
 ## basic install
 apt update; \
-apt upgrade -y; \
+apt dist-upgrade -y; \
 apt install build-essential linux-headers-$(uname -r) nano net-tools dnsutils tree tldr htop nmap neofetch git curl iperf3 ethtool -y
 
 ## RUN ONLY AS ROOT

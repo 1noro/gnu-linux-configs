@@ -23,7 +23,7 @@ Añadimos la estructura `i386`.
 ```Bash
 dpkg --add-architecture i386
 apt update
-apt upgrade
+apt dist-upgrade
 ```
 
 Instalamos los paquetes.

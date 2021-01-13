@@ -90,7 +90,7 @@ packagelist_remove=(
 )
 
 apt update
-apt upgrade -y
+apt dist-upgrade -y
 apt install ${packagelist_install[@]} -y
 apt remove ${packagelist_remove[@]}
 apt autoremove
