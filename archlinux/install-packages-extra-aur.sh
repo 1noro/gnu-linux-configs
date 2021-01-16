@@ -217,3 +217,15 @@ cd ..
 # cd mahjong; \
 # makepkg -sri; \
 # cd ..
+
+## QUE FUNCIONE EL BLUETHOOT
+# !!ESTE PAQUETE NO LO LLEGO A INSTALAR¡¡
+# bcm20702a1-firmware (Broadcom bluetooth firmware for BCM20702A1 based devices.)
+# bcm20702a1-firmware
+git https://aur.archlinux.org/bcm20702a1-firmware.git; \
+cd bcm20702a1-firmware; \
+makepkg -sr; \
+sudo sudo ln -s /home/cosmo/Work/aur/bcm20702a1-firmware/pkg/bcm20702a1-firmware/usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd \
+cd ..
+# PARA DESINSTALAR:
+sudo rm /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
