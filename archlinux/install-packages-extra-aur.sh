@@ -196,6 +196,8 @@ cd ..
 # cd android-studio; \
 # makepkg -sri; \
 # cd ..
+## PUEDE QUE LO ANTERIOR FALLE
+## OJO, snapd: https://snapcraft.io/install/android-studio/arch
 
 ## Godot
 # godot
