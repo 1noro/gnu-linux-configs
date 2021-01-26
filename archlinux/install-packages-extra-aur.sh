@@ -196,7 +196,7 @@ cd ..
 # cd android-studio; \
 # makepkg -sri; \
 # cd ..
-## PARA REINSTALAR BORRAR TODAS LAS CARPETAS "android" y "Google" QUE HAY EN TU $HOME
+## PARA REINSTALAR BORRAR TODAS LAS CARPETAS "android", "Google" y "gradle" QUE HAY EN TU $HOME
 ## ACEPTAR LICENCIAS
 ## https://stackoverflow.com/questions/54273412/failed-to-install-the-following-android-sdk-packages-as-some-licences-have-not/59981986?newreg=6ef286d40c8543e99181e0db7d0bfdb8
 ## export JAVA_HOME=/opt/android-studio/jre/
