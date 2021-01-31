@@ -24,10 +24,10 @@ cd ..
 
 ## Navegadores
 # google-chrome
-# git clone https://aur.archlinux.org/google-chrome.git; \
-# cd google-chrome; \
-# makepkg -sri; \
-# cd ..
+git clone https://aur.archlinux.org/google-chrome.git; \
+cd google-chrome; \
+makepkg -sri; \
+cd ..
 
 ## Descargas
 # jdownloader
@@ -38,10 +38,10 @@ cd ..
 
 ## Chats y voideoconferencias
 # zoom
-git clone https://aur.archlinux.org/zoom.git; \
-cd zoom; \
-makepkg -sri; \
-cd ..
+# git clone https://aur.archlinux.org/zoom.git; \
+# cd zoom; \
+# makepkg -sri; \
+# cd ..
 
 ## Arreglar PCs
 # teamviewer
@@ -83,10 +83,10 @@ cd ..
 
 ## Gnome Shell Extensions
 # system-monitor
-git clone https://aur.archlinux.org/gnome-shell-extension-system-monitor-git.git; \
-cd gnome-shell-extension-system-monitor-git; \
-makepkg -sri; \
-cd ..
+# git clone https://aur.archlinux.org/gnome-shell-extension-system-monitor-git.git; \
+# cd gnome-shell-extension-system-monitor-git; \
+# makepkg -sri; \
+# cd ..
 
 # bubblemail
 # git clone https://aur.archlinux.org/bubblemail.git; \
@@ -101,17 +101,17 @@ cd ..
 ## Fuentes
 # iosevka (https://typeof.net/Iosevka/)
 # fuente monospace preciosa; \
-git clone https://aur.archlinux.org/ttf-iosevka.git; \
-cd ttf-iosevka; \
-makepkg -sri; \
-cd ..
+# git clone https://aur.archlinux.org/ttf-iosevka.git; \
+# cd ttf-iosevka; \
+# makepkg -sri; \
+# cd ..
 
 # mononoki (https://madmalik.github.io/mononoki/)
 # fuente monospace preciosa
-git clone https://aur.archlinux.org/ttf-mononoki-git.git; \
-cd ttf-mononoki-git; \
-makepkg -sri; \
-cd ..
+# git clone https://aur.archlinux.org/ttf-mononoki-git.git; \
+# cd ttf-mononoki-git; \
+# makepkg -sri; \
+# cd ..
 
 # ttf-ms-fonts (https://madmalik.github.io/mononoki/)
 # Core TTF Fonts from Microsoft, puede que necesaria para alguna apliación
@@ -183,6 +183,14 @@ cd ookla-speedtest-bin; \
 makepkg -sri; \
 cd ..
 
+## Visualk Studio Code (Microsoft Branded)
+# (para poder usar Live Share)
+# visual-studio-code-bin
+git clone https://aur.archlinux.org/visual-studio-code-bin.git; \
+cd visual-studio-code-bin; \
+makepkg -sri; \
+cd ..
+
 ## NewsFlash, The spiritual successor to FeedReader
 # newsflash-git
 # git clone https://aur.archlinux.org/newsflash-git.git; \
@@ -210,13 +218,6 @@ cd ..
 # makepkg -sri; \
 # cd ..
 
-## beeBEEP
-# beebeep
-# git clone https://aur.archlinux.org/beebeep.git; \
-# cd beebeep; \
-# makepkg -sri; \
-# cd ..
-
 ## mahjong (https://mahjong.julianbradfield.org/)
 # mahjong
 # git clone https://aur.archlinux.org/mahjong.git; \
@@ -224,14 +225,14 @@ cd ..
 # makepkg -sri; \
 # cd ..
 
-#>QUE FUNCIONE EL BLUETHOOT
+#>QUE FUNCIONE EL BLUETHOOT EN MPU
 #>!!ESTE PAQUETE NO LO LLEGO A INSTALAR¡¡
 ## bcm20702a1-firmware (Broadcom bluetooth firmware for BCM20702A1 based devices.)
 # bcm20702a1-firmware
-git https://aur.archlinux.org/bcm20702a1-firmware.git; \
-cd bcm20702a1-firmware; \
-makepkg -sr; \
-sudo sudo ln -s /home/cosmo/Work/aur/bcm20702a1-firmware/pkg/bcm20702a1-firmware/usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd \
-cd ..
+# git https://aur.archlinux.org/bcm20702a1-firmware.git; \
+# cd bcm20702a1-firmware; \
+# makepkg -sr; \
+# sudo sudo ln -s /home/cosmo/Work/aur/bcm20702a1-firmware/pkg/bcm20702a1-firmware/usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd \
+# cd ..
 #>PARA DESINSTALAR:
 # sudo rm /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd

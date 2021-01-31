@@ -10,31 +10,32 @@ packagelist_install=(
     # zsh-syntax-highlighting
     nano
     wget
-    vim
+    # vim
     # net-tools # deprecated (use: ip addr)
     ethtool
     dnsutils
     tree
-    tldr
+    # tldr
     htop
     nmap
     iperf3
     neofetch
     git
     rmlint # Limpia home de archivos vacios y enlaces rotos (https://github.com/sahib/rmlint)
-    jdk11-openjdk
+    jdk-openjdk # java 15
+    # jdk11-openjdk # java 11
     perl-file-mimeinfo # Determine file type, includes mimeopen and mimetype
     udisks2 # temperatura de SSD con SMART
     unrar
     inetutils # telnet y mas...
-    phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon
+    phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon (debatir entre GStreamer or VLC)
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
 
     ## utilidades básicas (gráficas)
     firefox
     xorg-xkill
     simple-scan
-    brasero
+    # brasero
     gparted
     easytag
     gprename # sustituto de pyrenamer
@@ -61,7 +62,7 @@ packagelist_install=(
     ## editores de texto
     gedit
     geany
-    geany-plugins
+    # geany-plugins
     libreoffice-fresh
 
     ## dependencias
@@ -72,20 +73,20 @@ packagelist_install=(
 
     ## reproductores de vídeo y audio
     vlc
-    mpv
+    # mpv
     rhythmbox
-    cmus # rhythmbox en la terminal
+    # cmus # rhythmbox en la terminal
 
     ## cliente bittorrent
     qbittorrent
 
     ## cliente ed2k
-    amule
+    # amule
 
     ## pdf
     evince
     okular
-    xournalpp
+    # xournalpp
 
     ## procesamiento de imágenes
     gimp
@@ -95,7 +96,7 @@ packagelist_install=(
     audacity
 
     ## editor de diagramas
-    dia
+    # dia
 
     ## editor 2D
     librecad
@@ -106,12 +107,12 @@ packagelist_install=(
     # gplanarity
 
     ## chromium
-    chromium
-    chrome-gnome-shell
+    # chromium
+    # chrome-gnome-shell
 
     ## latex
     texlive-most
-    # texmaker # substituido por atom
+    # texmaker # substituido por atom o vscode
 
     ## fuentes extra
     # (https://wiki.archlinux.org/index.php/Fonts_(Espa%C3%B1ol)#Instalaci%C3%B3n)
@@ -134,32 +135,17 @@ packagelist_install=(
     ttf-arphic-uming
     ttf-indic-otf
     # - fuentes monospace preciosas
-    ttf-anonymous-pro # http://www.marksimonson.com/fonts/view/anonymous-pro
+    # ttf-anonymous-pro # http://www.marksimonson.com/fonts/view/anonymous-pro
     ttf-fira-mono # https://en.wikipedia.org/wiki/Fira_Sans
     otf-fira-mono
     ttf-fira-code # https://github.com/tonsky/FiraCode (en pruebas para usarla en mi terminal por defecto)
     otf-fira-code
-
-    # impresoras
-    cups
-    foomatic-db-engine
-    foomatic-db
-    foomatic-db-ppds
-    foomatic-db-nonfree
-    foomatic-db-nonfree-ppds
-    gutenprint
-    foomatic-db-gutenprint-ppds
-
-    # necesidades para juegos
-    lib32-openssl-1.0 # Civilization VI
 )
 
 # packagelist_remove=(
 #
 # )
 
-pacman -Syu
+pacman -Syyu
 pacman -S --needed ${packagelist_install[@]}
-# pacman -R ${packagelist_remove[@]}
-
-systemctl enable org.cups.cupsd.service
+# pacman -Rns ${packagelist_remove[@]}

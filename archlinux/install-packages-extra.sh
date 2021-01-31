@@ -5,11 +5,13 @@
 # --- instalación desde los repositorios oficiales de Arch Linux
 packagelist_install=(
     ## Edtitores de código e IDEs
-    atom
-    hunspell-es_es # necesario para el paquete spell-check (https://atom.io/packages/spell-check)
-    # code # visual studio code (no instalar hasta comprobar si es bueno)
-    dbeaver
-    eclipse-java
+    # atom
+    # hunspell-es_es # necesario para el paquete spell-check (https://atom.io/packages/spell-check)
+    # code # visual studio code (sin las movidas de microsoft)
+    # dbeaver
+    # eclipse-java
+    pycharm-community-edition
+    intellij-idea-community-edition
 
     ## Juegos
     # hace falta instalar lib32-mesa (para procesadores intel) del repositorio
@@ -20,6 +22,8 @@ packagelist_install=(
     # 0ad
     # openttd
     openra
+    # lutris
+    lib32-openssl-1.0 # necesidades para Civilization VI
 
     ## astronomía
     stellarium
@@ -63,6 +67,13 @@ packagelist_install=(
 
     # Servidor de impresión
     cups
+    foomatic-db-engine
+    foomatic-db
+    foomatic-db-ppds
+    foomatic-db-nonfree
+    foomatic-db-nonfree-ppds
+    gutenprint
+    foomatic-db-gutenprint-ppds
     ghostscript
     gsfonts
     avahi
@@ -74,9 +85,9 @@ packagelist_install=(
     # torbrowser-launcher
 )
 
-pacman -Syu
+pacman -Syyu
 pacman -S --needed ${packagelist_install[@]}
 
 usermod -a -G vboxusers $USER
-systemctl enable org.cups.cupsd.service
-systemctl enable avahi-daemon.service
+systemctl enable --now org.cups.cupsd.service
+systemctl enable --now avahi-daemon.service
