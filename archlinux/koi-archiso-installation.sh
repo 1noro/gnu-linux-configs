@@ -192,4 +192,4 @@ reboot
 
 # extraemos el medio de instalación (USB o CD/DVD)
 
-# continuar con los pasos de koi-first-boot-installations.sh
+# continuar con los pasos de koi-first-boot-configs.sh

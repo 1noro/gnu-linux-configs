@@ -1,4 +1,7 @@
-# mpu ARCHISO
+# mpuvm btrfs (systemd-boot) ARCHISO
+
+# -- verificamos que entramos en modo UEFI
+ls /sys/firmware/efi/efivars
 
 # -- comprobación de red DHCP (por cable)
 ping archlinux.org
@@ -10,51 +13,21 @@ passwd
 
 # -- activamos el servidor ntp para la hora
 timedatectl set-ntp true
+timedatectl status # (verificación)
 
 # -- inicio del particionado y formateo de los HDDs ----------------------------
 lsblk
-# - tabla de particiones MBR (MSDOS) (para discos de hasta 2TB)
-# NAME        SIZE  TYPE    MOUNTPOINT
-# sda       111,8G  disk
-#   sda1    111,7G  part    /
-#   sda2    512,0M  part    [SWAP]
-# sdb         3,7T  disk
-#   sdb1      3,7T  part    /home/cosmo/Descargas
-# sdc       500,0G  disk
-#   sdc1    500,0G  part    /home
 
-fdisk /dev/sda
-fdisk /dev/sdc
-
-lsblk -fm
-mkfs.ext4 /dev/sda1
-mkfs.ext4 /dev/sdc1
-mkswap /dev/sda2
-swapon /dev/sda2
-
-# montamos de forma correcta las particiones sobre el sistema de archivos a configurar
-mount /dev/sda1 /mnt
-mkdir /mnt/home
-mount /dev/sdc1 /mnt/home
-mkdir -p /mnt/home/cosmo/Descargas
-mount /dev/sdb1 /mnt/home/cosmo/Descargas
-lsblk -fm
-
-# - tabla de particiones GPT
+# - tabla de particiones GPT (systemd-boot)
 # https://wiki.archlinux.org/index.php/EFI_system_partition#GPT_partitioned_disks
-# https://wiki.archlinux.org/index.php/GRUB#GUID_Partition_Table_(GPT)_specific_instructions
+# https://fhackts.wordpress.com/2016/09/09/installing-archlinux-the-efisystemd-boot-way/
+# https://gtronick.github.io/ALIG/
 # NAME        SIZE  TYPE                    MOUNTPOINT
-# sda       111,8G  disk
+# sda       931,5G  disk
 #   sda1    512,0M  part EFI System (ESP)   /boot
-#   sda2      1,0M  part BIOS boot
-#   sda3    110,0G  part                    /
-#   sda4      1,3G  part                    [SWAP]
-# sdb       456,8G  disk
-#   sdb1    456,8G  part                    /home
-# sdc         3,7T  disk
-#   sdc1      3,7T  part                    /home/cosmo/Descargas
-# sdd       931,5G  disk
-#   sdd1    931,5G  part                    /home/cosmo/VM
+#   sda2      4,0G  part                    [SWAP]
+#   sda3     80,0G  part                    /
+#   sda4    846,9G  part                    /home
 
 fdisk /dev/sda
 # comandos de fdisk:
@@ -70,42 +43,29 @@ fdisk /dev/sda
 # n (creamos sda4)
 # p (mostramos cómo va a quedar el resultado)
 # w (escribimos los cambios y salimos)
-fdisk /dev/sdb
-# comandos de fdisk:
-# m (listamos la ayuda)
-# g (generamos una tabla GPT)
-# n (creamos sdc1)
-# p (mostramos cómo va a quedar el resultado)
-# w (escribimos los cambios y salimos)
 
 lsblk -fm
 mkfs.fat -F32 /dev/sda1
-mkfs.ext4 -L ROOT /dev/sda3
-mkswap /dev/sda4
-swapon /dev/sda4
-mkfs.ext4 -L HOME /dev/sdb1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.btrfs -L ROOT /dev/sda3
+mkfs.btrfs -L HOME /dev/sdb4
 
 # montamos de forma correcta las particiones sobre el sistema de archivos a configurar
 mount /dev/sda3 /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 mkdir /mnt/home
-mount /dev/sdb1 /mnt/home
-mkdir -p /mnt/home/cosmo/Descargas
-mount /dev/sdc1 /mnt/home/cosmo/Descargas
-mkdir -p /mnt/home/cosmo/VM
-mount /dev/sdd1 /mnt/home/cosmo/VM
+mount /dev/sda4 /mnt/home
 lsblk -fm
-
-# -- final del particionado y formateo de los HDDs -----------------------------
 
 # -- instalamos el sistema base en el disco particionado (pensar en que
 # paquetes son necesarios aquí desde el principio)
 nano /etc/pacman.d/mirrorlist
 # agregar al principio de todo la linea:
 # Server = http://mirror.librelabucm.org/archlinux/$repo/os/$arch
-pacman -Sy # refrescamos los repositorios al cambiar el mirrorlist
-pacstrap /mnt base linux linux-firmware dosfstools exfat-utils e2fsprogs ntfs-3g nano vim man-db man-pages texinfo sudo base-devel git
+pacman -Syy # refrescamos los repositorios al cambiar el mirrorlist
+pacstrap /mnt base linux linux-firmware dosfstools exfat-utils btrfs-progs e2fsprogs ntfs-3g nano man-db man-pages texinfo sudo base-devel git
 
 # -- generamos el fstab tal cual como lo tenemos montado en la instalación
 genfstab -U /mnt >> /mnt/etc/fstab
