@@ -1,9 +1,17 @@
 # mpu FIRSTBOOT
 
-# si no tenemos .bashrc
-# cp /etc/skel/.bash_profile ~
+# iniciamos sesión como cosmo
+# su cosmo
+mkdir -p ~/Work/github
+cd ~/Work/github
+git clone https://github.com/1noro/dotfiles.git; \
+cd dotfiles; \
+bash deploy.sh; \
+cd \
+source ~/.bashrc # para recargar el .bashrc sin reiniciar la shell
+
+# si no tenemos .bash_logout (no creo que haga mucha falta)
 # cp /etc/skel/.bash_logout ~
-# y el .bashrc está en esta configuración
 
 # --- configuración de pacman
 # copiar el archivo mirrorlist de esta configuración en /etc/pacman.d/mirrorlist
@@ -17,7 +25,7 @@ nano /etc/pacman.conf
 # - en los repositorios:
 #[multilib]
 #Include = /etc/pacman.d/mirrorlist
-pacman -Syu # actualizamos el sistema
+pacman -Syyu # actualizamos el sistema
 pacman -S pacman-contrib
 
 # agregamos el hook (trigger) para limpiar la cache de pacman
@@ -42,9 +50,9 @@ lspci | grep VGA
 pacman -S xf86-video-intel # driver de la tarjeta grafica
 pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo)
 pacman -S jack2 lib32-jack2 xdg-desktop-portal-gtk gnu-free-fonts gdm gnome gnome-extra
-# gdm ya está en el grupo gnome, pero lo escribo para resaltarlo
+# gdm ya está en el grupo gnome, pero lo escribo para que quede patente
 # especifico xdg-desktop-portal-gtk para no tener que leer la wiki siempre
-# revisra las diferencias entre xdg-desktop-portal-gtk y xdg-desktop-portal-kde
+# revisar las diferencias entre xdg-desktop-portal-gtk y xdg-desktop-portal-kde
 # especifico jack2 para no tener que leer la wiki siempre
 # https://github.com/jackaudio/jackaudio.github.com/wiki/Q_difference_jack1_jack2
 systemctl enable gdm
@@ -72,14 +80,29 @@ pacman -S bluez bluez-utils bluez-tools --needed
 lsmod | grep btusb
 systemctl enable bluetooth
 
+#>QUE FUNCIONE EL BLUETHOOT EN MPU
+#>!!ESTE PAQUETE NO LO LLEGO A INSTALAR¡¡
+## bcm20702a1-firmware (Broadcom bluetooth firmware for BCM20702A1 based devices.)
+# bcm20702a1-firmware
+git https://aur.archlinux.org/bcm20702a1-firmware.git; \
+cd bcm20702a1-firmware; \
+makepkg -sr; \
+sudo sudo ln -s /home/cosmo/Work/aur/bcm20702a1-firmware/pkg/bcm20702a1-firmware/usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd \
+cd ..
+#>PARA DESINSTALAR:
+# sudo rm /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
+
 # reiniciamos para que se apliquen todos estos cambios importantes
 reboot
 
 
 # instalamos un navegador de internet decente
 pacman -S firefox
-# configuramos firefox para evitar el tearing forzando la aceleración por hardware
-# https://www.muylinux.com/2020/08/26/firefox-80/
+# - configuramos firefox para evitar el tearing forzando la aceleración por hardware
+# en los ajustes de fírefox ir a General > Rendimiento
+# desmarcamos Usar configuración de rendimiento recomendada
+# y verificamos que quede marcado Usar aceleración de hardware cuando esté disponible
+# y el ímite de procesadores el recomendado (8, por ejemplo)
 
 
 # -- Teaaring Fix (intel graphics)

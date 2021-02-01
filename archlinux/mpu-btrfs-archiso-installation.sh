@@ -1,4 +1,4 @@
-# mpuvm btrfs (systemd-boot) ARCHISO
+# mpu btrfs (systemd-boot) ARCHISO
 
 # -- verificamos que entramos en modo UEFI
 ls /sys/firmware/efi/efivars
@@ -63,7 +63,7 @@ nano /etc/pacman.d/mirrorlist
 # agregar al principio de todo la linea:
 # Server = http://mirror.librelabucm.org/archlinux/$repo/os/$arch
 pacman -Syy # refrescamos los repositorios al cambiar el mirrorlist
-pacstrap /mnt base linux linux-firmware dosfstools exfat-utils btrfs-progs e2fsprogs ntfs-3g nano man-db man-pages texinfo sudo base-devel git
+pacstrap /mnt base base-devel linux linux-firmware dosfstools exfat-utils btrfs-progs e2fsprogs ntfs-3g man-db man-pages texinfo sudo git nano
 
 # -- generamos el fstab tal cual como lo tenemos montado en la instalación
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -130,9 +130,8 @@ mkinitcpio -p linux
 # Possibly missing firmware for module: aic94xx
 # Possibly missing firmware for module: wd719x
 su cosmo
-cd
-mkdir -p Work/aur
-cd Work/aur
+mkdir -p ~/Work/aur
+cd ~/Work/aur
 git clone https://aur.archlinux.org/aic94xx-firmware.git; \
 cd aic94xx-firmware; \
 makepkg -sri; \
@@ -144,25 +143,16 @@ cd ..
 exit
 mkinitcpio -p linux
 
-#>QUE FUNCIONE EL BLUETHOOT EN MPU
-#>!!ESTE PAQUETE NO LO LLEGO A INSTALAR¡¡
-## bcm20702a1-firmware (Broadcom bluetooth firmware for BCM20702A1 based devices.)
-# bcm20702a1-firmware
-git https://aur.archlinux.org/bcm20702a1-firmware.git; \
-cd bcm20702a1-firmware; \
-makepkg -sr; \
-sudo sudo ln -s /home/cosmo/Work/aur/bcm20702a1-firmware/pkg/bcm20702a1-firmware/usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd \
-cd ..
-#>PARA DESINSTALAR:
-# sudo rm /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
-
 # --- FINAL DE COMANDOS EXCLUSIVOS PARA MPU ------------------------------------
 
-# -- GESTOR DE ARRANQUE DEL SISTEMA
+# --- GESTOR DE ARRANQUE DEL SISTEMA -------------------------------------------
 
 # instalamos y habilitamos las actualizacionse tempranas de microcodigo
 # para procesadores intel
-pacman -S grub intel-ucode
+pacman -S intel-ucode
+
+# -- instalación de GRUB (lo dejo por si acaso)
+pacman -S grub
 grub-install --target=i386-pc /dev/sda # instalación para particiones MBR (MSDOS)
 # editamos los boot parameters del kernel al iniciarlo, explicaciones:
 # https://wiki.archlinux.org/index.php/Kernel_parameters_(Espa%C3%B1ol)
@@ -176,7 +166,28 @@ nano /etc/default/grub
 # GRUB_TIMEOUT=2
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# -- FIN GESTOR DE ARRANQUE DEL SISTEMA
+# -- instalación systemd-boot
+bootctl --path=/boot install
+# Generar archivo de configuración de systemd-boot:
+nano /boot/loader/loader.conf
+# - Agregamos las siguientes líneas
+# default arch
+# timeout 0
+# editor 0
+
+# Generar el archivo de la entrada por defecto para systemd-boot:
+echo $(blkid -s PARTUUID -o value /dev/sda3) > /boot/loader/entries/arch.conf
+nano /boot/loader/entries/arch.conf
+# - Se debe agregar lo siguiente, de manera que el serial generado, 
+#   quede después de PARTUUID y antes de rw, como sigue:
+# title ArchLinux
+# linux /vmlinuz-linux
+# initrd /intel-ucode.img 
+# initrd /initramfs-linux.img
+# options root=PARTUUID=14420948-2cea-4de7-b042-40f67c618660 rw
+# - La línea: initrd /intel-ucode.img, sólo se debe poner cuando se ha instalado intel-ucode
+
+# --- FIN GESTOR DE ARRANQUE DEL SISTEMA ---------------------------------------
 
 # salimos del entorno chroot, y volvemos al instalador de arch (archiso)
 exit

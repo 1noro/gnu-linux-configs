@@ -172,9 +172,8 @@ mkinitcpio -p linux
 # Possibly missing firmware for module: aic94xx
 # Possibly missing firmware for module: wd719x
 su cosmo
-cd
-mkdir -p Work/aur
-cd Work/aur
+mkdir -p ~/Work/aur
+cd ~/Work/aur
 git clone https://aur.archlinux.org/aic94xx-firmware.git; \
 cd aic94xx-firmware; \
 makepkg -sri; \
