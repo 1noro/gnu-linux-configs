@@ -167,6 +167,10 @@ cd ..
 
 # --- final mpu confuguraciones específicas ----------------------------------------------
 
+# primera snapshot en btrfs
+sudo pacman -S snapper
+sudo snapper -c home create-config /home
+sudo snapper -c home create -d "init"
 
 sudo reboot
 
