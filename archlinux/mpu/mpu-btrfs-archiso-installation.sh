@@ -1,8 +1,5 @@
 # mpu btrfs (systemd-boot) ARCHISO
 
-# -- verificamos que entramos en modo UEFI
-ls /sys/firmware/efi/efivars
-
 # -- comprobación de red DHCP (por cable)
 ping archlinux.org
 
@@ -10,6 +7,9 @@ ping archlinux.org
 # por si queremos realizar la instalación de forma remota
 systemctl start sshd
 passwd
+
+# -- verificamos que entramos en modo UEFI
+ls /sys/firmware/efi/efivars
 
 # -- activamos el servidor ntp para la hora
 timedatectl set-ntp true
@@ -47,7 +47,7 @@ mkfs.fat -F32 /dev/sda1
 mkswap /dev/sda2
 swapon /dev/sda2
 mkfs.btrfs -L ROOT /dev/sda3
-mkfs.btrfs -L HOME /dev/sdb4
+mkfs.btrfs -L HOME /dev/sda4
 
 # montamos de forma correcta las particiones sobre el sistema de archivos a configurar
 mount /dev/sda3 /mnt
@@ -76,7 +76,7 @@ arch-chroot /mnt
 passwd
 
 # creamos y configuramos un nuevo usuario para podrer instalar paquetes desde AUR
-useradd -s /bin/bash cosmo # considerar quitar la opción -m (create_home)
+useradd -s /bin/bash -m cosmo # considerar quitar la opción -m (create_home)
 passwd cosmo
 env EDITOR=nano visudo
 # agregar la siguiente linea:
@@ -105,7 +105,7 @@ echo "LANG=es_ES.UTF-8" > /etc/locale.conf
 # ponemos nombre al equipo
 echo "mpu" > /etc/hostname
 nano /etc/hosts
-# agregar las siguientes lineas
+# - agregar las siguientes lineas
 # 127.0.0.1	localhost
 # ::1		localhost
 # 127.0.1.1	mpu.jamaica.a3do.net	mpu
@@ -138,6 +138,13 @@ makepkg -sri; \
 cd ..
 git clone https://aur.archlinux.org/wd719x-firmware.git; \
 cd wd719x-firmware; \
+makepkg -sri; \
+cd ..
+# según los foros este no es necesario
+# pero a mi me funciona para quitar este WARNING al compilar el nucleo
+# ==> WARNING: Possibly missing firmware for module: xhci_pci
+git clone https://aur.archlinux.org/upd72020x-fw.git; \
+cd upd72020x-fw; \
 makepkg -sri; \
 cd ..
 exit
