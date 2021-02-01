@@ -1,4 +1,5 @@
 #!/bin/bash
+# (no funciona correctamente)
 for D in */; do
     if [[ $(git -C $D fetch) ]]; then
         git -C $D pull -q

@@ -80,18 +80,6 @@ pacman -S bluez bluez-utils bluez-tools --needed
 lsmod | grep btusb
 systemctl enable bluetooth
 
-#>QUE FUNCIONE EL BLUETHOOT EN MPU
-#>!!ESTE PAQUETE NO LO LLEGO A INSTALAR¡¡
-## bcm20702a1-firmware (Broadcom bluetooth firmware for BCM20702A1 based devices.)
-# bcm20702a1-firmware
-git https://aur.archlinux.org/bcm20702a1-firmware.git; \
-cd bcm20702a1-firmware; \
-makepkg -sr; \
-sudo sudo ln -s /home/cosmo/Work/aur/bcm20702a1-firmware/pkg/bcm20702a1-firmware/usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd \
-cd ..
-#>PARA DESINSTALAR:
-# sudo rm /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
-
 # reiniciamos para que se apliquen todos estos cambios importantes
 reboot
 
@@ -136,10 +124,12 @@ systemctl enable fstrim.timer
 
 # -- default MIME types
 # para que funcione la opción ver en carpeta de los programas como firefox, etc
+# (resumiendo: permitir a firefox que pueda abrir nautilus cuando quieres ver tus descargas en su carpeta)
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 
-# -- agregamos un fondo para que el gurb quede to chulo:
+# -- agregamos un fondo para que el GRUB quede to chulo:
+# (si se usa systemd-boot no hace falta)
 cp /home/cosmo/Work/github/gnu-linux-configs/archlinux/grub-bg.png /boot/grub/grub-bg.png
 nano /etc/default/grub
 # descomentamos y editamos las lineas:
@@ -149,20 +139,26 @@ nano /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
-# --- inicio mpu specific configs ---------------------------------------------
+# --- inicio mpu confuguraciones específicas ---------------------------------------------
 # - para prevenir de este error en el journalctl:
 # systemd-udevd[315]: could not read from '/sys/module/pcc_cpufreq/initstate': No such device
 modprobe pcc_cpufreq
 
-# - referente al bluetooth (mejor desconectado)
-# comprar un bluetooth mas compatible con linux en amazon
-# para prevenir de este error en el journalctl:
-# bluetoothd[548]: Failed to set mode: Blocked through rfkill (0x12)
-# rfkill unblock all
+#>QUE FUNCIONE EL BLUETHOOT EN MPU
+#>!!ESTE PAQUETE NO LO LLEGO A INSTALAR¡¡
+## bcm20702a1-firmware (Broadcom bluetooth firmware for BCM20702A1 based devices.)
+# bcm20702a1-firmware
+git https://aur.archlinux.org/bcm20702a1-firmware.git; \
+cd bcm20702a1-firmware; \
+makepkg -sr; \
+sudo sudo ln -s /home/cosmo/Work/aur/bcm20702a1-firmware/pkg/bcm20702a1-firmware/usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd \
+cd ..
+#>PARA DESINSTALAR:
+# sudo rm /usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
 
-# --- final mpu specific configs ----------------------------------------------
+# --- final mpu confuguraciones específicas ----------------------------------------------
 
 
 reboot
 
-# ejecutar los scripts de instalación de programas incluidos en esta carpeta
+# ejecutar los scripts de instalación de programas incluidos en este repositorio
