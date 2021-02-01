@@ -57,6 +57,7 @@ pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gn
 # systemctl --type=service
 systemctl stop dhcpcd
 systemctl disable dhcpcd
+pacman -Rns dhcpcd
 
 systemctl enable wpa_supplicant
 systemctl enable NetworkManager

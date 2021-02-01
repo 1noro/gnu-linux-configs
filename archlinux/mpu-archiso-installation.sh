@@ -150,7 +150,7 @@ nano /etc/hosts
 # agregar las siguientes lineas
 # 127.0.0.1	localhost
 # ::1		localhost
-# 127.0.1.1	mpu.home.lan	mpu
+# 127.0.1.1	mpu.jamaica.a3do.net	mpu
 
 # instalamos y habilitamos el demonio más básico de dhcp para que al reiniciar
 # no nos quedemos sin internet

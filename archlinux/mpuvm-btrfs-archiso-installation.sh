@@ -37,8 +37,6 @@ fdisk /dev/sda
 # t (se selecciona automaticamente la única particion creada)
 # 1 (cambiamos el tipo a EFI System)
 # n (creamos sda2)
-# t (seleccionar partición 2)
-# 4 (cambiamos el tipo a BIOS boot)
 # n (creamos sda3)
 # n (creamos sda4)
 # p (mostramos cómo va a quedar el resultado)
@@ -110,7 +108,7 @@ nano /etc/hosts
 # agregar las siguientes lineas
 # 127.0.0.1	localhost
 # ::1		localhost
-# 127.0.1.1	mpu.home.lan	mpu
+# 127.0.1.1	mpu.jamaica.a3do.net	mpu
 
 # instalamos y habilitamos el demonio más básico de dhcp para que al reiniciar
 # no nos quedemos sin internet
@@ -118,7 +116,7 @@ pacman -S dhcpcd
 systemctl enable dhcpcd
 
 # --- módulos de kernel necesarios
-# agregamos el módulo i915 al kernel de Linux y lo volvemos a configura
+# agregamos el módulo i915 al kernel de Linux y lo volvemos a configurar
 # esto es para cargar KMS lo antes posible al inicio del boot
 # https://wiki.archlinux.org/index.php/Kernel_mode_setting_(Espa%C3%B1ol)
 nano /etc/mkinitcpio.conf
