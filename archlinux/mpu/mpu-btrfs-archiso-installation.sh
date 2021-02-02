@@ -1,4 +1,5 @@
 # mpu btrfs (systemd-boot) ARCHISO
+# LEER: https://wiki.archlinux.org/index.php/User:Altercation/Bullet_Proof_Arch_Install#Our_partition_plans
 
 # -- comprobación de red DHCP (por cable)
 ping archlinux.org
@@ -26,8 +27,7 @@ lsblk
 # sda       931,5G  disk
 #   sda1    512,0M  part EFI System (ESP)   /boot
 #   sda2      4,0G  part                    [SWAP]
-#   sda3     80,0G  part                    /
-#   sda4    846,9G  part                    /home
+#   sda3    926,0G  part                    /
 
 fdisk /dev/sda
 # comandos de fdisk:
@@ -38,23 +38,38 @@ fdisk /dev/sda
 # 1 (cambiamos el tipo a EFI System)
 # n (creamos sda2)
 # n (creamos sda3)
-# n (creamos sda4)
 # p (mostramos cómo va a quedar el resultado)
 # w (escribimos los cambios y salimos)
 
 lsblk -fm
-mkfs.fat -F32 /dev/sda1
-mkswap /dev/sda2
-swapon /dev/sda2
-mkfs.btrfs -L ROOT /dev/sda3
-mkfs.btrfs -L HOME /dev/sda4
+mkfs.fat -F32 -n EFI /dev/sda1
+mkswap -L swap /dev/sda2
+swapon -L swap
+mkfs.btrfs --force --label system /dev/sda3 # nótese que aquí asignamos el nombre "system" a nuestra partición
 
-# montamos de forma correcta las particiones sobre el sistema de archivos a configurar
-mount /dev/sda3 /mnt
+# definimos las variables "o" y "o_btrfs" para las opciones de montaje
+o=defaults,x-mount.mkdir
+o_btrfs=$o,compress=lzo,ssd,noatime
+
+# montamos nuestra partición "system" en /mnt
+mount -t btrfs LABEL=system /mnt
+
+# creamos los subvolumes btrfs
+btrfs subvolume create /mnt/root
+btrfs subvolume create /mnt/home
+btrfs subvolume create /mnt/snapshots
+
+# desmontamos todo
+umount -R /mnt
+
+# y ahora montamos los sobvolumenes en su orden correspondiente
+mount -t btrfs -o subvol=root,$o_btrfs LABEL=system /mnt
+mount -t btrfs -o subvol=home,$o_btrfs LABEL=system /mnt/home
+mount -t btrfs -o subvol=snapshots,$o_btrfs LABEL=system /mnt/.snapshots
+
+# montamos la partición EFI
 mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot
-mkdir /mnt/home
-mount /dev/sda4 /mnt/home
+mount LABEL=EFI /mnt/boot
 lsblk -fm
 
 # -- instalamos el sistema base en el disco particionado (pensar en que
@@ -65,8 +80,19 @@ nano /etc/pacman.d/mirrorlist
 pacman -Syy # refrescamos los repositorios al cambiar el mirrorlist
 pacstrap /mnt base base-devel linux linux-firmware dosfstools exfat-utils btrfs-progs e2fsprogs ntfs-3g man-db man-pages texinfo sudo git nano
 
+# - este mensaje es completamente normal mientras no generemos los locales
+# perl: warning: Setting locale failed.
+# perl: warning: Please check that your locale settings:
+# 	LANGUAGE = (unset),
+# 	LC_ALL = (unset),
+# 	LC_MESSAGES = "",
+# 	LANG = "en_US.UTF-8"
+#     are supported and installed on your system.
+# perl: warning: Falling back to the standard locale ("C").
+
 # -- generamos el fstab tal cual como lo tenemos montado en la instalación
-genfstab -U /mnt >> /mnt/etc/fstab
+# genfstab -U /mnt > /mnt/etc/fstab # Use UUIDs for source identifiers
+genfstab -L /mnt > /mnt/etc/fstab # Use labels for source identifiers
 
 # -- nos impersonamos como root en nuestro sistema de archivos a instalar
 arch-chroot /mnt
@@ -83,6 +109,8 @@ env EDITOR=nano visudo
 # cosmo ALL=(ALL) ALL
 # Si recreamos /home/cosmo manualmente hay que ejecutar:
 # chown cosmo:cosmo /home/cosmo # considerar poner -R
+# si no creamos /home/cosmo manualmente es recomendable ajustar los permisos:
+chmod 755 /home/cosmo
 
 # instalamos, habilitamos y ejecutamos ssh para poder continuar con la
 # instalación desde otro pc de forma remota
@@ -158,24 +186,9 @@ mkinitcpio -p linux
 # para procesadores intel
 pacman -S intel-ucode
 
-# -- instalación de GRUB (lo dejo por si acaso)
-pacman -S grub
-grub-install --target=i386-pc /dev/sda # instalación para particiones MBR (MSDOS)
-# editamos los boot parameters del kernel al iniciarlo, explicaciones:
-# https://wiki.archlinux.org/index.php/Kernel_parameters_(Espa%C3%B1ol)
-# https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
-# https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs
-# https://wiki.archlinux.org/index.php/Intel_graphics#Enable_early_KMS
-nano /etc/default/grub
-# editando la linea GRUB_CMDLINE_LINUX_DEFAULT para dejarla así:
-# GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog i915.enable_guc=2"
-# de paso, también reducimos el tiempo de espera en la pantalla de grub
-# GRUB_TIMEOUT=2
-grub-mkconfig -o /boot/grub/grub.cfg
-
 # -- instalación systemd-boot
 bootctl --path=/boot install
-# Generar archivo de configuración de systemd-boot:
+# editar archivo de configuración de systemd-boot:
 nano /boot/loader/loader.conf
 # - Agregamos las siguientes líneas
 # default arch
@@ -183,7 +196,7 @@ nano /boot/loader/loader.conf
 # editor 0
 
 # Generar el archivo de la entrada por defecto para systemd-boot:
-echo $(blkid -s PARTUUID -o value /dev/sda3) > /boot/loader/entries/arch.conf
+# echo $(blkid -s PARTUUID -o value /dev/sda3) > /boot/loader/entries/arch.conf
 nano /boot/loader/entries/arch.conf
 # - Se debe agregar lo siguiente, de manera que el serial generado, 
 #   quede después de PARTUUID y antes de rw, como sigue:
@@ -191,7 +204,8 @@ nano /boot/loader/entries/arch.conf
 # linux /vmlinuz-linux
 # initrd /intel-ucode.img 
 # initrd /initramfs-linux.img
-# options root=PARTUUID=14420948-2cea-4de7-b042-40f67c618660 rw
+# options root=LABEL=system rw rootflags=subvol=root
+# #options root=PARTUUID=14420948-2cea-4de7-b042-40f67c618660 rw rootflags=subvol=root
 # - La línea: initrd /intel-ucode.img, sólo se debe poner cuando se ha instalado intel-ucode
 
 # --- FIN GESTOR DE ARRANQUE DEL SISTEMA ---------------------------------------
