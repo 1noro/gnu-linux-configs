@@ -169,6 +169,8 @@ cd ..
 
 # primera snapshot en btrfs
 sudo pacman -S snapper
+sudo snapper -c root create-config /
+sudo snapper -c root create -d "init"
 sudo snapper -c home create-config /home
 sudo snapper -c home create -d "init"
 
