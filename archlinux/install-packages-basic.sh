@@ -139,7 +139,7 @@ packagelist_install=(
     ttf-fira-mono # https://en.wikipedia.org/wiki/Fira_Sans
     otf-fira-mono
     ttf-fira-code # https://github.com/tonsky/FiraCode (en pruebas para usarla en mi terminal por defecto)
-    otf-fira-code
+    #otf-fira-code # no se encuentra
 )
 
 # packagelist_remove=(
