@@ -143,7 +143,8 @@ sudo cp /home/cosmo/Work/github/gnu-linux-configs/archlinux/grub-bg.png /boot/gr
 sudo nano /etc/default/grub
 # descomentamos y editamos las lineas:
 # GRUB_BACKGROUND="/boot/grub/grub-bg.png"
-# GRUB_GFXMODE=1920x1080x32
+# #GRUB_GFXMODE=1920x1080x32
+# GRUB_GFXMODE=2560x1440x32
 # GRUB_GFXPAYLOAD_LINUX=keep
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
