@@ -33,6 +33,7 @@ packagelist_install=(
 
     ## utilidades básicas (gráficas)
     firefox
+    sxiv # visor de imágenes (substituye a eog)
     xorg-xkill
     simple-scan
     # brasero

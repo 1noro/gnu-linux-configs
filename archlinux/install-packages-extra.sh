@@ -10,8 +10,8 @@ packagelist_install=(
     # code # visual studio code (sin las movidas de microsoft)
     # dbeaver
     # eclipse-java
-    pycharm-community-edition
-    intellij-idea-community-edition
+    # pycharm-community-edition
+    # intellij-idea-community-edition
 
     ## Juegos
     # hace falta instalar lib32-mesa (para procesadores intel) del repositorio
@@ -62,6 +62,13 @@ packagelist_install=(
     # - GO
     go
 
+    # - Rust
+    rustup
+    # rustup default stable (comando adicional)
+
+    # - C
+    # gdb
+
     # Extras de Arch Linux
     pacgraph # visualización gráfica de los paquetes y dependencias de pacman
 
@@ -83,11 +90,19 @@ packagelist_install=(
 
     # Browser
     # torbrowser-launcher
+
+    # Conversor de archivos
+    pandoc # (markdown > pdf, markdown > HTML, etc)
 )
 
 pacman -Syyu
 pacman -S --needed ${packagelist_install[@]}
 
+## Comandos adicionales
+# VirtualBox
 usermod -a -G vboxusers $USER
 systemctl enable --now org.cups.cupsd.service
 systemctl enable --now avahi-daemon.service
+
+# Rust
+rustup default stable
