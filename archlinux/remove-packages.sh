@@ -5,6 +5,7 @@ packagelist_install=(
     gnome-documents # no le veo la utildad
     gnome-photos # no le veo la utildad
     gnome-recipes # no le veo la utildad
+    gnome-builder # bloated
     totem # reproductor de videos de Gnome, no le veo la utilidad
     eog # si es substituido por sxiv
 )

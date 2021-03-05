@@ -61,7 +61,7 @@ packagelist_install=(
     # puede que haga falta trastear en el ALSAMIXER para que funcione el micro externo
 
     ## editores de texto
-    gedit
+    # gedit (bloated)
     geany
     # geany-plugins
     libreoffice-fresh
