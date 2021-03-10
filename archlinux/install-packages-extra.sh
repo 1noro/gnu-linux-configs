@@ -93,6 +93,10 @@ packagelist_install=(
 
     # Conversor de archivos
     pandoc # (markdown > pdf, markdown > HTML, etc)
+
+    # Emuladores de terminal
+    cool-retro-term
+    # xterm
 )
 
 pacman -Syyu
