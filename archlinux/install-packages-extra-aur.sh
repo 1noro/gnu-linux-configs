@@ -224,3 +224,12 @@ cd ..
 # cd mahjong; \
 # makepkg -sri; \
 # cd ..
+
+
+## nut-monitor (https://wiki.archlinux.org/index.php/Network_UPS_Tools#NUT-Monitor)
+# nut-monitor (pygtk es una dependencia y parece que no es tan facil instalarla)
+# git clone https://aur.archlinux.org/nut-monitor.git; \
+# cd nut-monitor; \
+# makepkg -sri; \
+# cd ..
+# DESINSTALAR: sudo pacman -Rns nut-monitor

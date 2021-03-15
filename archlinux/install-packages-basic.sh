@@ -30,6 +30,7 @@ packagelist_install=(
     inetutils # telnet y mas...
     phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon (debatir entre GStreamer or VLC)
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
+    nut # Network UPS (SAI) Tools (config: https://wiki.archlinux.org/index.php/Network_UPS_Tools)
 
     ## utilidades básicas (gráficas)
     firefox
