@@ -51,7 +51,7 @@ pacman -S nvidia-settings --needed # utilidad grafica de configuración
 ## Configuración automática (viene con el paquete nvidia)
 nvidia-xconfig
 
-## revisamos /etc/xorg.conf para ver soi nos convencen los parámetros autmáticos
+## revisamos /etc/xorg.conf para ver si nos convencen los parámetros autmáticos
 ## comentamos la siguiente línea si está presente
 # Load        "dri"
 
