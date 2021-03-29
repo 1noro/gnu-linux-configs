@@ -23,11 +23,11 @@ nano /etc/default/grub
 # GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog i915.enable_guc=2" --> GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog"
 grub-mkconfig -o /boot/grub/grub.cfg
 
-## Borramos las configuraciones de intel
+## Borramos las configuraciones de Intel
 rm /etc/X11/xorg.conf.d/20-intel.conf
 rm ~/.drirc
 
-## Ponemos en la lista negra los modulos de Intel
+## Ponemos en la lista negra los módulos de Intel
 echo 'install i915 /bin/false' >> /etc/modprobe.d/blacklist.conf
 echo 'install intel_agp /bin/false' >> /etc/modprobe.d/blacklist.conf
 
@@ -36,7 +36,7 @@ pacman -Rns xf86-video-intel mesa lib32-mesa
 
 ### INSTALAR CONFIGURACIÓN NVIDIA GTX1070 #####################################
 # https://wiki.archlinux.org/index.php/NVIDIA_(Espa%C3%B1ol)
-## Instalamos el los controladores y utilidades extra de nvidia
+## Instalamos los controladores y utilidades extra de nvidia
 ## este orden es el recomendado
 pacman -S nvidia-utils --needed # paquete de utilidades extra (no se si ya viene con el básico)
 pacman -S nvidia --needed # paquete básico
@@ -59,7 +59,7 @@ pacman -S nvidia-settings --needed # utilidad grafica de configuración
 ## Configuración automática (viene con el paquete nvidia)
 nvidia-xconfig
 
-## revisamos /etc/xorg.conf para ver si nos convencen los parámetros autmáticos
+## revisamos /etc/xorg.conf para ver si nos convencen los parámetros automáticos
 ## comentamos la siguiente línea si está presente
 # Load        "dri"
 
