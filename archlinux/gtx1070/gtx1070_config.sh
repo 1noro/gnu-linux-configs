@@ -10,10 +10,16 @@ fi
 # agregamos el módulo i915 al kernel de Linux y lo volvemos a configura
 # esto es para cargar KMS lo antes posible al inicio del boot
 # https://wiki.archlinux.org/index.php/Kernel_mode_setting_(Espa%C3%B1ol)
+# - Módulos del kernel
 nano /etc/mkinitcpio.conf
 # modificar la linea MODULES=(i915) --> MODULES=()
 mkinitcpio -p linux
 # comprobar aquí si falta algún módulo por cargar para este hardware específico
+# - Configuración del grub
+nano /etc/default/grub
+# modificar la siguiente línea
+# GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog i915.enable_guc=2" --> GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog"
+grub-mkconfig -o /boot/grub/grub.cfg
 
 ## Borramos las configuraciones de intel
 rm /etc/X11/xorg.conf.d/20-intel.conf
@@ -36,7 +42,7 @@ pacman -S lib32-nvidia-utils --needed # librerias de 32 bits por si hacen falta
 pacman -S nvidia-settings --needed # utilidad grafica de configuración
 # pacman -S nvidia-smi --needed # paquete para leer la temperatura sin usar X (no se si ya viene con el básico)
 
-## Configuración mínima manual
+## Configuración mínima manual (creo que es mejor usar nvidia-xconfig)
 # echo 'Section "Device"' > /etc/X11/xorg.conf.d/20-nvidia.conf
 # echo '        Identifier "Nvidia Card"' > /etc/X11/xorg.conf.d/20-nvidia.conf
 # echo '        Driver "nvidia"' > /etc/X11/xorg.conf.d/20-nvidia.conf
@@ -58,3 +64,16 @@ nvidia-xconfig
 ## Configuraciones de optimización
 echo 'nvidia-settings --load-config-only' >> ~/.xinitrc # si no cambio nada en nvidia-settings no debería hacer falta
 echo 'nvidia-settings -a InitialPixmapPlacement=2' >> ~/.xinitrc
+
+## Agregar DRM kernel mode setting
+# https://wiki.archlinux.org/index.php/NVIDIA#DRM_kernel_mode_setting
+# https://forums.developer.nvidia.com/t/why-cannot-i-enable-drm-kernel-mode-setting/55980/2
+# - Agregamos los siguientes módulos al kernel
+nano /etc/mkinitcpio.conf
+# modificar la linea MODULES=() --> MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+mkinitcpio -p linux
+# - Defenimos los parámetros de arranque del kernel en la configuración del grub
+nano /etc/default/grub
+# modificar la siguiente línea
+# GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog" --> GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog nvidia-drm.modeset=1"
+grub-mkconfig -o /boot/grub/grub.cfg
