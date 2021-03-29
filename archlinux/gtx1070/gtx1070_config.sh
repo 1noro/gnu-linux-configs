@@ -14,7 +14,9 @@ fi
 nano /etc/mkinitcpio.conf
 # modificar la linea MODULES=(i915) --> MODULES=()
 mkinitcpio -p linux
+
 # comprobar aquí si falta algún módulo por cargar para este hardware específico
+
 # - Configuración del grub
 nano /etc/default/grub
 # modificar la siguiente línea
