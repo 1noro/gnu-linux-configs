@@ -114,6 +114,7 @@ packagelist_install=(
 
     ## latex
     texlive-most
+    biber
     # texmaker # substituido por atom o vscode
 
     ## fuentes extra
