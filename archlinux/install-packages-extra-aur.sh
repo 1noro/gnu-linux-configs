@@ -45,11 +45,11 @@ cd ..
 
 ## Arreglar PCs
 # teamviewer
-git clone https://aur.archlinux.org/teamviewer.git; \
-cd teamviewer; \
-makepkg -sri; \
-sudo systemctl enable teamviewerd; \
-cd ..
+# git clone https://aur.archlinux.org/teamviewer.git; \
+# cd teamviewer; \
+# makepkg -sri; \
+# sudo systemctl enable teamviewerd; \
+# cd ..
 
 ## VPNs
 # mullvad
@@ -134,17 +134,17 @@ cd ..
 
 ## GNOME Shell
 # flat-remix-gtk (tema)
-git clone https://aur.archlinux.org/flat-remix-gtk.git; \
-cd flat-remix-gtk; \
-makepkg -sri; \
-cd ..
+# git clone https://aur.archlinux.org/flat-remix-gtk.git; \
+# cd flat-remix-gtk; \
+# makepkg -sri; \
+# cd ..
 
 ## Temas Geany
 # geany-themes
-git clone https://aur.archlinux.org/geany-themes.git; \
-cd geany-themes; \
-makepkg -sri; \
-cd ..
+# git clone https://aur.archlinux.org/geany-themes.git; \
+# cd geany-themes; \
+# makepkg -sri; \
+# cd ..
 
 ## Correo electrónico
 # protonmail-bridge (se necesita una cuenta de pago)
@@ -178,10 +178,10 @@ cd ..
 
 ## Speedtest by Ookla
 # speedtest
-git clone https://aur.archlinux.org/ookla-speedtest-bin.git; \
-cd ookla-speedtest-bin; \
-makepkg -sri; \
-cd ..
+# git clone https://aur.archlinux.org/ookla-speedtest-bin.git; \
+# cd ookla-speedtest-bin; \
+# makepkg -sri; \
+# cd ..
 
 ## Visualk Studio Code (Microsoft Branded)
 # (para poder usar Live Share)
@@ -225,7 +225,6 @@ cd ..
 # makepkg -sri; \
 # cd ..
 
-
 ## nut-monitor (https://wiki.archlinux.org/index.php/Network_UPS_Tools#NUT-Monitor)
 # nut-monitor (pygtk es una dependencia y parece que no es tan facil instalarla)
 # git clone https://aur.archlinux.org/nut-monitor.git; \
@@ -233,3 +232,12 @@ cd ..
 # makepkg -sri; \
 # cd ..
 # DESINSTALAR: sudo pacman -Rns nut-monitor
+
+## rdfind (https://rdfind.pauldreik.se/)
+# Redundant data find - a program that finds duplicate files.
+# rdfind
+git clone https://aur.archlinux.org/rdfind.git; \
+gpg --keyserver keyserver.ubuntu.com --search-keys 5C4A26CD4CC8C397 \
+cd rdfind; \
+makepkg -sri; \
+cd ..
