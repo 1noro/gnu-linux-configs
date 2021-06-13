@@ -241,3 +241,11 @@ gpg --keyserver keyserver.ubuntu.com --search-keys 5C4A26CD4CC8C397 \
 cd rdfind; \
 makepkg -sri; \
 cd ..
+
+## lyrebird (https://github.com/lyrebird-voice-changer/lyrebird)
+# Simple and powerful voice changer for Linux, written in GTK 3
+# lyrebird
+# git clone https://aur.archlinux.org/lyrebird.git; \
+# cd lyrebird; \
+# makepkg -sri; \
+# cd ..
