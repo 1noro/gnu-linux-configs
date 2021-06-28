@@ -249,3 +249,11 @@ cd ..
 # cd lyrebird; \
 # makepkg -sri; \
 # cd ..
+
+## cgoban3 (https://gokgs.com)
+# A KGS client and SGF editor (edit Go scenarios)
+# cgoban3
+git clone https://aur.archlinux.org/cgoban3.git; \
+cd cgoban3; \
+makepkg -sri; \
+cd ..

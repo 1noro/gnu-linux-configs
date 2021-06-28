@@ -24,6 +24,7 @@ packagelist_install=(
     openra
     # lutris
     lib32-openssl-1.0 # necesidades para Civilization VI
+    gnugo # juega al GO con una interfaz ASCII por defecto
 
     ## astronomía
     stellarium
