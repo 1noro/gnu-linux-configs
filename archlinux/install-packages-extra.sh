@@ -98,6 +98,10 @@ packagelist_install=(
     # Emuladores de terminal
     cool-retro-term
     # xterm
+
+    # Dependencias opcionales de gdk-pixbuf2 (revisar si siguen siendo necesarias)
+    libopenraw # Load .dng, .cr2, .crw, .nef, .orf, .pef, .arw, .erf, .mrw, and .raf
+    webp-pixbuf-loader # Load .webp
 )
 
 pacman -Syyu
