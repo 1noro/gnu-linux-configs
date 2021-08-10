@@ -76,8 +76,9 @@ lsblk -fm
 # -- instalamos el sistema base en el disco particionado (pensar en que
 # paquetes son necesarios aquí desde el principio)
 nano /etc/pacman.d/mirrorlist
-# agregar al principio de todo la linea:
+# agregar al principio de todo las lineas:
 # Server = http://mirror.librelabucm.org/archlinux/$repo/os/$arch
+# Server = http://ftp.rediris.es/mirror/archlinux/$repo/os/$arch
 pacman -Syy # refrescamos los repositorios al cambiar el mirrorlist
 pacstrap /mnt base base-devel linux linux-firmware dosfstools exfat-utils btrfs-progs e2fsprogs ntfs-3g man-db man-pages texinfo sudo git nano zsh
 
@@ -137,7 +138,7 @@ nano /etc/hosts
 # - agregar las siguientes lineas
 # 127.0.0.1	localhost
 # ::1		localhost
-# 127.0.1.1	punk.jamaica.a3do.net	punk
+# 127.0.1.1	punk.jamaica.h.a3do.net	punk
 
 # instalamos y habilitamos el demonio más básico de dhcp para que al reiniciar
 # no nos quedemos sin internet
@@ -192,7 +193,8 @@ mkinitcpio -p linux # volvemos a generar el initramfs en /boot
 pacman -S intel-ucode
 
 # -- instalación y configuración inicial de GRUB
-pacman -S grub
+pacman -S grub efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 # https://wiki.archlinux.org/index.php/Kernel_parameters_(Espa%C3%B1ol)
 # https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
 # https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs
@@ -203,6 +205,7 @@ nano /etc/default/grub
 # de paso, también reducimos el tiempo de espera en la pantalla de grub
 # GRUB_TIMEOUT=2
 grub-mkconfig -o /boot/grub/grub.cfg
+
 
 # --- FIN GESTOR DE ARRANQUE DEL SISTEMA ---------------------------------------
 
