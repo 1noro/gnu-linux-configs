@@ -56,14 +56,14 @@ sudo nano /etc/pacman.d/hooks/remove_old_cache.hook
 
 lspci | grep VGA
 sudo pacman -S xf86-video-intel # driver de la tarjeta grafica
-sudo pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo)
-sudo pacamn -S wayland lib32-wayland # instalamos wayland para que GDM lo detecte (creo que no hace falta)
-sudo pacman -S jack2 lib32-jack2 xdg-desktop-portal-gtk gnu-free-fonts noto-fonts-emoji gdm gnome gnome-extra
+sudo pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para Steam, por ejemplo)
+sudo pacamn -S pipewire lib32-pipewire pipewire-docs pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire-jack gst-plugin-pipewire # instalamos pipewire
+# comprobaciones para realizar después: https://wiki.archlinux.org/title/PipeWire
+# info sobre jack: https://github.com/jackaudio/jackaudio.github.com/wiki/Q_difference_jack1_jack2
+sudo pacman -S gdm gnome gnome-extra xdg-desktop-portal xdg-desktop-portal-gtk gnu-free-fonts noto-fonts-emoji
 # gdm ya está en el grupo gnome, pero lo escribo para que quede patente
 # especifico xdg-desktop-portal-gtk para no tener que leer la wiki siempre
 # revisar las diferencias entre xdg-desktop-portal-gtk y xdg-desktop-portal-kde
-# especifico jack2 para no tener que leer la wiki siempre
-# https://github.com/jackaudio/jackaudio.github.com/wiki/Q_difference_jack1_jack2
 sudo systemctl enable gdm
 
 
