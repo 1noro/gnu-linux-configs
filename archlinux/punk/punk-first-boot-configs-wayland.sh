@@ -52,14 +52,22 @@ sudo nano /etc/pacman.d/hooks/remove_old_cache.hook
 # sudo pacman -S virtualbox-guest-utils
 # sudo systemctl enable vboxservice.service
 
-# CONSIDERAR PIPEWIRE!!!
-
 lspci | grep VGA
 sudo pacman -S xf86-video-intel # driver de la tarjeta grafica
-sudo pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para Steam, por ejemplo)
-sudo pacamn -S pipewire lib32-pipewire pipewire-docs pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire-jack gst-plugin-pipewire # instalamos pipewire
+sudo pacman -S mesa lib32-mesa --needed # instalar OpenGl y OpenGl 32 (para Steam, por ejemplo)
+# --- inicio pipewire ---
+sudo pacman -S pipewire lib32-pipewire pipewire-docs pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire-jack gst-plugin-pipewire pavucontrol # instalamos pipewire
+# PARECE QUE ESTE PAQUERTE NO HACE FALTA:
+# cd ~/Work/aur; \
+# git clone https://aur.archlinux.org/pipewire-dropin.git; \
+# cd pipewire-dropin; \
+# makepkg -sri; \
+# cd ~
 # comprobaciones para realizar después: https://wiki.archlinux.org/title/PipeWire
+# comando util por si trajeta USB no funciona:
+# systemctl --user restart pipewire.service
 # info sobre jack: https://github.com/jackaudio/jackaudio.github.com/wiki/Q_difference_jack1_jack2
+# --- final pipewire ---
 sudo pacman -S gdm gnome gnome-extra xdg-desktop-portal xdg-desktop-portal-gtk gnu-free-fonts noto-fonts-emoji
 # gdm ya está en el grupo gnome, pero lo escribo para que quede patente
 # especifico xdg-desktop-portal-gtk para no tener que leer la wiki siempre
@@ -69,14 +77,14 @@ sudo systemctl enable gdm
 
 # --- instalando y configurando NetworkManager
 # instalamos NetworkManager para poder gestionar la red desde gnome
-sudo pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring  --needed
+sudo pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring --needed
 
 # systemctl --type=service
-sudo systemctl stop dhcpcd
-sudo systemctl disable dhcpcd
+sudo systemctl stop dhcpcd; \
+sudo systemctl disable dhcpcd; \
 sudo pacman -Rns dhcpcd
 
-sudo systemctl enable wpa_supplicant
+sudo systemctl enable wpa_supplicant; \
 sudo systemctl enable NetworkManager
 
 # add cosmo to network group
@@ -100,28 +108,6 @@ sudo pacman -S firefox
 # desmarcamos Usar configuración de rendimiento recomendada
 # y verificamos que quede marcado Usar aceleración de hardware cuando esté disponible
 # y el ímite de procesadores el recomendado (8, por ejemplo)
-
-
-# -- Teaaring Fix in Xorg (intel graphics) 
-# (si usas Wayland no debería haber problemas)
-# parece que no funciona hoy dia; revisar:
-# https://wiki.archlinux.org/index.php/GNOME/Troubleshooting#Tear-free_video_with_Intel_HD_Graphics
-# https://wiki.archlinux.org/index.php/Intel_graphics_(Espa%C3%B1ol)#Desactivar_Vertical_Synchronization_(VSYNC)
-sudo nano /etc/X11/xorg.conf.d/20-intel.conf
-# agrega las siguientes lineas:
-# Section "Device"
-#    Identifier  "Intel Graphics"
-#    Driver      "intel"
-#    Option      "TearFree"    "true"
-# EndSection
-sudo nano /home/cosmo/.drirc
-# escribir lo siguiente:
-# <device screen="0" driver="dri2">
-#         <application name="Default">
-#                 <option name="vblank_mode" value="0"/>
-#         </application>
-# </device>
-sudo reboot
 
 
 # -- SSD (optimizar y aumentar su vida)
@@ -162,9 +148,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # primera snapshot en btrfs
 sudo pacman -S snapper
-sudo snapper -c root create-config /
-sudo snapper -c root create -d "init"
-sudo snapper -c home create-config /home
+sudo snapper -c root create-config /; \
+sudo snapper -c root create -d "init"; \
+sudo snapper -c home create-config /home; \
 sudo snapper -c home create -d "init"
 
 sudo reboot
