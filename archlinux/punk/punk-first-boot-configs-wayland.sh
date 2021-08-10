@@ -52,6 +52,8 @@ sudo nano /etc/pacman.d/hooks/remove_old_cache.hook
 # sudo pacman -S virtualbox-guest-utils
 # sudo systemctl enable vboxservice.service
 
+# CONSIDERAR PIPEWIRE!!!
+
 lspci | grep VGA
 sudo pacman -S xf86-video-intel # driver de la tarjeta grafica
 sudo pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo)
@@ -139,7 +141,9 @@ sudo systemctl enable fstrim.timer
 
 # -- agregamos un fondo para que el GRUB quede to chulo:
 # (si se usa systemd-boot no hace falta)
-sudo cp /home/cosmo/Work/github/gnu-linux-configs/archlinux/grub-bg.png /boot/grub/grub-bg.png
+cd ~/Work/github
+git clone https://github.com/1noro/gnu-linux-configs.git
+sudo cp ~/Work/github/gnu-linux-configs/archlinux/grub-bg.png /boot/grub/grub-bg.png
 sudo nano /etc/default/grub
 # descomentamos y editamos las lineas:
 # GRUB_BACKGROUND="/boot/grub/grub-bg.png"
