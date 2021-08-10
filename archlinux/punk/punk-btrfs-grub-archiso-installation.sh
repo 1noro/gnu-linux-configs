@@ -78,7 +78,7 @@ nano /etc/pacman.d/mirrorlist
 # agregar al principio de todo la linea:
 # Server = http://mirror.librelabucm.org/archlinux/$repo/os/$arch
 pacman -Syy # refrescamos los repositorios al cambiar el mirrorlist
-pacstrap /mnt base base-devel linux linux-firmware dosfstools exfat-utils btrfs-progs e2fsprogs ntfs-3g man-db man-pages texinfo sudo git nano
+pacstrap /mnt base base-devel linux linux-firmware dosfstools exfat-utils btrfs-progs e2fsprogs ntfs-3g man-db man-pages texinfo sudo git nano zsh
 
 # - este mensaje es completamente normal mientras no generemos los locales
 # perl: warning: Setting locale failed.
@@ -102,7 +102,7 @@ arch-chroot /mnt
 passwd
 
 # creamos y configuramos un nuevo usuario para podrer instalar paquetes desde AUR
-useradd -s /bin/bash -m cosmo # considerar quitar la opción -m (create_home)
+useradd -s /bin/zsh -m cosmo # considerar quitar la opción -m (create_home)
 passwd cosmo
 env EDITOR=nano visudo
 # agregar la siguiente linea:
