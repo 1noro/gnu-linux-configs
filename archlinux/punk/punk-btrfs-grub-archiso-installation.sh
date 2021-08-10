@@ -8,6 +8,7 @@ ping archlinux.org
 # por si queremos realizar la instalación de forma remota
 systemctl start sshd
 passwd
+ip addr
 
 # -- verificamos que entramos en modo UEFI
 ls /sys/firmware/efi/efivars
