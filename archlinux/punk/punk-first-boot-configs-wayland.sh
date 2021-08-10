@@ -55,7 +55,7 @@ sudo nano /etc/pacman.d/hooks/remove_old_cache.hook
 lspci | grep VGA
 sudo pacman -S xf86-video-intel # driver de la tarjeta grafica
 sudo pacman -S mesa lib32-mesa # instalar OpenGl y OpenGl 32 (para steam, por ejemplo)
-sudo pacamn -S wayland lib32-wayland # instalamos wayland para que GDM lo detecte
+sudo pacamn -S wayland lib32-wayland # instalamos wayland para que GDM lo detecte (creo que no hace falta)
 sudo pacman -S jack2 lib32-jack2 xdg-desktop-portal-gtk gnu-free-fonts noto-fonts-emoji gdm gnome gnome-extra
 # gdm ya está en el grupo gnome, pero lo escribo para que quede patente
 # especifico xdg-desktop-portal-gtk para no tener que leer la wiki siempre
