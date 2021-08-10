@@ -75,10 +75,12 @@ lsblk -fm
 
 # -- instalamos el sistema base en el disco particionado (pensar en que
 # paquetes son necesarios aquí desde el principio)
-nano /etc/pacman.d/mirrorlist
+# nano /etc/pacman.d/mirrorlist
 # agregar al principio de todo las lineas:
 # Server = http://mirror.librelabucm.org/archlinux/$repo/os/$arch
 # Server = http://ftp.rediris.es/mirror/archlinux/$repo/os/$arch
+sed -i '1 i\Server = http://mirror.librelabucm.org/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
+sed -i '1 i\Server = http://ftp.rediris.es/mirror/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
 pacman -Syy # refrescamos los repositorios al cambiar el mirrorlist
 pacstrap /mnt base base-devel linux linux-firmware dosfstools exfat-utils btrfs-progs e2fsprogs ntfs-3g man-db man-pages texinfo sudo git nano zsh
 
@@ -106,9 +108,13 @@ passwd
 # creamos y configuramos un nuevo usuario para podrer instalar paquetes desde AUR
 useradd -s /bin/zsh -m cosmo # considerar quitar la opción -m (create_home)
 passwd cosmo
-env EDITOR=nano visudo
+usermod -a -G sudo cosmo
+# --- inicio sudo manual ---
+# env EDITOR=nano visudo
 # agregar la siguiente linea:
 # cosmo ALL=(ALL) ALL
+# --- fin sudo manual ---
+
 # Si recreamos /home/cosmo manualmente hay que ejecutar:
 # chown cosmo:cosmo /home/cosmo # considerar poner -R
 # si no creamos /home/cosmo manualmente es recomendable ajustar los permisos:
@@ -125,20 +131,22 @@ ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 hwclock --systohc
 
 # configuramos el idioma por defecto del equipo
-nano /etc/locale.gen
+# nano /etc/locale.gen
 # descomentamos:
 # en_US.UTF-8 UTF-8
 # es_ES.UTF-8 UTF-8
+sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
+sed -i '/es_ES.UTF-8 UTF-8/s/^#//g' /etc/locale.gen
 locale-gen
-echo "LANG=es_ES.UTF-8" > /etc/locale.conf
+echo 'LANG=es_ES.UTF-8' > /etc/locale.conf
 
 # ponemos nombre al equipo
-echo "punk" > /etc/hostname
-nano /etc/hosts
+echo 'punk' > /etc/hostname
+# nano /etc/hosts
 # - agregar las siguientes lineas
-# 127.0.0.1	localhost
-# ::1		localhost
-# 127.0.1.1	punk.jamaica.h.a3do.net	punk
+echo '127.0.0.1	localhost' >> /etc/hosts
+echo '::1		localhost' >> /etc/hosts
+echo '127.0.1.1	punk.jamaica.h.a3do.net	punk' >> /etc/hosts
 
 # instalamos y habilitamos el demonio más básico de dhcp para que al reiniciar
 # no nos quedemos sin internet
@@ -153,8 +161,9 @@ systemctl enable dhcpcd
 # *Corrección: esto es para que el módulo de los gráficos de intel (i915) se 
 # incorpore al initramfs para que se cargue con el primer arranque del kernel.
 # Y se compile automáticamente al actualizar el kernel con pacaman.
-nano /etc/mkinitcpio.conf
+# nano /etc/mkinitcpio.conf
 # modificar la linea MODULES=() --> MODULES=(i915)
+sed -i 's/MODULES=()/MODULES=(i915)/g' /etc/mkinitcpio.conf
 mkinitcpio -p linux
 # comprobar aquí si falta algún módulo por cargar para este hardware específico
 
@@ -199,9 +208,10 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 # https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
 # https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs
 # https://wiki.archlinux.org/index.php/Intel_graphics#Enable_early_KMS
-nano /etc/default/grub
+# nano /etc/default/grub
 # editando la linea GRUB_CMDLINE_LINUX_DEFAULT para dejarla así:
 # GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 nowatchdog i915.enable_guc=2"
+sed -i 's/loglevel=3 quiet/loglevel=4 nowatchdog i915.enable_guc=2/g' /etc/default/grub
 # de paso, también reducimos el tiempo de espera en la pantalla de grub
 # GRUB_TIMEOUT=2
 grub-mkconfig -o /boot/grub/grub.cfg
