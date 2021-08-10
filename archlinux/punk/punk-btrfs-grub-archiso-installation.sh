@@ -108,9 +108,9 @@ passwd
 # creamos y configuramos un nuevo usuario para podrer instalar paquetes desde AUR
 useradd -s /bin/zsh -m cosmo # considerar quitar la opción -m (create_home)
 passwd cosmo
-usermod -a -G sudo cosmo
+# usermod -a -G sudo cosmo
 # --- inicio sudo manual ---
-# env EDITOR=nano visudo
+env EDITOR=nano visudo
 # agregar la siguiente linea:
 # cosmo ALL=(ALL) ALL
 # --- fin sudo manual ---
@@ -144,8 +144,8 @@ echo 'LANG=es_ES.UTF-8' > /etc/locale.conf
 echo 'punk' > /etc/hostname
 # nano /etc/hosts
 # - agregar las siguientes lineas
-echo '127.0.0.1	localhost' >> /etc/hosts
-echo '::1		localhost' >> /etc/hosts
+echo '127.0.0.1	localhost' >> /etc/hosts; \
+echo '::1		localhost' >> /etc/hosts; \
 echo '127.0.1.1	punk.jamaica.h.a3do.net	punk' >> /etc/hosts
 
 # instalamos y habilitamos el demonio más básico de dhcp para que al reiniciar
@@ -214,6 +214,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 sed -i 's/loglevel=3 quiet/loglevel=4 nowatchdog i915.enable_guc=2/g' /etc/default/grub
 # de paso, también reducimos el tiempo de espera en la pantalla de grub
 # GRUB_TIMEOUT=2
+sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=2/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
@@ -224,7 +225,7 @@ exit
 # BACK TO ARCHISO
 
 # desmontamos con seguridad el entorno de instalación
-sync
+sync; \
 umount -R /mnt
 
 # reiniciamos
