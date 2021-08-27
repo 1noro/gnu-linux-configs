@@ -257,3 +257,10 @@ git clone https://aur.archlinux.org/cgoban3.git; \
 cd cgoban3; \
 makepkg -sri; \
 cd ..
+
+## Microsoft Teams
+# teams
+# git clone https://aur.archlinux.org/teams.git; \
+# cd teams; \
+# makepkg -sri; \
+# cd ..
