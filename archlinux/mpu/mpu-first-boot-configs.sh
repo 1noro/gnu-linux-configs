@@ -23,6 +23,7 @@ sudo nano /etc/pacman.conf
 # - en Misc options:
 #Color
 #VerbosePkgLists
+#ParallelDownloads = 3
 # - en los repositorios:
 #[multilib]
 #Include = /etc/pacman.d/mirrorlist
