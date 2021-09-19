@@ -8,7 +8,7 @@ packagelist_install=(
     gnome-builder # bloated
     gnome-boxes # no lo uso
     totem # reproductor de videos de Gnome, no le veo la utilidad
-    eog # si es substituido por sxiv
+    eog # si es sustituido por sxiv
 )
 
 pacman -Rns ${packagelist_install[@]}

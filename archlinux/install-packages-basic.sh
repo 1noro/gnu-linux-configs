@@ -62,10 +62,10 @@ packagelist_install=(
     # puede que haga falta trastear en el ALSAMIXER para que funcione el micro externo
 
     ## editores de texto
-    # gedit (bloated)
-    geany
+    gedit
+    # geany
     # geany-plugins
-    libreoffice-fresh
+    # libreoffice-fresh
 
     ## dependencias
     ### gnome shell system monitor extension dependences
