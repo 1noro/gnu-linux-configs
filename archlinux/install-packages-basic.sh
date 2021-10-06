@@ -34,7 +34,7 @@ packagelist_install=(
 
     ## utilidades básicas (gráficas)
     firefox
-    sxiv # visor de imágenes (substituye a eog)
+    sxiv # visor de imágenes (complementa a eog)
     xorg-xkill
     simple-scan
     # brasero
@@ -106,6 +106,8 @@ packagelist_install=(
     ## games (https://blends.debian.org/games/tasks/puzzle)
     gnome-mahjongg
     puzzles # https://www.chiark.greenend.org.uk/~sgtatham/puzzles/
+    gnome-2048
+    gnome-games # virtual boy advance substitute
     # gplanarity
 
     ## chromium
