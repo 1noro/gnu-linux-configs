@@ -31,6 +31,7 @@ packagelist_install=(
     phonon-qt5-vlc # https://wiki.archlinux.org/index.php/KDE#Phonon (debatir entre GStreamer or VLC)
     pkgstats # https://wiki.archlinux.org/index.php/Pkgstats_(Espa%C3%B1ol)
     nut # Network UPS (SAI) Tools (config: https://wiki.archlinux.org/index.php/Network_UPS_Tools)
+    sl # para cuando te equivoques con 'ls'
 
     ## utilidades básicas (gráficas)
     firefox
@@ -62,7 +63,7 @@ packagelist_install=(
     # puede que haga falta trastear en el ALSAMIXER para que funcione el micro externo
 
     ## editores de texto
-    gedit
+    # gedit
     # geany
     # geany-plugins
     # libreoffice-fresh
