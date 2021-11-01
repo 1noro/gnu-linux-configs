@@ -67,6 +67,7 @@ packagelist_install=(
     # geany
     # geany-plugins
     # libreoffice-fresh
+    vim # en modo de prueba
 
     ## dependencias
     ### gnome shell system monitor extension dependences
