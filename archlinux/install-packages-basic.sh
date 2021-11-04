@@ -67,7 +67,9 @@ packagelist_install=(
     # geany
     # geany-plugins
     # libreoffice-fresh
-    vim # en modo de prueba
+    nvim # en modo de prueba
+    xclip # for X11 clipboard
+    #wl-copy # for WYLAND clipboard
 
     ## dependencias
     ### gnome shell system monitor extension dependences
